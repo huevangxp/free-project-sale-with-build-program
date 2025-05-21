@@ -21,7 +21,7 @@
         <v-card class="my-4 " color="primary" dark elevation="3" rounded="xl" >
            <v-card-title class="d-flex align-center justify-space-between">
             <h4>ສິນຄ້າ</h4>
-            <v-avatar color="white" size="small" ><v-icon size="20">mdi-arrow-right</v-icon></v-avatar>
+            <v-avatar color="white" size="small" @click="navigateTo('/product')"><v-icon size="20">mdi-arrow-right</v-icon></v-avatar>
            </v-card-title>
           
         </v-card>

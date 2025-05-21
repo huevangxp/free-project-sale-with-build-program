@@ -43,5 +43,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  // modules: []
+  devServer: {
+    host: '0.0.0.0'
+  }
 })
