@@ -28,10 +28,10 @@
                         <h3 class="text-primary">
                             {{ item.title }}
                         </h3>
-                        <p>
+                        <p class="fontsize">
                             {{ item.price.toLocaleString() }} ກິບ
                         </p>
-                        <p>
+                        <p class="fontsize">
                            03/03/2025
                         </p>
                        
@@ -82,3 +82,9 @@
         },
     ]
 </script>
+
+<style scoped>
+    .fontsize{
+        font-size: 15px;
+    }
+</style>
