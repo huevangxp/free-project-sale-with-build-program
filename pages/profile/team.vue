@@ -20,23 +20,21 @@
         <v-card elevation="3" rounded="xl" class="my-4" color="primary" dark>
             <v-card-title class="d-flex align-center justify-space-between">
                 <h4> <v-icon size="30" @click="$router.back()">mdi-arrow-left</v-icon> ທິມງານທັງຫມົດ</h4>
-                <v-avatar color="white" size="small" ><v-icon size="20">mdi-account-group</v-icon></v-avatar>
             </v-card-title>
-           
         </v-card>
 
         <v-row class="my-4" dense >
             <v-col cols="6"   v-for="(item,i) in items" :key="i">
                 <v-card elevation="3" rounded="xl" :to="item.link">
-                  <div size="120"  class="mx-auto" >
+                  <v-avatar size="120"  class="mx-auto d-flex justify-center"  >
                     <v-img
                         :src="item.src"
                         height="120"
                         cover
                     ></v-img>
-                  </div>
+                  </v-avatar>
 
-                    <div>
+                    <div class="text-center">
                         <v-card-title>
                         <h4>
                             {{ item.title }}

@@ -26,7 +26,6 @@
                 <v-card elevation="3" rounded="xl" :to="item.link">
                     <v-card-title class="d-flex justify-center  align-center ">
                         <h4 class="text-primary">{{ item.title }}</h4>
-                         
                     </v-card-title>
                     <v-card-title class="d-flex justify-center  align-center ">
                             <v-icon size="100" color="primary">{{ item.icon }}</v-icon>
@@ -53,7 +52,7 @@ const items = [
     {
         icon: 'mdi-information',
         title: 'KYC',
-        link: '/profile'
+        link: '/profile/kyc'
     },
     {
         icon: 'mdi-video',
@@ -63,7 +62,7 @@ const items = [
     {
         icon: 'mdi-currency-usd',
         title: 'ລາຍໄດ້ຈາກການຂາຍ',
-        link: '/profile'
+        link: '/profile/income'
     },
     {
         icon: 'mdi-form-textbox-password',

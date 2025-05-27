@@ -34,16 +34,23 @@
                         cover
                     ></v-img>
 
-                    <v-card-title>
-                        <h4>
+                <div class="d-flex align-center justify-space-between">
+                    <div>
+                        <v-card-title>
+                        <h4 class="text-primary">
                             {{ item.title }}
                         </h4>
                     </v-card-title>
                     <v-card-text>
-                        <h2 class="text-primary">
-                            {{ item.price }}
-                        </h2>
+                        <h3 class="text-secondary">
+                            {{ formatMoneyLAK(item.price) }}
+                        </h3>
                     </v-card-text>
+                    </div>
+                    <div>
+                        <v-btn color="primary" elevation="0" rounded="pill" variant="text"><v-icon size="30">mdi-cart</v-icon></v-btn>
+                    </div>
+                </div>
                 </v-card>
             </v-col>
         </v-row>
@@ -51,29 +58,32 @@
 </template>
 
 <script setup>
+import { useFormat } from '@/composables/useFormat';
+const { formatMoneyLAK } = useFormat();
+
     const items = [
         {
             src: 'https://i.pinimg.com/736x/aa/94/c6/aa94c694ded179d97311cadbf26cbb01.jpg',
             title: 'ສະບູ',
-            price: '10000',
+            price: 10000,
             description: 'Description 1',
         },
         {
             src: 'https://cdn.shopify.com/s/files/1/0623/4688/7385/files/soap_bar_600x600.jpg?v=1682486305',
-            title: 'Product 2',
-            price: '10000',
+            title: 'ສະບູ',
+            price: 10000,
             description: 'Description 2',
         },
         {
             src: 'https://m.media-amazon.com/images/I/71ECuJ8sqdL._AC_UF1000,1000_QL80_.jpg',
-            title: 'Product 3',
-            price: '10000',
+            title: 'ສະບູ',
+            price: 10000,
             description: 'Description 3',
         },
         {
             src: 'https://i5.walmartimages.com/seo/Dove-Shea-Butter-Beauty-Cream-Moisturizing-Bar-Soap-with-Vanilla-Scent_c3c85a38-2507-421b-8590-f16a35e8c487.cb095ab01faff492695f18981601cb6f.jpeg',
-            title: 'Product 4',
-            price: '10000',
+            title: 'ສະບູ',
+            price: 10000,
             description: 'Description 4',
         },
     ]

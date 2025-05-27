@@ -21,8 +21,8 @@
                 </v-row>
             </v-card-text>
             <v-card-actions class="d-flex align-center justify-center pb-6">
-                <v-btn color="red" variant="outlined" size="large" width="185" class="rounded-xl" @click="$router.back()">ຍົກເລິກ</v-btn>
-                <v-btn color="primary" variant="elevated" size="large" width="185" class="rounded-xl">ປ່ຽນລະຫັດຜ່ານ</v-btn>
+                <v-btn color="red" variant="outlined" size="large" width="165" class="rounded-xl" @click="$router.back()">ຍົກເລິກ</v-btn>
+                <v-btn color="primary" variant="elevated" size="large" width="165" class="rounded-xl">ປ່ຽນລະຫັດຜ່ານ</v-btn>
             </v-card-actions>
           
         </v-card>
