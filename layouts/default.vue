@@ -2,6 +2,7 @@
 
 <template>
   <v-app>
+    <VitePwaManifest />
     <Header />
     <v-main>
       <slot />

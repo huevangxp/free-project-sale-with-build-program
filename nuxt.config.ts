@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
-
   app: {
     head: {
       title: 'Lisfoom',
@@ -27,7 +26,9 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
   modules: [
-    '@nuxt/content', '@nuxt/eslint',
+    '@vite-pwa/nuxt',
+    '@nuxt/content', 
+    '@nuxt/eslint',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
@@ -43,7 +44,45 @@ export default defineNuxtConfig({
       },
     },
   },
+
   devServer: {
     host: '0.0.0.0'
+  },
+
+  // use pwa 
+  pwa: {
+    manifest: {
+      name: 'Lis Foom',
+      short_name: 'LFV',
+      description: 'lis foom vaj project salve soap',
+      theme_color: '#2275A8',
+      icons: [
+        {
+          src: './static/qr.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
+        {
+          src: './static/qr.png',
+          sizes: '512x512',
+          type: 'image/png'
+        },
+        {
+          src: './static/qr.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'any maskable'
+        }
+      ]
+    },
+    workbox: {
+      navigateFallback: '/',
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+    },
+    devOptions: {
+      enabled: true,
+      type: 'module'
+    }
   }
+
 })

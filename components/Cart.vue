@@ -74,3 +74,9 @@ const items = [
     },
 ]
 </script>
+ 
+<style scoped>
+.fontsize {
+    font-size: 15px;
+}
+</style>
