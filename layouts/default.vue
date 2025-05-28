@@ -1,8 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
+<div>
+  <VitePwaManifest  />
   <v-app>
-    <VitePwaManifest />
     <Header />
     <v-main>
       <slot />
@@ -11,6 +12,7 @@
       <Footer />
     </v-footer>
   </v-app>
+</div>
 </template>
 
 <style>

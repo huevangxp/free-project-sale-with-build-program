@@ -10,7 +10,7 @@ export default defineNuxtConfig({
         { name: 'format-detection', content: 'telephone=no' },
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'icon', type: 'image/x-icon', href: 'default-150x150.png' },
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap',
@@ -26,7 +26,7 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
   modules: [
-    '@vite-pwa/nuxt',
+    "@vite-pwa/nuxt",
     '@nuxt/content', 
     '@nuxt/eslint',
     (_options, nuxt) => {
@@ -45,44 +45,61 @@ export default defineNuxtConfig({
     },
   },
 
-  // devServer: {
-  //   host: '0.0.0.0'
-  // },
+  devServer: {
+    host: '0.0.0.0'
+  },
 
   // use pwa 
   pwa: {
     manifest: {
-      name: 'Lis Foom',
-      short_name: 'LFV',
-      description: 'lis foom vaj project salve soap',
-      theme_color: '#2275A8',
+      name: "Lis Foom Vaj",
+      short_name: "LFV",
+      theme_color:'#8a8a5e',
+      description: "Lis Foom Vaj",
       icons: [
         {
-          src: './static/qr.png',
-          sizes: '192x192',
-          type: 'image/png'
+          src: "icon.png",
+          sizes: "64x64",
+          type: "image/png",
         },
         {
-          src: './static/qr.png',
-          sizes: '512x512',
-          type: 'image/png'
+          src: "icon.png",
+          sizes: "144x144",
+          type: "image/png",
         },
         {
-          src: './static/qr.png',
-          sizes: '512x512',
-          type: 'image/png',
-          purpose: 'any maskable'
-        }
-      ]
+          src: "icon.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "icon.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+      ],
+
+
+    },
+    client: {
+      installPrompt: true,
+      periodicSyncForUpdates: 20,
     },
     workbox: {
-      navigateFallback: '/',
+      navigateFallback: "/",
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+    },
+    injectManifest: {
       globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
     },
     devOptions: {
       enabled: true,
-      type: 'module'
+      suppressWarnings: true,
+      navigateFallback: '/',
+      navigateFallbackAllowlist: [/^\/$/],
+      type: 'module',
     }
+
   }
 
 })

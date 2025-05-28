@@ -13,10 +13,7 @@
     "@mdi/font": "^7.4.47",
     "@nuxt/content": "^3.5.1",
     "@nuxt/eslint": "^1.4.0",
-    "default": "^0.1.1",
     "eslint": "^9.27.0",
-    "layout": "^2.2.0",
-    "nuxi": "^3.25.1",
     "nuxt": "^3.17.3",
     "vue": "^3.5.14",
     "vue-router": "^4.5.1"
