@@ -45,9 +45,9 @@ export default defineNuxtConfig({
     },
   },
 
-  devServer: {
-    host: '0.0.0.0'
-  },
+  // devServer: {
+  //   host: '0.0.0.0'
+  // },
 
   // use pwa 
   pwa: {
