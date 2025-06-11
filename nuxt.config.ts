@@ -25,10 +25,14 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
+  plugins:[
+    '~/plugins/axios.ts'
+  ],
   modules: [
     "@vite-pwa/nuxt",
     '@nuxt/content', 
     '@nuxt/eslint',
+    '@pinia/nuxt',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
@@ -44,8 +48,8 @@ export default defineNuxtConfig({
       },
     },
   },
-
-  devServer: {
+ 
+ devServer: {
     host: '0.0.0.0'
   },
 

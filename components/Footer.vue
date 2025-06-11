@@ -5,6 +5,7 @@
         mode="shift"
         fixed
         app
+        grow
       >
         <v-btn value="0" to="/">
           <v-icon>mdi-home</v-icon>
@@ -21,11 +22,11 @@
           <span>ທິມງານ</span>
         </v-btn>
   
-        <v-btn value="3" to="/login">
+        <v-btn value="3" to="/login" v-if="!token">
           <v-icon>mdi-login-variant</v-icon>
           <span>ເຂົ້າສູ່ລະບົບ</span>
         </v-btn>
-        <v-btn value="4" to="/profile">
+        <v-btn value="4" to="/profile" v-else>
           <v-icon>mdi-account</v-icon>
           <span>ໜ້າປີ້ນປີ້ນ</span>
         </v-btn>
@@ -34,7 +35,12 @@
   </template>
   
   <script setup>
- 
+ const token = ref(null)
+
+ onMounted(() => {
+    token.value = useCookie('token')
+    
+ })
    
   </script>
   

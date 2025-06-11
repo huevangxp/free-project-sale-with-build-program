@@ -8,18 +8,18 @@
             <v-row>
                 <v-col cols="8">
               <v-select
-                v-model="selected"
-                :items="selected"
+                v-model="select_id"
+                :items="types"
                 placeholder="ຄົ້ນຫາ"
-                item-title="title"
-                item-value="value"
+                item-text="title"
+                item-value="id"
                 variant="solo"
                 elevation="3"
                 rounded="xl"
               ></v-select>
             </v-col>
             <v-col cols="4">
-                <v-btn color="primary" elevation="0" rounded="xl" height="55" block>ຄົ້ນຫາ</v-btn>
+                <v-btn color="primary" elevation="0" rounded="xl" height="55" block @click="fetchProducts">ຄົ້ນຫາ</v-btn>
             </v-col>
             </v-row>
            </v-card-title>
@@ -27,29 +27,36 @@
         <v-card class="my-4 " color="primary" dark elevation="3" rounded="xl" >
            <v-card-title class="d-flex align-center justify-space-between">
             <h4>ສິນຄ້າທັງໝົດ</h4>
-            <!-- <v-avatar color="white" size="small" @click="navigateTo('/product')"><v-icon size="20">mdi-arrow-right</v-icon></v-avatar> -->
+            <!-- <v-avatar color="white" size="small" @click="addProductToCart"><v-icon size="20">mdi-arrow-right</v-icon></v-avatar> -->
            </v-card-title>
           
         </v-card>
         <v-row dense>
-            <v-col cols="6" md="4" v-for="(item,i) in items" :key="i">
+            <v-col cols="6" md="4" v-for="(item,i) in products" :key="i">
                 <v-card class="rounded-xl" elevation="3">
                     <v-img
-                        :src="item.src"
+                        :src="'http://localhost:8000/' + item.image"
                         height="120"
-                        cover
+                        contain
                     ></v-img>
 
-                    <v-card-title>
-                        <h4>
+                    <div class="d-flex align-center justify-space-between">
+                    <div>
+                        <v-card-title>
+                        <h4 class="text-primary">
                             {{ item.title }}
                         </h4>
                     </v-card-title>
                     <v-card-text>
-                        <h2 class="text-primary">
-                            {{ item.price }}
-                        </h2>
+                        <h3 class="text-secondary">
+                            {{ formatMoneyLAK(item.price) }}
+                        </h3>
                     </v-card-text>
+                    </div>
+                    <div>
+                        <v-btn color="primary" elevation="0" rounded="pill" variant="text" @click="addProductToCart(item)"><v-icon size="30">mdi-cart</v-icon></v-btn>
+                    </div>
+                </div>
                 </v-card>
             </v-col>
         </v-row>
@@ -57,46 +64,43 @@
 </template>
 
 <script setup>
-const selected = ref([
-    {
-        title: 'All',
-        value: 'all',
-    },
-    {
-        title: 'New',
-        value: 'new',
-    },
-    {
-        title: 'Best',
-        value: 'best',
-    },
-])
-    const items = [
-        {
-            src: 'https://i.pinimg.com/736x/aa/94/c6/aa94c694ded179d97311cadbf26cbb01.jpg',
-            title: 'ສະບູ',
-            price: '10000',
-            description: 'Description 1',
-        },
-        {
-            src: 'https://cdn.shopify.com/s/files/1/0623/4688/7385/files/soap_bar_600x600.jpg?v=1682486305',
-            title: 'Product 2',
-            price: '10000',
-            description: 'Description 2',
-        },
-        {
-            src: 'https://m.media-amazon.com/images/I/71ECuJ8sqdL._AC_UF1000,1000_QL80_.jpg',
-            title: 'Product 3',
-            price: '10000',
-            description: 'Description 3',
-        },
-        {
-            src: 'https://i5.walmartimages.com/seo/Dove-Shea-Butter-Beauty-Cream-Moisturizing-Bar-Soap-with-Vanilla-Scent_c3c85a38-2507-421b-8590-f16a35e8c487.cb095ab01faff492695f18981601cb6f.jpeg',
-            title: 'Product 4',
-            price: '10000',
-            description: 'Description 4',
-        },
-    ]
+ 
+import { storeToRefs } from 'pinia'
+import { useApiProductStore } from '@/stores/apiProduct'
+import { useApiProductTypeStore } from '@/stores/apiProductType'
+import { useFormat } from '@/composables/useFormat';
+
+const { formatMoneyLAK } = useFormat();
+
+ const apiProductStore = useApiProductStore()
+ const { products } = storeToRefs(apiProductStore)
+
+ const apiProductTypeStore = useApiProductTypeStore()
+ const { types } = storeToRefs(apiProductTypeStore)
+
+ const { fetchProducts } = apiProductStore
+ const { fetchProductTypes } = apiProductTypeStore
+
+ const select_id = ref(null)
+
+ onMounted(() => {
+    fetchProducts()
+    fetchProductTypes()
+ })
+
+ const addProductToCart = async (item) => {
+  try {
+    const data = {
+        product_id: item.id,
+        quantity: 1
+    }
+    console.log(data)
+  } catch (error) {
+    console.log(error)
+  }  
+ }
+
+
 </script>
 
     

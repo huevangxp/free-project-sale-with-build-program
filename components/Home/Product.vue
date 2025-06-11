@@ -2,18 +2,18 @@
     <div class=" my-4">
         <div>
             <v-row dense >
-                <v-col v-for="i in 3" cols="4" md="4">
+                <v-col v-for="i in types" cols="4" md="4">
                 <v-card class="d-flex align-center justify-center" elevation="3" rounded="xl">
                    <div>
                     <v-img
-                        src="https://satopradhan.com/cdn/shop/files/Preview-1Almond_SheaSoap.jpg?v=1713608647"
+                        :src=" 'http://localhost:8000/' + i.image"
                         cover
                         height="40" 
                         width="40"
                     ></v-img>
 
                    </div>
-                    <v-card-title class="text-center">ສະບຸ</v-card-title>
+                    <v-card-title class="text-center">{{ i.title }}</v-card-title>
                 </v-card>
                 </v-col>
             </v-row>
@@ -26,12 +26,12 @@
           
         </v-card>
         <v-row dense>
-            <v-col cols="6" md="4" v-for="(item,i) in items" :key="i">
+            <v-col cols="6" md="4" v-for="(item,i) in products" :key="i">
                 <v-card class="rounded-xl" elevation="3">
                     <v-img
-                        :src="item.src"
+                        :src=" 'http://localhost:8000/' + item.image"
                         height="120"
-                        cover
+                        contain
                     ></v-img>
 
                 <div class="d-flex align-center justify-space-between">
@@ -59,34 +59,27 @@
 
 <script setup>
 import { useFormat } from '@/composables/useFormat';
+import { storeToRefs } from 'pinia'
+import { useApiProductTypeStore } from '@/stores/apiProductType';
+import { useApiProductStore } from '@/stores/apiProduct';
+
+const apiProductTypeStore = useApiProductTypeStore()
+const { types } = storeToRefs(apiProductTypeStore)
+
+const apiProductStore = useApiProductStore()
+const { products } = storeToRefs(apiProductStore)
+
+const { fetchProductTypes } = apiProductTypeStore
+const { fetchProducts } = apiProductStore
+
+onMounted(() => {
+    fetchProductTypes()
+    fetchProducts()
+})
+
 const { formatMoneyLAK } = useFormat();
 
-    const items = [
-        {
-            src: 'https://i.pinimg.com/736x/aa/94/c6/aa94c694ded179d97311cadbf26cbb01.jpg',
-            title: 'ສະບູ',
-            price: 10000,
-            description: 'Description 1',
-        },
-        {
-            src: 'https://cdn.shopify.com/s/files/1/0623/4688/7385/files/soap_bar_600x600.jpg?v=1682486305',
-            title: 'ສະບູ',
-            price: 10000,
-            description: 'Description 2',
-        },
-        {
-            src: 'https://m.media-amazon.com/images/I/71ECuJ8sqdL._AC_UF1000,1000_QL80_.jpg',
-            title: 'ສະບູ',
-            price: 10000,
-            description: 'Description 3',
-        },
-        {
-            src: 'https://i5.walmartimages.com/seo/Dove-Shea-Butter-Beauty-Cream-Moisturizing-Bar-Soap-with-Vanilla-Scent_c3c85a38-2507-421b-8590-f16a35e8c487.cb095ab01faff492695f18981601cb6f.jpeg',
-            title: 'ສະບູ',
-            price: 10000,
-            description: 'Description 4',
-        },
-    ]
+   
 </script>
 
     
