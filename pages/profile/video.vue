@@ -24,15 +24,15 @@
             </v-card-title>
             <v-card-title>
                 <v-row dense>
-                    <v-col cols="12" v-for="(item,i) in 6" :key="i">
-                        <v-card elevation="3" rounded="xl" class="d-flex align-center" @click="openVideo">
+                    <v-col cols="12" v-for="(item,i) in videos" :key="i">
+                        <v-card elevation="3" rounded="xl" class="d-flex align-center" @click="openVideo(item)">
                             <v-card-title>
                                 <v-icon size="100" color="primary">mdi-video</v-icon>
                             </v-card-title>
                           
                             <v-card-title>
-                                <h4 class="text-primary">ບັນທິກວິດີໂອ</h4>
-                                <h6>ວັນທີ <span class="text-red">2025-05-21</span></h6>
+                                <h4 class="text-primary">{{ item.title }}</h4>
+                                <h6>ວັນທີ <span class="text-red">{{ formatDate(item.createdAt) }}</span></h6>
                                 <v-btn color="primary" size="small" elevation="0" rounded="xl"
                                    >ເບີ່ງ</v-btn>
                             </v-card-title>
@@ -53,7 +53,7 @@
             </v-card-title>
             <v-card-text>
                 <iframe 
-                            src="https://www.tiktok.com/embed/7476452837476666666"
+                              :src="`https://www.tiktok.com/embed/${link.video_id}`"
                             style="width: 100%; max-width: 440px; height: 550px; border: none;" 
                             allow="encrypted-media" 
                             loading="lazy"
@@ -65,12 +65,29 @@
 
 <script setup>
 
+import { storeToRefs } from 'pinia'
+import { useApiVideoStore } from '@/stores/apiVideo'
+// import useFormat to use formatDate
+import { useFormat } from '@/composables/useFormat';
+
+const {  formatDate } = useFormat();
+
+const { fetchVideos } = useApiVideoStore()
+const { videos } = storeToRefs(useApiVideoStore())
+
+const link = ref({})
+
+onMounted(() => {
+    fetchVideos()
+})
+
 const dialog = ref(false)
 
-const openVideo = () => {
+const openVideo = (item) => {
     try {
         dialog.value = true
-    } catch (error) {
+         link.value = item
+        } catch (error) {
         console.log(error)
     }
 }

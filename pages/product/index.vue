@@ -69,6 +69,7 @@ import { storeToRefs } from 'pinia'
 import { useApiProductStore } from '@/stores/apiProduct'
 import { useApiProductTypeStore } from '@/stores/apiProductType'
 import { useFormat } from '@/composables/useFormat';
+import { useApiCartStore } from '@/stores/apiCart';
 
 const { formatMoneyLAK } = useFormat();
 
@@ -77,6 +78,9 @@ const { formatMoneyLAK } = useFormat();
 
  const apiProductTypeStore = useApiProductTypeStore()
  const { types } = storeToRefs(apiProductTypeStore)
+
+ const apiCartStore = useApiCartStore()
+ const { addCart, fetchCart } = apiCartStore
 
  const { fetchProducts } = apiProductStore
  const { fetchProductTypes } = apiProductTypeStore
@@ -90,11 +94,23 @@ const { formatMoneyLAK } = useFormat();
 
  const addProductToCart = async (item) => {
   try {
+
+    const token = useCookie('token');
+    const userId=useCookie('id');
+
+    if (!token.value || !userId.value) {
+        return navigateTo('/login')
+    }
+
     const data = {
+        user_id: userId.value,
         product_id: item.id,
         quantity: 1
     }
-    console.log(data)
+
+    await addCart(data)
+    await fetchCart(userId.value)
+ 
   } catch (error) {
     console.log(error)
   }  

@@ -48,7 +48,7 @@
                     </v-card-text>
                     </div>
                     <div>
-                        <v-btn color="primary" elevation="0" rounded="pill" variant="text"><v-icon size="30">mdi-cart</v-icon></v-btn>
+                        <v-btn color="primary" elevation="0" rounded="pill" variant="text" @click="addProductToCart(item)"><v-icon size="30">mdi-cart</v-icon></v-btn>
                     </div>
                 </div>
                 </v-card>
@@ -62,6 +62,7 @@ import { useFormat } from '@/composables/useFormat';
 import { storeToRefs } from 'pinia'
 import { useApiProductTypeStore } from '@/stores/apiProductType';
 import { useApiProductStore } from '@/stores/apiProduct';
+import { useApiCartStore } from '@/stores/apiCart';
 
 const apiProductTypeStore = useApiProductTypeStore()
 const { types } = storeToRefs(apiProductTypeStore)
@@ -69,16 +70,42 @@ const { types } = storeToRefs(apiProductTypeStore)
 const apiProductStore = useApiProductStore()
 const { products } = storeToRefs(apiProductStore)
 
+const apiCartStore = useApiCartStore()
+const { addCart } = apiCartStore
+const { fetchCart } = apiCartStore
 const { fetchProductTypes } = apiProductTypeStore
 const { fetchProducts } = apiProductStore
 
 onMounted(() => {
     fetchProductTypes()
     fetchProducts()
+    fetchCart()
 })
 
 const { formatMoneyLAK } = useFormat();
 
+const addProductToCart = async (item) => {
+    try {
+        const token = useCookie('token');
+        const userId=useCookie('id');
+
+        if (!token.value || !userId.value) {
+            return navigateTo('/login')
+        }
+
+        const data = {
+            user_id: userId.value,
+            product_id: item.id,
+            quantity: 1
+        }
+
+        await addCart(data)
+        await fetchCart(userId.value)
+
+    } catch (error) {
+        console.log(error)
+    }  
+}
    
 </script>
 

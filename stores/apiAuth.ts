@@ -1,8 +1,20 @@
 import { defineStore } from 'pinia'
 
+interface Profile {
+    id: number;
+    username: string;
+    email: string;
+    phone: string;
+    status: string;
+    avatar: string;
+    role: string;
+    code: string;
+}
+
 export const useApiAuthStore = defineStore('apiAuth', {
     state: () => ({
-        authenticated: false
+        authenticated: false,
+        profile: {} as Profile,
     }),
     actions: {
       async  register(user:any) {
@@ -49,5 +61,47 @@ export const useApiAuthStore = defineStore('apiAuth', {
                 console.log(error)
             }
         },
+        async logout() {
+            try {
+                const { $axios } = useNuxtApp()
+                const token = useCookie('token')
+                const userId = useCookie('id')
+                const userRole = useCookie('role')
+                const userPhone = useCookie('phone')
+                const email = useCookie('email')
+
+                token.value = null
+                userId.value = null
+                userRole.value = null
+                userPhone.value = null
+                email.value = null
+
+                this.authenticated = false
+                navigateTo('/login')
+            } catch (error) {
+                console.log(error)
+            }
+        },
+        async  getProfile() {
+            try {
+                const { $axios } = useNuxtApp()
+                const id = useCookie('id')
+                const response = await $axios.get('/profile/' + id.value)
+                this.profile = response.data.data
+                console.log(this.profile)
+            } catch (error) {
+                console.log(error)
+            }
+        },
+        async changePassword(id:any,data:any) {
+            try {
+                const { $axios } = useNuxtApp()
+                await $axios.put('/update-password/' + id, data)
+                alert('ປ່ຽນລະຫັດຜ່ານສຳເລັດ')
+                navigateTo('/profile')
+            } catch (error) {
+                console.log(error)
+            }
+        }
     },
 })

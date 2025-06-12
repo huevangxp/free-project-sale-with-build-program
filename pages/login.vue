@@ -53,7 +53,7 @@ const apiAuthStore = useApiAuthStore()
 const { login } = apiAuthStore
 
 const phone = ref('02078849378')
-const password = ref('huevang')
+const password = ref('123456')
 
 const handleLogin = async () => {
      try {

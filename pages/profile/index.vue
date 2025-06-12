@@ -1,21 +1,113 @@
 <template>
     <div class="px-2 my-4">
-        <v-card elevation="3" rounded="xl" class="d-flex align-center">
-            <v-card-title>
-                 <v-img src="https://img.freepik.com/premium-photo/portrait-serious-african-guy-looking-camera_116547-37326.jpg?semt=ais_hybrid&w=740" height="150" width="120" cover></v-img>
-            </v-card-title>
-        <div>
-            <v-card-text>
-                <h2 class="text-primary d-flex align-center justify-space-between" style="width: 100%;"><div>ທ່ານ ລີຟອງ ວ່າງ</div> 
-                </h2>
-                <h4>ອີເມວ: <span class="text-primary">lisfoom@gmail.com</span></h4>
-                <h4>ເບິໂທ: <span class="text-primary">085555555</span></h4>
-                <h4>ສະຖານະ: <span class="text-primary">VIP</span></h4>
-                <h4>ລູກທິມ: <span class="text-red">100</span> ຄົນ</h4>
-            </v-card-text>
-          
-        </div>
-        </v-card>
+        <v-card
+    elevation="3"
+    rounded="xl"
+    class="mx-auto"
+    max-width="500"
+  >
+    <!-- Header Section with Background -->
+    <v-card-text class="pa-0">
+      <v-sheet
+        color="primary"
+        class="pa-6 text-center"
+        rounded="t-xl"
+      >
+        <v-avatar
+          size="100"
+          class="mb-4"
+          :color="profile.avatar ? undefined : 'surface'"
+          elevation="3"
+        >
+          <v-img
+            v-if="profile.avatar"
+            :src="profile.avatar"
+            cover
+          />
+          <span
+            v-else
+            class="text-h2 text-primary font-weight-bold"
+          >
+            {{ firstLetter }}
+          </span>
+        </v-avatar>
+        
+        <h2 class="text-white text-h4 font-weight-bold mb-2">
+          {{ profile.username }}
+        </h2>
+        
+        <v-chip
+          color="white"
+          variant="flat"
+          size="small"
+          class="text-primary"
+        >
+          <span>{{ profile.code }}</span>
+        </v-chip>
+      </v-sheet>
+    </v-card-text>
+
+    <!-- Content Section -->
+    <v-card-text class="pa-6">
+      <v-list class="pa-0" lines="one">
+        <v-list-item class="px-0 mb-2">
+          <template #prepend>
+            <v-icon color="primary" class="me-4">
+              mdi-email-outline
+            </v-icon>
+          </template>
+          <v-list-item-title class="text-body-1">
+            <span>ອີເມວ</span>
+          </v-list-item-title>
+          <v-list-item-subtitle class="text-primary font-weight-medium">
+            <span>{{ profile.email }}</span>
+          </v-list-item-subtitle>
+        </v-list-item>
+
+        <v-list-item class="px-0 mb-2">
+          <template #prepend>
+            <v-icon color="primary" class="me-4">
+              mdi-phone-outline
+            </v-icon>
+          </template>
+          <v-list-item-title class="text-body-1">
+            <span>ເບິໂທ</span>
+          </v-list-item-title>
+          <v-list-item-subtitle class="text-primary font-weight-medium">
+            <span>{{ profile.phone }}</span>
+          </v-list-item-subtitle>
+        </v-list-item>
+
+        <v-list-item class="px-0">
+          <template #prepend>
+            <v-icon color="red" class="me-4">
+              mdi-account-group-outline
+            </v-icon>
+          </template>
+          <v-list-item-title class="text-body-1">
+            <span>ລູກທິມ</span>
+          </v-list-item-title>
+          <v-list-item-subtitle class="text-red font-weight-bold">
+            <span>1 ຄົນ</span>
+          </v-list-item-subtitle>
+        </v-list-item>
+      </v-list>
+    </v-card-text>
+
+    <!-- Action Section -->
+    <v-card-actions class="pa-6 pt-0">
+      <v-btn
+        color="primary"
+        variant="flat"
+        block
+        size="large"
+        rounded="xl"
+        prepend-icon="mdi-pencil"
+      >
+        <span>ແກ້ໄຂໂປຣໄຟລ໌</span>
+      </v-btn>
+    </v-card-actions>
+  </v-card>
         <v-card elevation="3" rounded="xl" color="primary" dark class="my-4">
             <v-card-title>
                 <h4>ລູກຄ້າຊື້ສິນຄ້າຫຼາຍທີ່ສຸດ</h4>
@@ -37,6 +129,23 @@
 </template>
 
 <script setup lang="ts">
+
+import { storeToRefs } from 'pinia'
+import { useApiAuthStore } from '@/stores/apiAuth'
+
+const apiAuthStore = useApiAuthStore()
+const { profile } = storeToRefs(apiAuthStore)
+
+
+const firstLetter = computed(() => 
+  profile.value?.username?.charAt(0).toUpperCase() || ''
+)
+
+
+onMounted(() => {
+    apiAuthStore.getProfile()
+    // username.value = profile.username.value.charAt(0).toUpperCase()
+})
 
 const items = [
     {

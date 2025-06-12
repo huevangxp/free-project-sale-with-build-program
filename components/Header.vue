@@ -2,8 +2,8 @@
   <v-app-bar color="primary" dark>
     <v-app-bar-title class="font-weight-bold">Lisfoom</v-app-bar-title>
     <v-spacer></v-spacer>
-    <v-btn v-if="count > 0" class="text-none" stacked to="/cart">
-      <v-badge color="error" :content="count" variant="elevated">
+    <v-btn v-if="cart.length > 0" class="text-none" stacked to="/cart">
+      <v-badge color="error" :content="cart.length" variant="elevated">
         <v-icon>mdi-cart</v-icon>
       </v-badge>
     </v-btn>
@@ -37,15 +37,23 @@
 </template>
 
 <script setup>
-const dialog = ref(false)
-const count = ref(3)
+import { storeToRefs } from 'pinia'
+import { useApiCartStore } from '@/stores/apiCart';
+const apiCartStore = useApiCartStore()
 
-// Get token cookie and make it reactive
+const { fetchCart } = apiCartStore
+
+const dialog = ref(false)
 const tokenCookie = useCookie('token')
 
-// Computed property to check if user is logged in
 const isLoggedIn = computed(() => {
   return tokenCookie.value !== null && tokenCookie.value !== undefined && tokenCookie.value !== ''
+})
+
+const { cart } = storeToRefs(apiCartStore)
+
+onMounted(() => {
+  fetchCart()
 })
 
 const dialogOpen = () => {
@@ -70,9 +78,9 @@ const logout = async () => {
     usernameCookie.value = null
     
     dialog.value = false
-    
     // Navigate to login page
     await navigateTo('/login')
+    fetchCart()
   } catch (error) {
     console.log(error)
   }
