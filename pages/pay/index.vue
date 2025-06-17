@@ -13,9 +13,14 @@
         </v-card>
 
        <v-card elevation="3" rounded="xl" class="mt-4">
-        <v-card-title>
-            <h4>ລາຄາ <span class="text-primary">{{ formatMoneyLAK(100000) }}</span></h4>
-        </v-card-title>
+        <div>
+                    <v-card-title>
+                        <h4>ຈຳນວນ: <span class="text-primary">{{ formatNumber(cart.length) }}</span></h4>
+                    </v-card-title>
+                    <v-card-title>
+                        <h4>ລາຄາ: <span class="text-primary">{{ formatMoneyLAK(cart.reduce((total, item) => total + item.product.price * item.all_quantity, 0)) }}</span> ກິບ</h4>
+                    </v-card-title>
+                </div>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="red" rounded="pill" size="large" variant="outlined" @click="navigateTo('/pay/comfirm')">
@@ -31,6 +36,15 @@
 
 <script setup>
 import { useFormat } from '@/composables/useFormat';
-const { formatMoneyLAK } = useFormat();
+import { storeToRefs } from 'pinia'
+import { useApiCartStore } from '@/stores/apiCart';
 
+const { formatMoneyLAK, formatNumber } = useFormat();
+
+const apiCartStore = useApiCartStore()
+const { cart } = storeToRefs(apiCartStore)
+
+onMounted(() => {
+    apiCartStore.fetchCart()
+})
 </script>

@@ -5,8 +5,8 @@
     <VitePwaManifest />
     <HomeSlide />
     <HomeProduct />
-    <HomeVIPCustomer />
-    <HomeCustomerOrder />
+    <!-- <HomeVIPCustomer />
+    <HomeCustomerOrder /> -->
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
     <div class="px-2 my-4">
-        <v-card elevation="3" rounded="xl" class="d-flex align-center">
+        <!-- <v-card elevation="3" rounded="xl" class="d-flex align-center">
             <v-card-title>
                  <v-img src="https://img.freepik.com/premium-photo/portrait-serious-african-guy-looking-camera_116547-37326.jpg?semt=ais_hybrid&w=740" height="150" width="120" cover></v-img>
             </v-card-title>
@@ -15,7 +15,7 @@
             </v-card-text>
           
         </div>
-        </v-card>
+        </v-card> -->
 
         <v-card elevation="3" rounded="xl" class="my-4" color="primary" dark>
             <v-card-title class="d-flex align-center justify-space-between">
@@ -23,33 +23,34 @@
             </v-card-title>
         </v-card>
 
-        <v-row class="my-4" dense >
-            <v-col cols="6"   v-for="(item,i) in items" :key="i">
+        <v-row class="my-4" dense>
+            <v-col cols="6" v-for="(item, i) in teams" :key="i">
                 <v-card elevation="3" rounded="xl" :to="item.link">
-                  <v-avatar size="120"  class="mx-auto d-flex justify-center"  >
-                    <v-img
-                        :src="item.src"
-                        height="120"
-                        cover
-                    ></v-img>
-                  </v-avatar>
+                    <v-sheet color="white" class="pt-2 text-center" rounded="t-xl">
+                        <v-avatar size="100" class="mb-4" :color="item.avatar ? undefined : 'primary'" elevation="3">
+                            <v-img v-if="item.avatar" :src="'http://localhost:8000/' + item.avatar" cover />
+                            <span v-else class="text-h2 text-white font-weight-bold">
+                                {{ firstLetter[i] }}
+                            </span>
+                        </v-avatar>
+                    </v-sheet>
 
-                    <div class="text-center">
+                    <div>
                         <v-card-title>
-                        <h4>
-                            {{ item.title }}
-                        </h4>
-                        
-                    </v-card-title>
-                    <v-card-text>
-                        <h3 class="mb-2 text-primary">
-                            {{ item.role }}
-                        </h3>
-                        <!-- <h4>
-                            ຊື້: <span class="text-red">{{ item.team }}</span> ອັນ
-                        </h4> -->
-                    </v-card-text>
-                 
+                            <h4 class="text-primary d-flex align-center justify-center text-uppercase">
+                                <v-icon size="30" color="primary" class="mr-2">mdi-account</v-icon>
+                                {{ item.username }}
+                            </h4>
+                        </v-card-title>
+
+                        <v-card-text>
+                            <div class="mb-2 d-flex align-center justify-center">
+                                <v-chip color="red" text-color="white" class="font-weight-bold">
+                                    <v-icon size="16" class="mr-2">mdi-crown</v-icon>
+                                    {{ item.role }}
+                                </v-chip>
+                            </div>
+                        </v-card-text>
                     </div>
                 </v-card>
             </v-col>
@@ -59,26 +60,26 @@
 </template>
 
 <script setup>
-    const items = [
-        {
-            src: 'https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D',
-            title: 'ທ່ານ ລີຟອງ ວ່າງ',
-            role: 'VIP 1',
-            team: 40,
-            
-        },
-        {
-            src: 'https://img.freepik.com/free-photo/portrait-dark-skinned-confident-man-with-curly-afro-hairstyle-has-calm-face-expression_273609-8520.jpg?semt=ais_hybrid&w=740',
-            title: 'ທ່ານ ຕູ້ເລົ່າ',
-            role: 'VIP 2',
-            team: 30,
-        },
-        {
-            src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStXI4aFavbIuTn76SefZMBOiFM4JrqzPQFVsDm9X4fkqZ1cMCxXX09CcPgopgprcuz8hw&usqp=CAU',
-            title: 'ທ່ານ ກະເຢັ່ງ ເລົ່າ',
-            role: 'VIP 3',
-            team: 20,
-        },
-         
-    ]
+
+import { storeToRefs } from 'pinia'
+import { useApiAuthStore } from '@/stores/apiAuth'
+
+const apiAuthStore = useApiAuthStore()
+const { teams } = storeToRefs(apiAuthStore)
+
+onMounted(() => {
+    apiAuthStore.getTeamByMycodeInvite()
+})
+
+const firstLetter = computed(() =>
+    // teams array use map to get first letter
+    teams.value?.map((item) => item.username.charAt(0).toUpperCase()) || []
+)
+
+
+const capitalizeUsername = (username) => {
+    if (!username) return ''
+    return username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()
+}
+
 </script>

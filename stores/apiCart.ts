@@ -30,5 +30,24 @@ export const useApiCartStore = defineStore('apiCart', {
                 console.log(error)
             }
         },
+        async plusQuantity(id:any) {
+            try {
+                const { $axios } = useNuxtApp()
+                console.log(id)
+                await $axios.put('/cart/plus-quantity/' + id)
+                this.fetchCart()
+            } catch (error: any) {
+                console.log(error)
+            }
+        },
+        async minusQuantity(id:any) {
+            try {
+                const { $axios } = useNuxtApp()
+                await $axios.put('/cart/minus-quantity/' + id)
+                this.fetchCart()
+            } catch (error: any) {
+                console.log(error)
+            }
+        },
     },
 })

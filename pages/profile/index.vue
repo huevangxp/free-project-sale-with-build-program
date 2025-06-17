@@ -21,7 +21,7 @@
         >
           <v-img
             v-if="profile.avatar"
-            :src="profile.avatar"
+            :src=" 'http://localhost:8000/' + profile.avatar"
             cover
           />
           <span
@@ -88,7 +88,7 @@
             <span>ລູກທິມ</span>
           </v-list-item-title>
           <v-list-item-subtitle class="text-red font-weight-bold">
-            <span>1 ຄົນ</span>
+            <span>{{ team }} ຄົນ</span>
           </v-list-item-subtitle>
         </v-list-item>
       </v-list>
@@ -109,19 +109,24 @@
     </v-card-actions>
   </v-card>
         <v-card elevation="3" rounded="xl" color="primary" dark class="my-4">
-            <v-card-title>
-                <h4>ລູກຄ້າຊື້ສິນຄ້າຫຼາຍທີ່ສຸດ</h4>
+            <v-card-title >
+                <h4 class="d-flex align-center"> <v-icon class="mr-2">mdi-cog</v-icon> ຈັດການ</h4>
             </v-card-title>
         </v-card>
         <v-row dense>
             <v-col cols="6" md="6" v-for="(item,i) in items" :key="i">
                 <v-card elevation="3" rounded="xl" :to="item.link">
-                    <v-card-title class="d-flex justify-center  align-center ">
-                        <h4 class="text-primary">{{ item.title }}</h4>
+                    <v-card-title  class="d-flex justify-center  align-center "  >
+                      <v-avatar size="80" :color="item.color" tile class="rounded-lg">
+                            <v-icon size="60" color="white">{{ item.icon }}</v-icon>
+                      </v-avatar>
                     </v-card-title>
                     <v-card-title class="d-flex justify-center  align-center ">
-                            <v-icon size="100" color="primary">{{ item.icon }}</v-icon>
+                        <h4  >{{ item.title }}</h4>
                     </v-card-title>
+                    <v-card-text class="text-center">
+                        <h4 >{{ item.description }}</h4>
+                    </v-card-text>
                 </v-card>
             </v-col>
         </v-row>
@@ -134,7 +139,7 @@ import { storeToRefs } from 'pinia'
 import { useApiAuthStore } from '@/stores/apiAuth'
 
 const apiAuthStore = useApiAuthStore()
-const { profile } = storeToRefs(apiAuthStore)
+const { profile, team } = storeToRefs(apiAuthStore)
 
 
 const firstLetter = computed(() => 
@@ -144,6 +149,7 @@ const firstLetter = computed(() =>
 
 onMounted(() => {
     apiAuthStore.getProfile()
+    apiAuthStore.getTeamByMycodeInvite()
     // username.value = profile.username.value.charAt(0).toUpperCase()
 })
 
@@ -151,31 +157,43 @@ const items = [
     {
         icon: 'mdi-account',
         title: 'ທິມງານ',
+        color: 'blue',
+        description: 'ທິມງານທັງຫມົດ',
         link: '/profile/team'
     },
     {
         icon: 'mdi-history',
         title: 'ປະຫວັດການຊື້ເຄື່ອງ',
+        color: 'green',
+        description: 'ປະຫວັດການຊື້ເຄື່ອງທັງຫມົດ',
         link: '/profile/history'
     },
     {
         icon: 'mdi-information',
         title: 'KYC',
+        color: 'orange',
+        description: 'KYC ຂໍ້ມູນຂອງທ່ານໃຫ້ຄົບ',
         link: '/profile/kyc'
     },
     {
         icon: 'mdi-video',
         title: 'ບັນທິກວິດີໂອ',
+        color: 'purple',
+        description: 'ບັນທິກວິດີໂອແຕ່ລະມື້',
         link: '/profile/video'
     },
     {
         icon: 'mdi-currency-usd',
         title: 'ລາຍໄດ້ຈາກການຂາຍ',
+        color: 'teal',
+        description: 'ລາຍໄດ້ຈາກການຂາຍທັງຫມົດ',
         link: '/profile/income'
     },
     {
         icon: 'mdi-form-textbox-password',
         title: 'ປ່ຽນລະຫັດຜ່ານ',
+        color: 'red',
+        description: 'ປ່ຽນລະຫັດຜ່ານຂອງທ່ານ',
         link: '/profile/change_password'
     },
 ]

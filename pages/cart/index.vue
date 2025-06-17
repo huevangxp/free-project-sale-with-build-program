@@ -43,14 +43,13 @@
                     </v-card-title>
                     <v-card-title>
                         <h4>
-
-                            <v-btn color="primary" elevation="0" rounded="xl" variant="text"><v-icon
+                            <v-btn color="primary" elevation="0" rounded="xl" variant="text" @click="plusQuantity(item.id)"><v-icon
                                     size="20">mdi-plus</v-icon></v-btn>
                         </h4>
                         <h4 class="text-center">
                              {{ item.all_quantity }}
                         </h4>
-                        <v-btn color="primary" elevation="0" rounded="xl" variant="text"><v-icon
+                        <v-btn color="primary" elevation="0" rounded="xl" variant="text" @click="minusQuantity(item.id)"><v-icon
                                 size="20">mdi-minus</v-icon></v-btn>
                     </v-card-title>
 
@@ -76,6 +75,14 @@ const { cart } = storeToRefs(apiCartStore)
 onMounted(() => {
     apiCartStore.fetchCart()
 })
+
+const plusQuantity = (id) => {
+    apiCartStore.plusQuantity(id)
+}
+
+const minusQuantity = (id) => {
+    apiCartStore.minusQuantity(id)
+}
 
 </script>
 
