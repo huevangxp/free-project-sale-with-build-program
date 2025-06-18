@@ -49,5 +49,34 @@ export const useApiCartStore = defineStore('apiCart', {
                 console.log(error)
             }
         },
+        async deleteCart(id:any) {
+            try {
+                const { $axios } = useNuxtApp()
+                await $axios.delete('/cart/' + id).
+                then((res) => {
+                    // console.log(res.data.order)
+                    console.log(res.data)
+                   
+                    this.fetchCart()
+                })
+            } catch (error: any) {
+                console.log(error)
+            }
+        },
+        async checkout(data: any) {
+            try {
+                const { $axios } = useNuxtApp()
+                const orderId= useCookie('order_id')
+
+                await $axios.post('/cart/checkout', data).
+                then((res) => {
+                    // console.log(res)
+                    orderId.value = res.data.order_id;
+                    this.fetchCart()
+                })
+            } catch (error: any) {
+                console.log(error)
+            }
+        },
     },
 })

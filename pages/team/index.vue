@@ -1,6 +1,7 @@
 <template>
     <div class="px-2 my-4">
-        <v-tabs v-model="tab" grow bg-color="primary" slider-color="orange" dark>
+        <TeamAll/>
+        <!-- <v-tabs v-model="tab" grow bg-color="primary" slider-color="orange" dark>
             <v-tab>ທິມງານທັງຫມົດ</v-tab>
             <v-tab>ທິມງານປີນີ້</v-tab>
         </v-tabs>
@@ -11,7 +12,7 @@
             <v-tab-item>
                 <TeamThisYear />
             </v-tab-item>
-        </v-tabs-items>
+        </v-tabs-items> -->
     </div>
 </template>
 

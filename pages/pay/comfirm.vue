@@ -4,6 +4,7 @@
             <v-card-title class="bg-primary mb-2">
                 <h4>ການຈ່າຍເງິນ</h4>
             </v-card-title>
+            <!-- {{ order }} -->
             <v-card-text>
                <v-card color="#f5f5f5" elevation="0" rounded="xl" height="400" class="d-flex align-center justify-center" @click="uploadImage">
                   <div v-if="!imageUrl" class="text-center">
@@ -41,6 +42,12 @@
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useApiOrderStore } from '@/stores/apiOrder';
+const { getOrderId, orderPayment } = useApiOrderStore()
+const { order } = storeToRefs(useApiOrderStore())
+// const {  } = useApiOrderStore()
+ 
 const fileInput = ref<HTMLInputElement | null>(null);
 const imageFile = ref<File | null>(null);
 const imageUrl = ref<string>('');
@@ -52,19 +59,23 @@ const uploadImage = () => {
 const handleUploadImage = (event: Event) => {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
-        imageFile.value = input.files[0];
+        // imageFile.value = input.files[0];
         imageUrl.value = URL.createObjectURL(input.files[0]);
     }
 }
 
 const submitPayment = () => {
-    // Here you would typically:
-    // 1. Upload the image to your server
-    // 2. Process the payment
-    // 3. Navigate to confirmation page
+   try {
+    const data = {
+        image: imageFile.value,
+        id: order.value.id
+    }
+    orderPayment(data)
+
     
-    // For now, just navigate to pay
-    navigateTo('/pay');
+   } catch (error) {
+    console.log(error)
+   }
 }
 
 // Clean up the object URL when component unmounts
@@ -72,5 +83,6 @@ onUnmounted(() => {
     if (imageUrl.value) {
         URL.revokeObjectURL(imageUrl.value);
     }
+    getOrderId()
 });
 </script>

@@ -8,7 +8,7 @@
             </v-card-title>
            
         </v-card> -->
-        <v-row class="my-4" dense >
+        <!-- <v-row class="my-4" dense >
             <v-col cols="12"   v-for="(item,i) in allTeams.slice(0, 1)" :key="i">
                <v-card elevation="3" rounded="xl" max-width="200" class="mx-auto">
                     <v-sheet color="white" class="pt-2 text-center" rounded="t-xl">
@@ -39,15 +39,15 @@
                     </div>
                 </v-card>
             </v-col>
-        </v-row>
+        </v-row> -->
         <v-row class="my-4" dense >
-            <v-col cols="6"   v-for="(item,i) in allTeams.slice(1, 3)" :key="i">
+            <v-col cols="6"   v-for="(item,i) in allTeams" :key="i">
                 <v-card elevation="3" rounded="xl" :to="item.link">
                     <v-sheet color="white" class="pt-2 text-center" rounded="t-xl">
                         <v-avatar size="100" class="mb-4" :color="item.avatar ? undefined : 'primary'" elevation="3">
                             <v-img v-if="item.avatar" :src="'http://localhost:8000/' + item.avatar" cover />
                             <span v-else class="text-h2 text-white font-weight-bold">
-                                {{ firstLetter[i+1] }}
+                                {{ firstLetter[i] }}
                             </span>
                         </v-avatar>
                     </v-sheet>

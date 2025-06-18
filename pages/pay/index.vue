@@ -23,15 +23,35 @@
                 </div>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="red" rounded="pill" size="large" variant="outlined" @click="navigateTo('/pay/comfirm')">
+        <v-btn color="red" rounded="pill" size="large" variant="outlined" @click="navigateTo('/cart')">
             <v-icon size="30">mdi-close</v-icon> ຍົກເລີກ
         </v-btn>
-        <v-btn color="primary" rounded="pill" size="large" variant="elevated" @click="navigateTo('/pay/comfirm')">
+        <v-btn color="primary" rounded="pill" size="large" variant="elevated" @click="openDialogSubmit">
             <v-icon size="30">mdi-check-decagram</v-icon> ອານຸຍາດ
         </v-btn>
       </v-card-actions>
        </v-card>
     </div>
+
+    <v-dialog v-model="dialogSubmit" width="400">
+        <v-card>
+           <v-card-title class="bg-primary mb-2">
+           <h3>ຂຽນຄຳອະທິບາຍ</h3>
+           </v-card-title>
+            <v-card-text>
+                <v-textarea v-model="note" placeholder="ຄຳອະທິບາຍ" variant="filled"></v-textarea>
+            </v-card-text>
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="red" rounded="pill" size="large" variant="outlined" @click="dialogSubmit = false">
+                    <v-icon size="30">mdi-close</v-icon> ຍົກເລີກ
+                </v-btn>
+                <v-btn color="primary" :disabled="note.length === 0" rounded="pill" size="large" variant="elevated" @click="submitPayment">
+                    <v-icon size="30">mdi-check-decagram</v-icon> ອານຸຍາດ
+                </v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-dialog>
 </template>
 
 <script setup>
@@ -41,10 +61,33 @@ import { useApiCartStore } from '@/stores/apiCart';
 
 const { formatMoneyLAK, formatNumber } = useFormat();
 
-const apiCartStore = useApiCartStore()
-const { cart } = storeToRefs(apiCartStore)
+const { checkout , fetchCart } = useApiCartStore()
+const { cart } = storeToRefs(useApiCartStore())
+
+const note = ref('')
+const dialogSubmit = ref(false)
 
 onMounted(() => {
-    apiCartStore.fetchCart()
+    fetchCart()
 })
+
+
+const openDialogSubmit = () => {
+    dialogSubmit.value = true
+}
+
+const submitPayment = () => {
+     try {
+        const data = {
+            user_id: useCookie('id').value,
+            notes: note.value   
+        }
+        checkout(data)
+        dialogSubmit.value = false
+        navigateTo('/pay/comfirm')
+     } catch (error) {
+        console.log(error)
+     }
+}
+
 </script>

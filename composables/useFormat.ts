@@ -4,6 +4,18 @@ export const useFormat = () => {
     return new Intl.DateTimeFormat(locale, options).format(new Date(date));
   };
 
+  const formatTime = (date: string | Date, locale = 'en-US', options?: Intl.DateTimeFormatOptions) => {
+    const defaultOptions: Intl.DateTimeFormatOptions = {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true // Use 12-hour format with AM/PM
+    };
+    
+    const finalOptions = { ...defaultOptions, ...options };
+    return new Intl.DateTimeFormat(locale, finalOptions).format(new Date(date));
+  };
+
   const formatNumber = (value: number, locale = 'en-US') => {
     return new Intl.NumberFormat(locale).format(value);
   };
@@ -24,6 +36,7 @@ export const useFormat = () => {
 
   return {
     formatDate,
+    formatTime,
     formatNumber,
     formatMoneyUSD,
     formatMoneyLAK,
