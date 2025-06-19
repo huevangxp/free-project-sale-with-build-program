@@ -175,6 +175,22 @@ export const useApiAuthStore = defineStore('apiAuth', {
                 console.log(error)
             }
         },
+        async updateUserInfo(id:any,data:any) {
+            try {
+                const { $axios } = useNuxtApp()
+                await $axios.put('/users/update-info/' + id, data)
+                .then((res) => {
+                    console.log(res.data)
+                    alert('ປ່ຽນຂໍ້ມູນສຳເລັດ')
+                }).catch((error) => {
+                  alert('ປ່ຽນຂໍ້ມູນບໍ່ສຳເລັດ')
+                })
+                 
+                // navigateTo('/profile')
+            } catch (error) {
+                console.log(error)
+            }
+        }
         
     },
 })

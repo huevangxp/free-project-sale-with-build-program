@@ -112,7 +112,7 @@
           <v-btn color="red" variant="outlined" size="large" width="180" to="/login">
             <v-icon class="mr-2">mdi-cancel</v-icon> ຍົກເລິກ
           </v-btn>
-          <v-btn color="primary" variant="elevated" size="large" width="180" elevation="0">
+          <v-btn color="primary" variant="elevated" size="large" width="180" elevation="0" @click="updateUserInfoBtn">
             <v-icon class="mr-2">mdi-content-save</v-icon> ບັນທຶກ
           </v-btn>
         </v-card-actions>
@@ -124,7 +124,7 @@
   import { storeToRefs } from 'pinia'
   import { useApiAuthStore } from '@/stores/apiAuth'
   
-  const {updateProfileAvatar, getProfile, updateProfileIdCard, updateProfileBankAccount} = useApiAuthStore()
+  const {updateProfileAvatar, getProfile, updateProfileIdCard, updateProfileBankAccount, updateUserInfo} = useApiAuthStore()
   const { profile } = storeToRefs(useApiAuthStore())
   
   const imageProfile = ref(null)
@@ -177,6 +177,25 @@
     // imageBankAccounts.value = image;
   }
   
+  const updateUserInfoBtn = async () => {
+    try {
+      // !username || !phone || !email || !id_card || !bank_account || !address
+      const data = {
+        username: profile.value.username,
+        phone: profile.value.phone,
+        email: profile.value.email,
+        address: profile.value.address,
+        id_card: profile.value.id_card,
+        bank_account: profile.value.bank_account,
+      }
+      // console.log(data)
+      await updateUserInfo(profile.value.id, data)
+      // await getProfile()
+      alert('ປ່ຽນຂໍ້ມູນສຳເລັດ')
+    } catch (error) {
+      console.log(error)
+    }
+  }
   onMounted(() => {
    getProfile()
   })

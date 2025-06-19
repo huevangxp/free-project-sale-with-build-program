@@ -66,13 +66,17 @@ const handleUploadImage = (event: Event) => {
 
 const submitPayment = () => {
    try {
+    const orderId = useCookie('order_id')
     const data = {
         image: imageFile.value,
-        id: order.value.id
+        id: orderId.value
     }
     orderPayment(data)
-
     
+    orderId.value = null
+    
+    alert('ຈ່າຍເງິນສຳເລັດ')
+    navigateTo('/profile')
    } catch (error) {
     console.log(error)
    }
