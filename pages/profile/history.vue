@@ -28,7 +28,7 @@
                         <v-card elevation="3" rounded="xl" class="bg-primary">
                             <v-card-title>
                                 <h6 class="text-center text-white"> ເງິນກຳໄລ</h6>
-                                <h5 class="text-center text-white">{{ formatMoneyLAK(0) }}</h5>
+                                <h5 class="text-center text-white">{{ formatMoneyLAK(getAllProfit) }}</h5>
                                 <h6 class="text-center text-white">ກິບ</h6>
                             </v-card-title>
                         </v-card>
@@ -62,14 +62,7 @@
                                             <span class="label">ເວລາ: </span>
                                             <span class="value">{{ formatTime(order.created_at) }}</span>
                                         </div>
-                                        <!-- <div class="info-item">
-                                            <span class="label">ຈຳນວນສິນຄ້າທັງຫມົດ:</span>
-                                            <span class="value">{{ formatNumber(order.total_quantity) }}</span>
-                                        </div>
-                                        <div class="info-item">
-                                            <span class="label">ລາຄາລວມ:</span>
-                                            <span class="value">{{ formatMoneyLAK(order.total_price) }}</span>
-                                        </div> -->
+                                      
                                     </div>
                                 </v-col>
                                 <v-col cols="12" md="6">
@@ -108,7 +101,7 @@
                                 </v-col>
                                 <v-col cols="12" md="6">
                                     <div class="order-info">
-                                        <h3 class=" mb-3 text-center">ສະຖານະ</h3>
+                                        <h3 class=" mb-3 text-center text-primary">ສະຖານະ</h3>
                                        
                                         <div class="info-item">
                                             <span class="label">ສະຖານະ: </span>
@@ -118,6 +111,19 @@
                                             <v-chip v-else  dark small style="font-size: 12px;" :color="getStatusColor(order.status)">
                                                 {{ getStatusText(order.status) }}
                                             </v-chip>
+                                        </div>
+                                      
+                                        <div class="info-item">
+                                            <span class="label">ລາຄາລວມ: </span>
+                                            <span class="value">{{ formatMoneyLAK(order.total_price) }}</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="label">ກຳໄລ: </span>
+                                            <span class="value">{{ formatMoneyLAK(order.all_profit) }}</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="label">ຈຳນວນ: </span>
+                                            <span class="value">{{ formatNumber(order.total_quantity) }}</span>
                                         </div>
                                         <div class="info-item" v-if="order.notes">
                                             <span class="label">ໝາຍເຫດ: </span>
@@ -167,7 +173,6 @@ const dialog = ref(false);
 
 const openBill = (order) => {
     bill.value = order;
-    console.log('--------------->',order)
     dialog.value = true;
 }
 
@@ -200,6 +205,10 @@ const headers = [
 const getAllQuantity = computed(() => orders.value.reduce((total, order) => total + order.items.reduce((total, item) => total + item.quantity, 0), 0));
 
 const getAllTotalPrice = computed(() => orders.value.reduce((total, order) => total + order.items.reduce((total, item) => total + item.quantity * item.product.price, 0), 0));
+
+const getAllProfit = computed(() => 
+  orders.value.reduce((total, order) => total + Number(order.all_profit), 0)
+);
 
 onMounted(() => {
     getOrders()

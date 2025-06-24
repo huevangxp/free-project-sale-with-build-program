@@ -182,13 +182,13 @@ const items = [
         description: 'ບັນທິກວິດີໂອແຕ່ລະມື້',
         link: '/profile/video'
     },
-    {
-        icon: 'mdi-currency-usd',
-        title: 'ລາຍໄດ້ຈາກການຂາຍ',
-        color: 'teal',
-        description: 'ລາຍໄດ້ຈາກການຂາຍທັງຫມົດ',
-        link: '/profile/income'
-    },
+    // {
+    //     icon: 'mdi-currency-usd',
+    //     title: 'ລາຍໄດ້ຈາກການຂາຍ',
+    //     color: 'teal',
+    //     description: 'ລາຍໄດ້ຈາກການຂາຍທັງຫມົດ',
+    //     link: '/profile/income'
+    // },
     {
         icon: 'mdi-form-textbox-password',
         title: 'ປ່ຽນລະຫັດຜ່ານ',
