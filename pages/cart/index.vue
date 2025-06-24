@@ -572,7 +572,7 @@ const minusQuantity = (id) => {
   margin-bottom: 16px;
   line-height: 1.3;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  /* -webkit-line-clamp: 2; */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
