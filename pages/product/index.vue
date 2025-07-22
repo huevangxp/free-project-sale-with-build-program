@@ -37,20 +37,20 @@
                     <v-img
                         :src="'http://localhost:8000/' + item.image"
                         height="120"
-                        contain
+                        cover
                     ></v-img>
 
                     <div class="d-flex align-center justify-space-between">
                     <div>
                         <v-card-title>
-                        <h4 class="text-primary">
+                        <h6 class="text-primary">
                             {{ item.title }}
-                        </h4>
+                        </h6>
                     </v-card-title>
                     <v-card-text>
-                        <h3 class="text-secondary">
+                        <h6 class="text-secondary">
                             {{ formatMoneyLAK(item.price) }}
-                        </h3>
+                        </h6>
                     </v-card-text>
                     </div>
                     <div>

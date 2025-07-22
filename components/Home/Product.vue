@@ -24,19 +24,19 @@
         <v-row dense>
             <v-col cols="6" md="4" v-for="(item, i) in products" :key="i">
                 <v-card class="rounded-xl" elevation="3">
-                    <v-img :src="'http://localhost:8000/' + item.image" height="200" contain></v-img>
+                    <v-img :src="'http://localhost:8000/' + item.image" height="200" cover></v-img>
 
                     <div class="d-flex align-center justify-space-between">
                         <div>
                             <v-card-title>
-                                <h4 class="text-primary">
+                                <h6 class="text-primary">
                                     {{ item.title }}
-                                </h4>
+                                </h6>
                             </v-card-title>
                             <v-card-text>
-                                <h3 class="text-secondary">
+                                <h6 class="text-secondary">
                                     {{ formatMoneyLAK(item.price) }}
-                                </h3>
+                                </h6>
                             </v-card-text>
                         </div>
                         <div>
@@ -57,9 +57,9 @@
                 </v-card-title>
                 <v-card-text>
                     <v-card-title class="px-0">
-                        <h4 class="text-primary">
+                        <h5 class="text-primary">
                             {{ itemDialog.title }}
-                        </h4>
+                        </h5>
                     </v-card-title>
                     <v-card-text class="px-0">
                         <h3 class="text-secondary">
@@ -73,8 +73,8 @@
                         <!-- {{ profit }} -->
                           <h3 class="text-primary mb-2">ກຳໄລ່ຈາກການຊື້ສິນຄ້າ</h3>
                           <p>* ຈຳນວນ: 10 ລົງມາ, ກຳໄລ່: {{ formatMoneyLAK(0) }} ກິບ / ອັນ</p>
-                        <p v-for="(i, index) in profit" :key="index">
-                          * ຈຳນວນ: {{ i.product_amount }} ຂື້ນໄປ, ກຳໄລ່: {{ formatMoneyLAK(i.profit) }} ກິບ / ອັນ
+                        <p v-for="(i, index) in discount" :key="index">
+                          * ຈຳນວນ: {{ i.product_amount }} ຂື້ນໄປ, ກຳໄລ່: {{ formatMoneyLAK(i.discount_price) }} ກິບ / ອັນ
                         </p>
                     </v-card-text>
                 </v-card-text>
@@ -106,6 +106,11 @@ import { useApiProductTypeStore } from '@/stores/apiProductType';
 import { useApiProductStore } from '@/stores/apiProduct';
 import { useApiCartStore } from '@/stores/apiCart';
 import { useApiSetProfitStore } from '@/stores/apiSetProfit';
+import { useApiDiscountStore } from '@/stores/apiDiscount';
+
+const apiDiscountStore = useApiDiscountStore()
+const { getDiscount } = apiDiscountStore
+const { discount } = storeToRefs(apiDiscountStore)
 
 const apiSetProfitStore = useApiSetProfitStore()
 const { setProfit } = apiSetProfitStore
@@ -134,40 +139,64 @@ const { formatMoneyLAK } = useFormat();
 
 const dialogAddCart = ref(false)
 const itemDialog = ref({})
-const note = ref('')
 const quantity = ref(1)
 
 const openDialogAddCart = (item) => {
     dialogAddCart.value = true
     itemDialog.value = item
+    getDiscount(item.id)
 }
 
 const closeDialog = () => {
     dialogAddCart.value = false
 }
 
+// const getDiscountPrice = () => {
+    
+// }
+
 const addProductToCart = async () => {
-    try {
-        const token = useCookie('token');
-        const userId = useCookie('id');
+  try {
+    const token = useCookie('token');
+    const userId = useCookie('id');
 
-        if (!token.value || !userId.value) {
-            return navigateTo('/login')
-        }
-
-        const data = {
-            user_id: userId.value,
-            product_id: itemDialog.value.id,
-            quantity: quantity.value,
-            // note: note.value
-        }
-
-        await addCart(data)
-        await fetchCart(userId.value)
-        dialogAddCart.value = false
-    } catch (error) {
-        console.log(error)
+    if (!token.value || !userId.value) {
+      return navigateTo('/login');
     }
-}
+
+    if (quantity.value === 0) {
+      console.log('Quantity must be more than 0');
+      return;
+    }
+
+    let discountPrice = itemDialog.value.price;
+
+    console.log(discount.value)
+
+    discount.value.map((item) => {
+      if (quantity.value >= item.product_amount) {
+        discountPrice = item.discount_price;
+      }
+    })
+ 
+
+    const data = {
+      user_id: userId.value,
+      product_id: itemDialog.value.id,
+      product_amount: quantity.value,
+      price: discountPrice,
+      profit: itemDialog.value.price // You might want to adjust this if profit is affected by discount
+    };
+
+    // console.log('Cart Data:', data);
+
+    await addCart(data);
+    await fetchCart(userId.value);
+    dialogAddCart.value = false;
+
+  } catch (error) {
+    console.error('Error adding product to cart:', error);
+  }
+};
 
 </script>

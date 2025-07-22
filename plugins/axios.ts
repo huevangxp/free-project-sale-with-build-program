@@ -6,6 +6,10 @@ export default defineNuxtPlugin((nuxtApp) => {
         // headers: {
         //     'Content-Type': 'application/json',
         // },
+
+        headers: {
+            'Authorization': `LFV ${useCookie('token').value}`,
+        },
  
     })
 
