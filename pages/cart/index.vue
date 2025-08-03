@@ -89,7 +89,8 @@
                 </div>
             </div>
         </v-card>
-
+       <v-card>
+       </v-card>
         <div class="mt-6">
         <v-row class="my-4" dense >
             <v-col cols="12" v-for="(item, i) in cart" :key="i">
@@ -143,8 +144,11 @@
               <v-icon size="14" color="primary">mdi-tag</v-icon>
               <span>ລາຄາ/ໜ່ວຍ</span>
             </div>
-            <div class="price-value text-primary">
-              {{ formatMoneyLAK(item.product.price) }}
+            <div class="price-value text-primary" v-if="item.price_by_init === item.product.price">
+             {{ formatMoneyLAK(item.price_by_init) }}
+            </div>
+            <div class="price-value text-primary" v-else>
+             <span v-if="item.price_by_init >= 0"> {{ formatMoneyLAK(item.price_by_init) }}</span> <span v-if="item.price_by_init > 0" class="text-decoration-line-through text-red">{{ formatMoneyLAK(item.product.price) }}</span>
             </div>
           </div>
           
@@ -164,7 +168,7 @@
               <span>ກຳໄລ</span>
             </div>
             <div class="price-value text-success">
-              {{ formatMoneyLAK(item.profit) }}
+           {{ formatMoneyLAK(item.profit * item.all_quantity) }} ( <span class="text-secondary">{{ formatMoneyLAK(item.profit) }} / ອັນ</span> )
             </div>
           </div>
         </div>
@@ -244,7 +248,7 @@ const paymentDue = computed(() =>
 )
 const isHovered = ref(false)
 const totalProfit = computed(() =>
-    cart.value.reduce((total, item) => total + Number(item.profit), 0)
+    cart.value.reduce((total, item) => total + Number(item.profit) * item.all_quantity, 0)
 )
 const minusQuantity = (id) => {
     apiCartStore.minusQuantity(id)

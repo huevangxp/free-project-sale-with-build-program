@@ -92,11 +92,11 @@
                                                 {{ formatMoneyLAK(item.product.price) }}
                                             </div>
                                         </template>
-                                        <!--   <template #item.totalPrice="{ item }">
+                                        <template #item.totalPrice="{ item }">
                                             <div class="py-2" style="font-size: 12px;">
                                                 {{ formatMoneyLAK(Number(item.product.price) * Number(item.quantity)) }}
                                             </div>
-                                        </template> -->
+                                        </template>
                                     </v-data-table>
                                 </v-col>
                                 <v-col cols="12" md="6">
@@ -202,9 +202,11 @@ const headers = [
     { title: 'ລາຄາລວມ', key: 'totalPrice' },
 ]
 
-const getAllQuantity = computed(() => orders.value.reduce((total, order) => total + order.items.reduce((total, item) => total + item.quantity, 0), 0));
+const getAllQuantity = computed(() => orders.value.reduce((total, order) => total + order.total_quantity, 0));
 
-const getAllTotalPrice = computed(() => orders.value.reduce((total, order) => total + order.items.reduce((total, item) => total + item.quantity * item.product.price, 0), 0));
+const getAllTotalPrice = computed(() => orders.value.reduce((total, order) => total + order.total_price, 0));
+
+
 
 const getAllProfit = computed(() => 
   orders.value.reduce((total, order) => total + Number(order.all_profit), 0)

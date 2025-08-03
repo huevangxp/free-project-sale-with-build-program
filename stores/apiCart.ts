@@ -55,7 +55,6 @@ export const useApiCartStore = defineStore('apiCart', {
                 await $axios.delete('/cart/' + id).
                 then((res) => {
                     // console.log(res.data.order)
-                    console.log(res.data)
                    
                     this.fetchCart()
                 })
@@ -65,15 +64,13 @@ export const useApiCartStore = defineStore('apiCart', {
         },
         async checkout(data: any) {
             try {
+
                 const { $axios } = useNuxtApp()
                 const orderId= useCookie('order_id')
 
-                await $axios.post('/cart/checkout', data).
-                then((res) => {
-                    // console.log(res)
-                    orderId.value = res.data.order_id;
-                    this.fetchCart()
-                })
+              const res = await $axios.post('/cart/checkout', data)
+                orderId.value = res.data.data.id;
+                this.fetchCart()
             } catch (error: any) {
                 console.log(error)
             }
