@@ -10,7 +10,7 @@
                     <h3 class="header-title">ສິນຄ້າທັງໝົດ</h3>
                 </div>
             </div>
-
+{{ cart }}
             <!-- Content Section -->
             <div class="cart-content">
                 <div class="info-grid">
