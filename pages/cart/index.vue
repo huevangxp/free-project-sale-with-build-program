@@ -10,11 +10,8 @@
                     <h3 class="header-title">ສິນຄ້າທັງໝົດ</h3>
                 </div>
             </div>
-{{ cart }}
-            <!-- Content Section -->
             <div class="cart-content">
                 <div class="info-grid">
-                    <!-- Quantity Card -->
                     <div class="info-item">
                         <div class="info-icon-wrapper quantity">
                             <v-icon size="20" color="primary">mdi-package</v-icon>
