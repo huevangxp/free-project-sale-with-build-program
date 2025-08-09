@@ -24,7 +24,6 @@
                         </div>
                     </div>
 
-                    <!-- Total Amount Card -->
                     <div class="info-item">
                         <div class="info-icon-wrapper total">
                             <v-icon size="20" color="blue">mdi-calculator</v-icon>
@@ -37,7 +36,6 @@
                         </div>
                     </div>
 
-                    <!-- Payment Due Card -->
                     <div class="info-item">
                         <div class="info-icon-wrapper payment">
                             <v-icon size="20" color="warning">mdi-cash</v-icon>
