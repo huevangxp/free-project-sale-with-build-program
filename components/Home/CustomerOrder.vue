@@ -13,7 +13,7 @@
                 <v-card elevation="3" rounded="xl" class="d-flex align-center " >
                   <div>
                     <v-img
-                        :src="item.src"
+                        :src="'http://localhost:8000'+item.src"
                         height="120"
                         width="120"
                         cover

@@ -51,6 +51,7 @@ export const useApiAuthStore = defineStore('apiAuth', {
 
                   await $axios.post('/users/login', user)
                   .then((res) => {
+                    console.log(res.data)
                     token.value = res.data.token;
                     userId.value = res.data.user.id;
                     userRole.value = res.data.user.role;

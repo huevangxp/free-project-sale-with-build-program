@@ -45,7 +45,7 @@
                 <v-card elevation="3" rounded="xl" :to="item.link">
                     <v-sheet color="white" class="pt-2 text-center" rounded="t-xl">
                         <v-avatar size="100" class="mb-4" :color="item.avatar ? undefined : 'primary'" elevation="3">
-                            <v-img v-if="item.avatar" :src="'http://localhost:8000/' + item.avatar" cover />
+                            <v-img v-if="'http://localhost:8000'+item.avatar" :src="'http://localhost:8000/' + item.avatar" cover />
                             <span v-else class="text-h2 text-white font-weight-bold">
                                 {{ firstLetter[i] }}
                             </span>
