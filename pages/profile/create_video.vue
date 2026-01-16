@@ -101,6 +101,15 @@
 
         <v-card-actions class="d-flex pa-0 mt-2">
           <v-btn
+            color="grey-darken-1"
+            variant="text"
+            size="large"
+            rounded="xl"
+            @click="$router.back()"
+          >
+            ຍົກເລິກ
+          </v-btn>
+          <v-btn
             color="primary"
             variant="flat"
             size="large"
@@ -111,15 +120,6 @@
             height="48"
           >
             ເພີ່ມວິດີໂອ
-          </v-btn>
-          <v-btn
-            color="grey-darken-1"
-            variant="text"
-            size="large"
-            rounded="xl"
-            @click="$router.back()"
-          >
-            ຍົກເລິກ
           </v-btn>
         </v-card-actions>
       </v-card>
