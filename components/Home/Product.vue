@@ -97,7 +97,7 @@
                 <div
                   class="text-subtitle-2 font-weight-bold text-truncate mb-1"
                 >
-                  {{ item.title }}
+                  <span>{{ item.title }}</span>
                 </div>
                 <div class="text-h6 font-weight-bold text-primary">
                   {{ formatMoneyLAK(item.price) }}
