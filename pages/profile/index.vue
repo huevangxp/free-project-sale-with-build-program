@@ -5,7 +5,7 @@
   >
     <!-- Profile Header -->
     <div
-      class="bg-primary pt-8 pb-16 rounded-xl px-4 text-center position-relative"
+      class="bg-primary pt-8 pb-16 rounded-xl mt-2 px-4 text-center position-relative"
     >
       <v-avatar
         size="100"
