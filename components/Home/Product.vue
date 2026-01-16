@@ -1,191 +1,319 @@
 <template>
-    <div class=" my-4">
-        <div>
-            <v-row dense>
-                <v-col v-for="i in types" cols="4" md="4">
-                    <v-card class="d-flex align-center justify-center" elevation="3" rounded="xl">
-                        <div>
-                            <v-img :src="'http://localhost:8000/' + i.image" cover height="40" width="40"></v-img>
-
-                        </div>
-                        <v-card-title class="text-center">{{ i.title }}</v-card-title>
-                    </v-card>
-                </v-col>
-            </v-row>
-        </div>
-        <v-card class="my-4 " color="primary" dark elevation="3" rounded="xl">
-            <v-card-title class="d-flex align-center justify-space-between">
-                <h4>ສິນຄ້າ</h4>
-                <v-avatar color="white" size="small" @click="navigateTo('/product')"><v-icon
-                        size="20">mdi-arrow-right</v-icon></v-avatar>
-            </v-card-title>
-
-        </v-card>
-        <v-row dense>
-            <v-col cols="6" md="4" v-for="(item, i) in products" :key="i">
-                <v-card class="rounded-xl" elevation="3">
-                    <v-img :src="'http://localhost:8000/' + item.image" height="200" cover></v-img>
-
-                    <div class="d-flex align-center justify-space-between">
-                        <div>
-                            <v-card-title>
-                                <h6 class="text-primary">
-                                    {{ item.title }}
-                                </h6>
-                            </v-card-title>
-                            <v-card-text>
-                                <h6 class="text-secondary">
-                                    {{ formatMoneyLAK(item.price) }}
-                                </h6>
-                            </v-card-text>
-                        </div>
-                        <div>
-                            <v-btn color="primary" elevation="0" rounded="pill" variant="text"
-                                @click="openDialogAddCart(item)"><v-icon size="30">mdi-cart</v-icon></v-btn>
-                        </div>
-                    </div>
-                </v-card>
-            </v-col>
-        </v-row>
-        <v-dialog v-model="dialogAddCart" width="400">
-            <v-card>
-                <v-card-text class="d-flex justify-end">
-                    <v-icon color="red" size="30" @click="closeDialog">mdi-close</v-icon>
-                </v-card-text>
-                <v-card-title>
-                    <v-img :src="'http://localhost:8000/' + itemDialog.image" height="200" contain></v-img>
-                </v-card-title>
-                <v-card-text>
-                    <v-card-title class="px-0">
-                        <h5 class="text-primary">
-                            {{ itemDialog.title }}
-                        </h5>
-                    </v-card-title>
-                    <v-card-text class="px-0">
-                        <h3 class="text-secondary">
-                            {{ formatMoneyLAK(itemDialog.price) }}
-                        </h3>
-                    </v-card-text>
-                    <v-card-text class="py-0 px-0">
-                        <p>{{ itemDialog.description }}</p>
-                    </v-card-text>
-                    <v-card-text class="py-0 px-0 mt-4">
-                        <!-- {{ profit }} -->
-                          <h3 class="text-primary mb-2">ກຳໄລ່ຈາກການຊື້ສິນຄ້າ</h3>
-                          <p>* ຈຳນວນ: 10 ລົງມາ, ກຳໄລ່: {{ formatMoneyLAK(0) }} ກິບ / ອັນ</p>
-                        <p v-for="(i, index) in discount" :key="index">
-                          * ຈຳນວນ: {{ i.product_amount }} ຂື້ນໄປ, ກຳໄລ່: {{ formatMoneyLAK(i.discount_price) }} ກິບ / ອັນ
-                        </p>
-                    </v-card-text>
-                </v-card-text>
-                <v-card-text>
-                    <v-row>
-                        <v-col cols="6">
-                            <v-text-field v-model="quantity" type="number" variant="outlined"
-                                density="compact"></v-text-field>
-                        </v-col>
-                        <v-col cols="6">
-                            <v-btn color="primary" :disabled="quantity === 0" rounded="pill" size="large" block
-                                variant="elevated" @click="addProductToCart">
-                                <v-icon size="30">mdi-check-decagram</v-icon> ອານຸຍາດ
-                            </v-btn>
-                        </v-col>
-                    </v-row>
-                </v-card-text>
-
-
-            </v-card>
-        </v-dialog>
+  <div class="product-container pb-16">
+    <!-- Categories Section -->
+    <div class="pt-4">
+      <v-slide-group class="pa-4" show-arrows>
+        <v-slide-group-item
+          v-for="i in types"
+          :key="i.id"
+          v-slot="{ isSelected, toggle }"
+        >
+          <v-card
+            class="ma-2 category-card d-flex flex-column align-center justify-center pt-3"
+            :color="isSelected ? 'primary' : 'surface'"
+            :class="{ 'elevation-4': isSelected, 'elevation-1': !isSelected }"
+            height="110"
+            width="100"
+            rounded="xl"
+            @click="toggle"
+            link
+          >
+            <div
+              class="category-icon-bg mb-2 pa-2 rounded-circle bg-grey-lighten-4"
+            >
+              <v-img
+                :src="'http://localhost:8000/' + i.image"
+                cover
+                height="40"
+                width="40"
+              ></v-img>
+            </div>
+            <span
+              class="text-caption font-weight-bold text-truncate w-100 text-center px-2"
+            >
+              {{ i.title }}
+            </span>
+          </v-card>
+        </v-slide-group-item>
+      </v-slide-group>
     </div>
+
+    <!-- Section Header -->
+    <div class="d-flex align-center justify-space-between px-6 my-2">
+      <div class="d-flex align-center">
+        <v-icon color="primary" class="mr-2">mdi-shape-outline</v-icon>
+        <h2 class="text-h6 font-weight-bold text-primary">ສິນຄ້າທັງໝົດ</h2>
+      </div>
+      <v-btn
+        variant="text"
+        color="primary"
+        class="text-capitalize"
+        @click="navigateTo('/product')"
+      >
+        ເບິ່ງທັງໝົດ <v-icon end>mdi-arrow-right</v-icon>
+      </v-btn>
+    </div>
+
+    <!-- Product Grid -->
+    <v-container fluid class="px-4">
+      <v-row dense>
+        <v-col
+          cols="6"
+          sm="4"
+          md="3"
+          lg="2"
+          v-for="(item, i) in products"
+          :key="i"
+        >
+          <v-hover v-slot="{ isHovering, props }">
+            <v-card
+              v-bind="props"
+              class="product-card rounded-xl fill-height position-relative"
+              :elevation="isHovering ? 6 : 2"
+              @click="openDialogAddCart(item)"
+            >
+              <v-img
+                :src="'http://localhost:8000/' + item.image"
+                height="180"
+                cover
+                class="align-end"
+              >
+                <template v-slot:placeholder>
+                  <div
+                    class="d-flex align-center justify-center fill-height bg-grey-lighten-4"
+                  >
+                    <v-progress-circular
+                      indeterminate
+                      color="primary"
+                      size="24"
+                    ></v-progress-circular>
+                  </div>
+                </template>
+              </v-img>
+
+              <v-card-item class="pt-3 pb-2 px-3">
+                <div
+                  class="text-subtitle-2 font-weight-bold text-truncate mb-1"
+                >
+                  {{ item.title }}
+                </div>
+                <div class="text-h6 font-weight-bold text-primary">
+                  {{ formatMoneyLAK(item.price) }}
+                </div>
+              </v-card-item>
+
+              <v-card-actions class="px-3 pb-3 pt-0 justify-end">
+                <v-btn
+                  icon
+                  variant="tonal"
+                  color="primary"
+                  size="small"
+                  class="rounded-circle"
+                >
+                  <v-icon>mdi-cart-plus</v-icon>
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-hover>
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <!-- Add to Cart Dialog -->
+    <v-dialog
+      v-model="dialogAddCart"
+      max-width="450"
+      transition="dialog-bottom-transition"
+    >
+      <v-card class="rounded-xl overflow-hidden">
+        <div class="position-relative">
+          <v-img
+            :src="'http://localhost:8000/' + itemDialog.image"
+            height="250"
+            cover
+            gradient="to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.6) 100%"
+          >
+            <div
+              class="d-flex flex-column fill-height justify-end pa-4 text-white"
+            >
+              <h3 class="text-h5 font-weight-bold">{{ itemDialog.title }}</h3>
+            </div>
+          </v-img>
+          <v-btn
+            icon="mdi-close"
+            variant="flat"
+            color="white"
+            size="small"
+            class="position-absolute top-0 right-0 ma-3"
+            @click="closeDialog"
+          ></v-btn>
+        </div>
+
+        <v-card-text class="pt-4 pb-2">
+          <div class="d-flex justify-space-between align-center mb-4">
+            <span class="text-subtitle-1 text-medium-emphasis">ລາຄາ</span>
+            <h3 class="text-h4 font-weight-bold text-primary">
+              {{ formatMoneyLAK(itemDialog.price) }}
+            </h3>
+          </div>
+
+          <p
+            class="text-body-2 text-medium-emphasis mb-4 bg-grey-lighten-5 pa-3 rounded-lg"
+          >
+            {{ itemDialog.description || "ບໍ່ມີຄຳອະທິບາຍ" }}
+          </p>
+
+          <v-divider class="mb-4"></v-divider>
+
+          <!-- Profit Info -->
+          <div
+            class="bg-blue-grey-lighten-5 rounded-lg pa-3 mb-4 border-dashed"
+          >
+            <div
+              class="text-subtitle-2 font-weight-bold text-primary mb-2 d-flex align-center"
+            >
+              <v-icon start size="small" color="primary">mdi-chart-line</v-icon>
+              ກຳໄລ່ຈາກການຊື້ສິນຄ້າ
+            </div>
+            <div class="text-caption text-medium-emphasis pl-1">
+              <div class="d-flex justify-space-between mb-1">
+                <span>10 ລົງມາ:</span>
+                <span class="font-weight-bold text-secondary"
+                  >{{ formatMoneyLAK(0) }} ກິບ / ອັນ</span
+                >
+              </div>
+              <div
+                v-for="(d, index) in discount"
+                :key="index"
+                class="d-flex justify-space-between mb-1"
+              >
+                <span>{{ d.product_amount }} ຂື້ນໄປ:</span>
+                <span class="font-weight-bold text-secondary"
+                  >{{ formatMoneyLAK(d.discount_price) }} ກິບ / ອັນ</span
+                >
+              </div>
+            </div>
+          </div>
+        </v-card-text>
+
+        <v-card-actions class="pa-4 pt-0">
+          <v-row dense align="center">
+            <v-col cols="4">
+              <v-text-field
+                v-model.number="quantity"
+                type="number"
+                variant="outlined"
+                density="compact"
+                hide-details
+                label="ຈຳນວນ"
+                min="1"
+                class="centered-input rounded-lg"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="8">
+              <v-btn
+                block
+                color="primary"
+                size="large"
+                rounded="pill"
+                elevation="2"
+                :disabled="quantity <= 0"
+                @click="addProductToCart"
+              >
+                <v-icon start>mdi-cart-arrow-down</v-icon>
+                ເພີ່ມເຂົ້າກະຕ່າ
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div>
 </template>
 
 <script setup>
-import { useFormat } from '@/composables/useFormat';
-import { storeToRefs } from 'pinia'
-import { useApiProductTypeStore } from '@/stores/apiProductType';
-import { useApiProductStore } from '@/stores/apiProduct';
-import { useApiCartStore } from '@/stores/apiCart';
-import { useApiSetProfitStore } from '@/stores/apiSetProfit';
-import { useApiDiscountStore } from '@/stores/apiDiscount';
+import { useFormat } from "@/composables/useFormat";
+import { storeToRefs } from "pinia";
+import { useApiProductTypeStore } from "@/stores/apiProductType";
+import { useApiProductStore } from "@/stores/apiProduct";
+import { useApiCartStore } from "@/stores/apiCart";
+import { useApiSetProfitStore } from "@/stores/apiSetProfit";
+import { useApiDiscountStore } from "@/stores/apiDiscount";
 
-const apiDiscountStore = useApiDiscountStore()
-const { getDiscount } = apiDiscountStore
-const { discount } = storeToRefs(apiDiscountStore)
+const apiDiscountStore = useApiDiscountStore();
+const { getDiscount } = apiDiscountStore;
+const { discount } = storeToRefs(apiDiscountStore);
 
-const apiSetProfitStore = useApiSetProfitStore()
-const { setProfit } = apiSetProfitStore
-const { profit } = storeToRefs(apiSetProfitStore)
+const apiSetProfitStore = useApiSetProfitStore();
+const { setProfit } = apiSetProfitStore;
+const { profit } = storeToRefs(apiSetProfitStore);
 
-const apiProductTypeStore = useApiProductTypeStore()
-const { types } = storeToRefs(apiProductTypeStore)
+const apiProductTypeStore = useApiProductTypeStore();
+const { types } = storeToRefs(apiProductTypeStore);
 
-const apiProductStore = useApiProductStore()
-const { products } = storeToRefs(apiProductStore)
+const apiProductStore = useApiProductStore();
+const { products } = storeToRefs(apiProductStore);
 
-const apiCartStore = useApiCartStore()
-const { addCart } = apiCartStore
-const { fetchCart } = apiCartStore
-const { fetchProductTypes } = apiProductTypeStore
-const { fetchProducts } = apiProductStore
+const apiCartStore = useApiCartStore();
+const { addCart } = apiCartStore;
+const { fetchCart } = apiCartStore;
+const { fetchProductTypes } = apiProductTypeStore;
+const { fetchProducts } = apiProductStore;
 
 onMounted(() => {
-    fetchProductTypes()
-    fetchProducts()
-    fetchCart()
-    setProfit()
-})
+  fetchProductTypes();
+  fetchProducts();
+  fetchCart();
+  setProfit();
+});
 
 const { formatMoneyLAK } = useFormat();
 
-const dialogAddCart = ref(false)
-const itemDialog = ref({})
-const quantity = ref(1)
+const dialogAddCart = ref(false);
+const itemDialog = ref({});
+const quantity = ref(1);
 
 const openDialogAddCart = (item) => {
-    dialogAddCart.value = true
-    itemDialog.value = item
-    getDiscount(item.id)
-}
+  dialogAddCart.value = true;
+  itemDialog.value = item;
+  quantity.value = 1; // Reset quantity
+  getDiscount(item.id);
+};
 
 const closeDialog = () => {
-    dialogAddCart.value = false
-}
-
-// const getDiscountPrice = () => {
-    
-// }
+  dialogAddCart.value = false;
+};
 
 const addProductToCart = async () => {
   try {
-    const token = useCookie('token');
-    const userId = useCookie('id');
+    const token = useCookie("token");
+    const userId = useCookie("id");
 
     if (!token.value || !userId.value) {
-      return navigateTo('/login');
+      return navigateTo("/login");
     }
 
     if (quantity.value === 0) {
-      console.log('Quantity must be more than 0');
+      console.log("Quantity must be more than 0");
       return;
     }
 
     let discountPrice = itemDialog.value.price;
 
-    console.log(discount.value)
+    console.log(discount.value);
 
     discount.value.map((item) => {
       if (quantity.value >= item.product_amount) {
         discountPrice = item.discount_price;
       }
-    })
- 
+    });
 
     const data = {
       user_id: userId.value,
       product_id: itemDialog.value.id,
       product_amount: quantity.value,
       price: discountPrice,
-      profit: itemDialog.value.price // You might want to adjust this if profit is affected by discount
+      profit: itemDialog.value.price, // You might want to adjust this if profit is affected by discount
     };
 
     // console.log('Cart Data:', data);
@@ -193,10 +321,32 @@ const addProductToCart = async () => {
     await addCart(data);
     await fetchCart(userId.value);
     dialogAddCart.value = false;
-
   } catch (error) {
-    console.error('Error adding product to cart:', error);
+    console.error("Error adding product to cart:", error);
   }
 };
-
 </script>
+
+<style scoped>
+.category-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1);
+}
+.product-card {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+}
+.border-dashed {
+  border: 1px dashed rgba(0, 0, 0, 0.2);
+}
+:deep(.centered-input input) {
+  text-align: center;
+}
+</style>
