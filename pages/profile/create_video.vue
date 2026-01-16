@@ -101,6 +101,7 @@
 
         <v-card-actions class="d-flex pa-0 mt-2">
           <v-btn
+            block
             color="grey-darken-1"
             variant="text"
             size="large"
