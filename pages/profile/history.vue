@@ -18,18 +18,6 @@
           </v-btn>
         </div>
       </div>
-
-      <v-text-field
-        v-model="search"
-        placeholder="Search orders..."
-        prepend-inner-icon="mdi-magnify"
-        variant="solo"
-        density="comfortable"
-        hide-details
-        class="search-bar rounded-pill"
-        bg-color="white"
-        flat
-      ></v-text-field>
     </div>
 
     <v-container fluid class="px-4 mt-4">
