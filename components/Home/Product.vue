@@ -164,7 +164,7 @@
           <p
             class="text-body-2 text-medium-emphasis mb-4 bg-grey-lighten-5 pa-3 rounded-lg"
           >
-            {{ itemDialog.description || "ບໍ່ມີຄຳອະທິບາຍ" }}
+            <span>{{ itemDialog.description || "ບໍ່ມີຄຳອະທິບາຍ" }}</span>
           </p>
 
           <v-divider class="mb-4"></v-divider>
