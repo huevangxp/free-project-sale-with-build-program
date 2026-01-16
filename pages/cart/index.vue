@@ -32,9 +32,11 @@
                 <v-icon color="primary" size="24">mdi-cart-outline</v-icon>
               </v-avatar>
               <div>
-                <div class="text-subtitle-1 font-weight-bold">ລາຍການທັງໝົດ</div>
+                <div class="text-subtitle-1 font-weight-bold">
+                  <span>ລາຍການທັງໝົດ</span>
+                </div>
                 <div class="text-caption text-medium-emphasis">
-                  {{ formatNumber(cart.length) }} ລາຍການ
+                  <span>{{ formatNumber(cart.length) }} ລາຍການ</span>
                 </div>
               </div>
             </div>
