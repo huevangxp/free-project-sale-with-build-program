@@ -7,9 +7,11 @@
     <div class="bg-primary pt-4 pb-6 px-4 rounded-b-xl">
       <div class="d-flex align-center justify-space-between mb-4">
         <div>
-          <h1 class="text-h5 font-weight-bold text-white mb-1">ກະຕ່າສິນຄ້າ</h1>
+          <h1 class="text-h5 font-weight-bold text-white mb-1">
+            <span>ກະຕ່າສິນຄ້າ</span>
+          </h1>
           <p class="text-body-2 text-white text-opacity-80">
-            ກວດສອບລາຍການສິນຄ້າຂອງທ່ານ
+            <span>ກວດສອບລາຍການສິນຄ້າຂອງທ່ານ</span>
           </p>
         </div>
         <div class="d-flex align-center">
