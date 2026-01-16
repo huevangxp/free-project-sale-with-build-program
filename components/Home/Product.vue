@@ -13,7 +13,9 @@
           class="d-flex align-center text-primary cursor-pointer"
           @click="navigateTo('/category')"
         >
-          <span class="text-body-2 font-weight-medium">See All</span>
+          <span class="text-body-2 font-weight-medium">
+            <span>ເບິ່ງທັງໝົດ</span>
+          </span>
           <v-icon size="small" class="ml-1">mdi-arrow-right</v-icon>
         </div>
       </div>
