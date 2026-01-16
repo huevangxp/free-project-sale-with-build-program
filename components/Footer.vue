@@ -70,7 +70,7 @@
           >Product</span
         >
       </v-btn>
-      <v-btn
+      <!-- <v-btn
         value="profile/history"
         to="/profile/history"
         class="nav-btn"
@@ -88,7 +88,7 @@
           class="text-caption mt-1"
           >History</span
         >
-      </v-btn>
+      </v-btn> -->
 
       <v-btn
         value="profile"
