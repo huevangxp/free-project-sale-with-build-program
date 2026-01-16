@@ -78,10 +78,9 @@
               <div class="overflow-hidden rounded-t-xl position-relative">
                 <v-img
                   :src="'http://localhost:8000/' + item.image"
-                  aspect-ratio="1"
-                  cover
-                  height="250"
-                  class="product-image"
+                  height="180"
+                  contain
+                  class="product-image bg-grey-lighten-5"
                   :class="{ 'zoom-effect': isHovering }"
                 >
                   <template v-slot:placeholder>
