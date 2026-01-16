@@ -3,7 +3,7 @@
     <div class="d-flex align-center justify-space-between mb-4">
       <div>
         <h1 class="text-h5 font-weight-bold text-white mb-1">
-          <span>ສະບາຍດີ</span>
+          <span>ສະບາຍດີ, ຍິນດີຕ້ອນຮັບ</span>
         </h1>
         <p class="text-body-2 text-white text-opacity-80">
           <span>Find your favorite products</span>
