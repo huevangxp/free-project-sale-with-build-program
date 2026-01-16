@@ -108,12 +108,12 @@ const { getRoles } = apiRoleStore
 
 const dialog = ref(false)
 
-const username = ref('huevang')
-const phone = ref('02078849378')
-const email = ref('huevang@gmail.com')
+const username = ref('')
+const phone = ref('')
+const email = ref('')
 const invit_code = ref('')
-const password = ref('huevang')
-const confirm_password = ref('huevang')
+const password = ref('')
+const confirm_password = ref('')
 const address = ref('')
 
 onMounted(() => {

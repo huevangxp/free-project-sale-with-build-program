@@ -4,7 +4,7 @@
             <v-col cols="12" v-for="(item, i) in items" :key="i">
                 <v-card class="rounded-xl d-flex align-center" elevation="3">
                     <div>
-                        <v-img :src="item.src" width="150" height="130" cover></v-img>
+                        <v-img :src="'http://localhost:8000' + item.src" width="150" height="130" cover></v-img>
                     </div>
 
                     <v-card-title>
