@@ -46,7 +46,7 @@
               class="text-caption font-weight-medium text-grey-darken-1 text-truncate"
               style="max-width: 70px"
             >
-              {{ i.title }}
+              <span>{{ i.title }}</span>
             </span>
           </div>
         </v-slide-group-item>
