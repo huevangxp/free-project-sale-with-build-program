@@ -58,7 +58,7 @@
         <div class="d-flex align-center mb-3 px-2">
           <v-icon color="primary" class="mr-2">mdi-video-outline</v-icon>
           <h3 class="text-subtitle-1 font-weight-bold text-primary">
-            ລາຍການວິດີໂອ
+            <span>ລາຍການວິດີໂອ</span>
           </h3>
         </div>
 
