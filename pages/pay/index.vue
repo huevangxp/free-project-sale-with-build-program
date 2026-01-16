@@ -39,10 +39,10 @@
           </div>
 
           <div class="text-h6 font-weight-bold text-primary mb-1">
-            ສະແກນເພື່ອຈ່າຍ
+            <span>ສະແກນເພື່ອຈ່າຍ</span>
           </div>
           <div class="text-caption text-medium-emphasis mb-6">
-            ກະລຸນາສະແກນ QR Code ຜ່ານແອັບທະນາຄານ
+            <span>ກະລຸນາສະແກນ QR Code ຜ່ານແອັບທະນາຄານ</span>
           </div>
 
           <v-divider class="mb-4 border-opacity-10"></v-divider>
