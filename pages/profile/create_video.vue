@@ -99,30 +99,36 @@
           </v-row>
         </v-card-text>
 
-        <v-card-actions class="d-flex pa-0 mt-2">
-          <v-btn
-            block
-            color="grey-darken-1"
-            variant="text"
-            size="large"
-            rounded="xl"
-            @click="$router.back()"
-          >
-            ຍົກເລິກ
-          </v-btn>
-          <v-btn
-            block
-            color="primary"
-            variant="flat"
-            size="large"
-            rounded="xl"
-            elevation="0"
-            class="mb-3"
-            @click="handleAddVideo"
-            height="48"
-          >
-            ເພີ່ມວິດີໂອ
-          </v-btn>
+        <v-card-actions class="pa-0 mt-4">
+          <v-row dense>
+            <v-col cols="6">
+              <v-btn
+                block
+                color="grey-darken-1"
+                variant="tonal"
+                size="large"
+                rounded="xl"
+                @click="$router.back()"
+                height="48"
+              >
+                ຍົກເລິກ
+              </v-btn>
+            </v-col>
+            <v-col cols="6">
+              <v-btn
+                block
+                color="primary"
+                variant="flat"
+                size="large"
+                rounded="xl"
+                elevation="0"
+                @click="handleAddVideo"
+                height="48"
+              >
+                ເພີ່ມວິດີໂອ
+              </v-btn>
+            </v-col>
+          </v-row>
         </v-card-actions>
       </v-card>
     </div>
