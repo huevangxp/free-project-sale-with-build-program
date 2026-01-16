@@ -30,7 +30,9 @@
               <v-icon color="primary" size="24">mdi-video-plus</v-icon>
             </v-avatar>
             <div>
-              <div class="text-subtitle-1 font-weight-bold">ຂໍ້ມູນວິດີໂອ</div>
+              <div class="text-subtitle-1 font-weight-bold">
+                <span>ຂໍ້ມູນວິດີໂອ</span>
+              </div>
               <div class="text-caption text-medium-emphasis">
                 ກະລຸນາປ້ອນຂໍ້ມູນວິດີໂອຂອງທ່ານ
               </div>
