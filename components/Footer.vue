@@ -39,7 +39,7 @@
       </v-btn>
 
       <!-- Central Floating Button -->
-      <div class="position-relative d-flex justify-center" style="width: 80px">
+      <!-- <div class="position-relative d-flex justify-center" style="width: 80px">
         <v-btn
           icon
           class="floating-btn"
@@ -51,7 +51,7 @@
         >
           <v-icon size="32" color="white">mdi-magnify</v-icon>
         </v-btn>
-      </div>
+      </div> -->
 
       <v-btn
         value="history"
