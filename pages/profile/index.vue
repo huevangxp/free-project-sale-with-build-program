@@ -96,10 +96,10 @@
                 <v-icon size="28" :color="item.color">{{ item.icon }}</v-icon>
               </v-avatar>
               <div class="text-subtitle-2 font-weight-bold mb-1">
-                {{ item.title }}
+                <span>{{ item.title }}</span>
               </div>
               <div class="text-caption text-medium-emphasis line-clamp-2">
-                {{ item.description }}
+                <span>{{ item.description }}</span>
               </div>
             </div>
           </v-card>
