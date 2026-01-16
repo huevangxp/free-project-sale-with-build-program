@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <v-text-field
+    <!-- <v-text-field
       placeholder="Search for products..."
       prepend-inner-icon="mdi-magnify"
       variant="solo"
@@ -52,7 +52,7 @@
       class="search-bar rounded-pill"
       bg-color="white"
       flat
-    ></v-text-field>
+    ></v-text-field> -->
 
     <v-dialog v-model="dialog" width="400">
       <v-card class="rounded-xl">
