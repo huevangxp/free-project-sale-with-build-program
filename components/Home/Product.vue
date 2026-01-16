@@ -155,7 +155,7 @@
           <div class="d-flex justify-space-between align-center mb-4">
             <span class="text-subtitle-1 text-medium-emphasis">ລາຄາ</span>
             <h3 class="text-h4 font-weight-bold text-primary">
-              {{ formatMoneyLAK(itemDialog.price) }}
+              <span>{{ formatMoneyLAK(itemDialog.price) }}</span>
             </h3>
           </div>
 
