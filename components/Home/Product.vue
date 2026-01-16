@@ -31,7 +31,7 @@
             <span
               class="text-caption font-weight-bold text-truncate w-100 text-center px-2"
             >
-              {{ i.title }}
+              <span>{{ i.title }}</span>
             </span>
           </v-card>
         </v-slide-group-item>
