@@ -49,7 +49,7 @@
                 </v-avatar>
                 <div>
                   <div class="text-subtitle-1 font-weight-bold mb-1">
-                    Order #{{ order.order_number }}
+                    {{ hiddenOrderID(order.order_number) }}
                   </div>
                   <div class="text-caption text-grey">
                     {{ formatDate(order.created_at) }}
@@ -124,6 +124,7 @@
 import { useFormat } from "@/composables/useFormat";
 import { storeToRefs } from "pinia";
 import { useApiOrderStore } from "@/stores/apiOrder";
+import hiddenOrderID from "@/utils/hiddenOrderID";
 
 const { formatMoneyLAK, formatDate, formatTime } = useFormat();
 const apiOrderStore = useApiOrderStore();
