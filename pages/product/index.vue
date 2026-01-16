@@ -3,6 +3,7 @@
     class="product-container pb-16 bg-grey-lighten-5"
     style="min-height: 100vh"
   >
+    <Header />
     <!-- Filter Section -->
     <div class="px-4 pt-4">
       <v-card elevation="0" rounded="xl" color="white" class="mb-4 border-0">
