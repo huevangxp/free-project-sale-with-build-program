@@ -100,7 +100,7 @@
                   <span>{{ item.title }}</span>
                 </div>
                 <div class="text-h6 font-weight-bold text-primary">
-                  {{ formatMoneyLAK(item.price) }}
+                  <span>{{ formatMoneyLAK(item.price) }}</span>
                 </div>
               </v-card-item>
 
