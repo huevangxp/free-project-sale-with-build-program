@@ -59,10 +59,10 @@
         <v-card-title
           class="d-flex align-center justify-center bg-primary text-white py-4"
         >
-          <h4 class="text-h6 font-weight-bold">ອອກຈາກລະບົບ</h4>
+          <h4 class="text-h6 font-weight-bold"><span>ອອກຈາກລະບົບ</span></h4>
         </v-card-title>
         <v-card-text class="text-center py-6">
-          <p class="text-body-1">ທ່ານຕ້ອງການອອກຈາກລະບົບບໍ?</p>
+          <p class="text-body-1"><span>ທ່ານຕ້ອງການອອກຈາກລະບົບບໍ?</span></p>
         </v-card-text>
         <v-card-actions class="d-flex align-center justify-center pb-6 px-6">
           <v-btn
