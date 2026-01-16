@@ -97,7 +97,7 @@
             >mdi-package-variant-closed</v-icon
           >
           <h3 class="text-subtitle-1 font-weight-bold text-primary">
-            ລາຍການສິນຄ້າ
+            <span>ລາຍການສິນຄ້າ</span>
           </h3>
         </div>
 
