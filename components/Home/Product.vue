@@ -177,7 +177,7 @@
               class="text-subtitle-2 font-weight-bold text-primary mb-2 d-flex align-center"
             >
               <v-icon start size="small" color="primary">mdi-chart-line</v-icon>
-              ກຳໄລ່ຈາກການຊື້ສິນຄ້າ
+              <span>ກຳໄລ່ຈາກການຊື້ສິນຄ້າ</span>
             </div>
             <div class="text-caption text-medium-emphasis pl-1">
               <div class="d-flex justify-space-between mb-1">
