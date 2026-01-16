@@ -138,7 +138,9 @@
             <div
               class="d-flex flex-column fill-height justify-end pa-4 text-white"
             >
-              <h3 class="text-h5 font-weight-bold">{{ itemDialog.title }}</h3>
+              <h3 class="text-h5 font-weight-bold">
+                <span>{{ itemDialog.title }}</span>
+              </h3>
             </div>
           </v-img>
           <v-btn
