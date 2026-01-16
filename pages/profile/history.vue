@@ -78,7 +78,9 @@
               <v-divider class="mb-3 border-opacity-10"></v-divider>
 
               <div class="d-flex justify-space-between align-center">
-                <span class="text-body-2 text-medium-emphasis">ຍອດລວມ</span>
+                <span class="text-body-2 text-medium-emphasis"
+                  ><span>ຍອດລວມ</span></span
+                >
                 <span class="text-h6 font-weight-bold text-primary">{{
                   formatMoneyLAK(order.total_price)
                 }}</span>
