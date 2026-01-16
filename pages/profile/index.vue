@@ -43,7 +43,9 @@
         <v-card-text class="pa-4">
           <v-row dense>
             <v-col cols="4" class="text-center border-e">
-              <div class="text-caption text-medium-emphasis mb-1">ລູກທິມ</div>
+              <div class="text-caption text-medium-emphasis mb-1">
+                <span>ລູກທິມ</span>
+              </div>
               <div class="text-h6 font-weight-bold text-primary">
                 {{ team }}
               </div>
