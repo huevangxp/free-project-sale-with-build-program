@@ -138,7 +138,7 @@
         </v-card-title>
         <v-card-text class="pa-4">
           <div class="text-body-2 text-medium-emphasis mb-2">
-            <span>ເບີຜູ້ຝາກ, ເບີຜູ້ຮັບ, ສາຂາບໍລິສັດຂົນສົ່ງ...</span>
+            <span>ໝາຍເຫດເພີ່ມເຕີມ</span>
           </div>
           <v-textarea
             v-model="note"
