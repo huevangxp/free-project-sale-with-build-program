@@ -117,7 +117,9 @@
           <h3 class="text-h6 text-grey-darken-1 font-weight-medium">
             <span>ບໍ່ມີວິດີໂອ</span>
           </h3>
-          <p class="text-body-2 text-grey-lighten-1">ກະລຸນາເພີ່ມວິດີໂອໃໝ່</p>
+          <p class="text-body-2 text-grey-lighten-1">
+            <span>ກະລຸນາເພີ່ມວິດີໂອໃໝ່</span>
+          </p>
         </div>
       </v-container>
     </div>
