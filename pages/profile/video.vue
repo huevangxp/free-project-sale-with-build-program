@@ -115,7 +115,7 @@
             >mdi-video-off-outline</v-icon
           >
           <h3 class="text-h6 text-grey-darken-1 font-weight-medium">
-            ບໍ່ມີວິດີໂອ
+            <span>ບໍ່ມີວິດີໂອ</span>
           </h3>
           <p class="text-body-2 text-grey-lighten-1">ກະລຸນາເພີ່ມວິດີໂອໃໝ່</p>
         </div>
