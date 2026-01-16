@@ -72,17 +72,19 @@
       </v-btn>
       <v-btn
         value="history"
-        to="/history"
+        to="/profile/history"
         class="nav-btn"
-        :active="route.path === '/history'"
+        :active="route.path === '/profile/history'"
       >
         <v-icon
           size="24"
-          :color="route.path === '/history' ? 'primary' : 'grey'"
+          :color="route.path === '/profile/history' ? 'primary' : 'grey'"
           >mdi-history</v-icon
         >
         <span
-          :class="route.path === '/history' ? 'text-primary' : 'text-grey'"
+          :class="
+            route.path === '/profile/history' ? 'text-primary' : 'text-grey'
+          "
           class="text-caption mt-1"
           >History</span
         >
