@@ -21,20 +21,20 @@
       </v-btn>
 
       <v-btn
-        value="category"
-        to="/category"
+        value="promotion"
+        to="/promotion"
         class="nav-btn"
-        :active="route.path === '/category'"
+        :active="route.path === '/promotion'"
       >
         <v-icon
           size="24"
-          :color="route.path === '/category' ? 'primary' : 'grey'"
+          :color="route.path === '/promotion' ? 'primary' : 'grey'"
           >mdi-view-grid</v-icon
         >
         <span
-          :class="route.path === '/category' ? 'text-primary' : 'text-grey'"
+          :class="route.path === '/promotion' ? 'text-primary' : 'text-grey'"
           class="text-caption mt-1"
-          >Category</span
+          >Promotion</span
         >
       </v-btn>
 
