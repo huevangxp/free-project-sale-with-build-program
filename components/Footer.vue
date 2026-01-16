@@ -62,7 +62,7 @@
         <v-icon
           size="24"
           :color="route.path === '/product' ? 'primary' : 'grey'"
-          >mdi-history</v-icon
+          >mdi-cart-outline</v-icon
         >
         <span
           :class="route.path === '/product' ? 'text-primary' : 'text-grey'"
