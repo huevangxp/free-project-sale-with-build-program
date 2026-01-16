@@ -102,7 +102,7 @@
             height="56"
           >
             <v-icon start size="24">mdi-check-circle-outline</v-icon>
-            ແຈ້ງການໂອນເງິນ
+            <span>ແຈ້ງການໂອນເງິນ</span>
           </v-btn>
 
           <v-btn
