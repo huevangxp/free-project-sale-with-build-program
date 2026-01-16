@@ -60,7 +60,7 @@
     <v-container fluid class="px-4">
       <v-row dense>
         <v-col
-          cols="6"
+          cols="12"
           sm="4"
           md="3"
           lg="2"
