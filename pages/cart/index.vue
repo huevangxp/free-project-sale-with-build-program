@@ -196,10 +196,10 @@
           >mdi-cart-off</v-icon
         >
         <h3 class="text-h6 text-grey-darken-1 font-weight-medium">
-          ກະຕ່າວ່າງເປົ່າ
+          <span>ກະຕ່າວ່າງເປົ່າ</span>
         </h3>
         <p class="text-body-2 text-grey-lighten-1 mb-4">
-          ເລືອກຊື້ສິນຄ້າທີ່ທ່ານຕ້ອງການ
+          <span>ເລືອກຊື້ສິນຄ້າທີ່ທ່ານຕ້ອງການ</span>
         </p>
         <v-btn color="primary" variant="tonal" rounded="xl" to="/product">
           ໄປໜ້າສິນຄ້າ
