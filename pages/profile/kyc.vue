@@ -30,7 +30,9 @@
               <v-icon color="primary" size="24">mdi-account-check</v-icon>
             </v-avatar>
             <div>
-              <div class="text-subtitle-1 font-weight-bold">ຂໍ້ມູນສ່ວນຕົວ</div>
+              <div class="text-subtitle-1 font-weight-bold">
+                <span>ຂໍ້ມູນສ່ວນຕົວ</span>
+              </div>
               <div class="text-caption text-medium-emphasis">
                 ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບຖ້ວນ
               </div>
