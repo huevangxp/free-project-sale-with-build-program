@@ -6,7 +6,7 @@
           <span>ສະບາຍດີ, ຍິນດີຕ້ອນຮັບ</span>
         </h1>
         <p class="text-body-2 text-white text-opacity-80">
-          <span>Find your favorite products</span>
+          <span>ສູງສຸດ, ອີກສຸດ, ອີກສຸດ</span>
         </p>
       </div>
       <div class="d-flex align-center">
