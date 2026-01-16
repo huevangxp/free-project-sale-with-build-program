@@ -49,10 +49,10 @@
                 <v-icon size="40" color="primary">mdi-cloud-upload</v-icon>
               </v-avatar>
               <div class="text-subtitle-1 font-weight-bold text-grey-darken-1">
-                ກົດເພື່ອອັບໂຫຼດຮູບ
+                <span>ກົດເພື່ອອັບໂຫຼດຮູບ</span>
               </div>
               <div class="text-caption text-grey">
-                ຮອງຮັບໄຟລ໌ຮູບພາບເທົ່ານັ້ນ
+                <span>ເລືອກຮູບພາບເທົ່ານັ້ນ</span>
               </div>
             </div>
             <v-img v-else :src="imageUrl" cover height="100%" width="100%">
