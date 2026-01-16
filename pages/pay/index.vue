@@ -125,7 +125,7 @@
         <v-card-title
           class="bg-primary text-white py-3 px-4 d-flex align-center justify-space-between"
         >
-          <span class="text-h6 font-weight-bold">ລາຍລະອຽດການໂອນ</span>
+          <span class="font-weight-bold">ລາຍລະອຽດການໂອນ</span>
           <v-btn
             icon
             variant="text"
