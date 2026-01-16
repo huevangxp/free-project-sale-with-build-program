@@ -8,10 +8,10 @@
       <div class="d-flex align-center justify-space-between mb-4">
         <div>
           <h1 class="text-h5 font-weight-bold text-white mb-1">
-            ຢືນຢັນການຊຳລະ
+            <span>ຢືນຢັນການຊຳລະ</span>
           </h1>
           <p class="text-body-2 text-white text-opacity-80">
-            ອັບໂຫຼດຫຼັກຖານການໂອນເງິນ
+            <span>ອັບໂຫຼດຫຼັກຖານການໂອນເງິນ</span>
           </p>
         </div>
         <div class="d-flex align-center">
@@ -28,10 +28,10 @@
         <v-card-text class="pa-4">
           <div class="text-center mb-4">
             <div class="text-subtitle-1 font-weight-bold text-primary mb-1">
-              ຫຼັກຖານການໂອນເງິນ
+              <span>ຫຼັກຖານການໂອນເງິນ</span>
             </div>
             <div class="text-caption text-medium-emphasis">
-              ກະລຸນາອັບໂຫຼດຮູບພາບສະລິບການໂອນເງິນ
+              <span>ກະລຸນາອັບໂຫຼດຮູບພາບສະລິບການໂອນເງິນ</span>
             </div>
           </div>
 
