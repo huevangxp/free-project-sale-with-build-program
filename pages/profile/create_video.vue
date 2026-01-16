@@ -80,7 +80,7 @@
 
             <v-col cols="12">
               <div class="text-caption font-weight-bold mb-1 ml-1">
-                ລິ້ງວິດີໂອ
+                <span>ລິ້ງວິດີໂອ</span>
               </div>
               <v-text-field
                 v-model="link"
