@@ -168,7 +168,7 @@ const items = [
     title: "ປະຫວັດ",
     color: "green",
     description: "ປະຫວັດການຊື້",
-    link: "/history",
+    link: "/profile/history",
   },
   {
     icon: "mdi-card-account-details",
