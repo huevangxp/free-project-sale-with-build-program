@@ -36,7 +36,7 @@
             v-for="(order, i) in filteredOrders"
             :key="i"
             class="mb-3 rounded-xl border-0"
-            elevation="6"
+            elevation="2"
             color="white"
             @click="order.status === 'PAID' ? openBill(order) : null"
             link
