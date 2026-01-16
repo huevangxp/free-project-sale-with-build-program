@@ -110,6 +110,7 @@
             ຍົກເລິກ
           </v-btn>
           <v-btn
+            block
             color="primary"
             variant="flat"
             size="large"
