@@ -17,7 +17,6 @@
                 item-value="id"
                 variant="outlined"
                 density="comfortable"
-                hide-details
                 rounded="lg"
                 color="primary"
                 prepend-inner-icon="mdi-filter-variant"
