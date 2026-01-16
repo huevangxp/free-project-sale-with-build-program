@@ -61,9 +61,9 @@
       <v-row dense>
         <v-col
           cols="12"
-          sm="4"
-          md="3"
-          lg="2"
+          sm="6"
+          md="4"
+          lg="3"
           v-for="(item, i) in products"
           :key="i"
         >
