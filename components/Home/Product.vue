@@ -5,7 +5,9 @@
       <div class="d-flex align-center justify-space-between mb-4">
         <div class="d-flex align-center">
           <v-icon color="primary" class="mr-2">mdi-shape</v-icon>
-          <h2 class="text-h6 font-weight-bold text-primary">Categories</h2>
+          <h2 class="text-h6 font-weight-bold text-primary">
+            <span>ປະເພດສິນຄ້າ</span>
+          </h2>
         </div>
         <div
           class="d-flex align-center text-primary cursor-pointer"
