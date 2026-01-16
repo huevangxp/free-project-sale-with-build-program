@@ -70,51 +70,59 @@
           <v-hover v-slot="{ isHovering, props }">
             <v-card
               v-bind="props"
-              class="product-card rounded-xl fill-height position-relative"
-              :elevation="isHovering ? 6 : 2"
+              class="product-card rounded-xl fill-height d-flex flex-column border"
+              :elevation="isHovering ? 8 : 0"
               @click="openDialogAddCart(item)"
+              color="white"
             >
-              <v-img
-                :src="'http://localhost:8000/' + item.image"
-                height="180"
-                cover
-                class="align-end"
-              >
-                <template v-slot:placeholder>
-                  <div
-                    class="d-flex align-center justify-center fill-height bg-grey-lighten-4"
-                  >
-                    <v-progress-circular
-                      indeterminate
-                      color="primary"
-                      size="24"
-                    ></v-progress-circular>
-                  </div>
-                </template>
-              </v-img>
+              <div class="overflow-hidden rounded-t-xl position-relative">
+                <v-img
+                  :src="'http://localhost:8000/' + item.image"
+                  aspect-ratio="1"
+                  cover
+                  class="product-image"
+                  :class="{ 'zoom-effect': isHovering }"
+                >
+                  <template v-slot:placeholder>
+                    <div
+                      class="d-flex align-center justify-center fill-height bg-grey-lighten-4"
+                    >
+                      <v-progress-circular
+                        indeterminate
+                        color="primary"
+                        size="24"
+                      ></v-progress-circular>
+                    </div>
+                  </template>
+                </v-img>
+              </div>
 
-              <v-card-item class="pt-3 pb-2 px-3">
+              <div class="pa-3 d-flex flex-column flex-grow-1">
                 <div
-                  class="text-subtitle-2 font-weight-bold text-truncate mb-1"
+                  class="text-subtitle-2 font-weight-bold mb-1 text-truncate-2"
+                  style="min-height: 40px"
                 >
                   <span>{{ item.title }}</span>
                 </div>
-                <div class="text-h6 font-weight-bold text-primary">
-                  <span>{{ formatMoneyLAK(item.price) }}</span>
-                </div>
-              </v-card-item>
 
-              <v-card-actions class="px-3 pb-3 pt-0 justify-end">
-                <v-btn
-                  icon
-                  variant="tonal"
-                  color="primary"
-                  size="small"
-                  class="rounded-circle"
+                <div
+                  class="d-flex align-end justify-space-between mt-auto pt-2"
                 >
-                  <v-icon>mdi-cart-plus</v-icon>
-                </v-btn>
-              </v-card-actions>
+                  <div class="text-h6 font-weight-black text-primary">
+                    <span>{{ formatMoneyLAK(item.price) }}</span>
+                  </div>
+                  <v-btn
+                    icon
+                    variant="flat"
+                    color="primary"
+                    size="small"
+                    class="rounded-circle"
+                    elevation="2"
+                  >
+                    <v-icon size="20">mdi-cart-outline</v-icon>
+                  </v-btn>
+                </div>
+              </div>
             </v-card>
           </v-hover>
         </v-col>
@@ -352,5 +360,18 @@ const addProductToCart = async () => {
 }
 :deep(.centered-input input) {
   text-align: center;
+}
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.product-image {
+  transition: transform 0.3s ease;
+}
+.zoom-effect {
+  transform: scale(1.1);
 }
 </style>
