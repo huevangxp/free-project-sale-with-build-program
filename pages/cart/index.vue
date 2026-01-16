@@ -57,10 +57,8 @@
               <div
                 class="d-flex flex-column align-center pa-3 bg-grey-lighten-5 rounded-lg"
               >
-                <span class="text-caption text-medium-emphasis mb-1"
-                  >ຕ້ອງຈ່າຍ</span
-                >
-                <span class="font-weight-bold text-warning">
+                <span class="text-medium-emphasis mb-1">ຕ້ອງຈ່າຍ</span>
+                <span class="text-subtitle-1 font-weight-bold text-warning">
                   <span>{{ formatMoneyLAK(paymentDue) }}</span>
                 </span>
               </div>
@@ -69,7 +67,7 @@
               <div
                 class="d-flex flex-column align-center pa-3 bg-grey-lighten-5 rounded-lg"
               >
-                <span class="text-caption text-medium-emphasis mb-1">ກຳໄລ</span>
+                <span class="text-medium-emphasis mb-1">ກຳໄລ</span>
                 <span class="text-subtitle-1 font-weight-bold text-success">
                   {{ formatMoneyLAK(totalProfit) }}
                 </span>
