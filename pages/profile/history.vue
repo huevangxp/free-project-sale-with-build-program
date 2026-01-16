@@ -5,9 +5,7 @@
   >
     <div class="pt-4 px-2">
       <!-- Header -->
-      <div
-        class="d-flex align-center justify-space-between mb-4 px-2 elevation-2"
-      >
+      <div class="d-flex align-center justify-space-between mb-4 px-2">
         <div class="d-flex align-center">
           <v-btn
             icon
