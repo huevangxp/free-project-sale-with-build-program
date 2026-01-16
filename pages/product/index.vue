@@ -8,7 +8,7 @@
       <v-card elevation="0" rounded="xl" color="white" class="mb-4 border-0">
         <v-card-text class="pa-4">
           <v-row dense align="center">
-            <v-col cols="12" sm="8">
+            <v-col cols="8" sm="8">
               <v-select
                 v-model="select_id"
                 :items="types"
@@ -24,7 +24,7 @@
                 class="rounded-lg"
               ></v-select>
             </v-col>
-            <v-col cols="12" sm="4">
+            <v-col cols="4" sm="4">
               <v-btn
                 color="primary"
                 elevation="0"
