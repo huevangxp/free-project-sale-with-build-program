@@ -86,7 +86,7 @@
                   <div
                     class="text-subtitle-2 font-weight-bold text-truncate mb-1"
                   >
-                    {{ item.title }}
+                    <span>{{ item.title }}</span>
                   </div>
                   <div class="d-flex align-center">
                     <v-icon size="14" color="grey" class="mr-1"
