@@ -17,9 +17,11 @@
             contain
           ></v-img>
         </v-avatar>
-        <h2 class="text-h5 font-weight-bold text-primary mb-1">ລົງທະບຽນ</h2>
+        <h2 class="text-h5 font-weight-bold text-primary mb-1">
+          <span>ລົງທະບຽນ</span>
+        </h2>
         <p class="text-body-2 text-medium-emphasis">
-          ສ້າງບັນຊີໃໝ່ເພື່ອເລີ່ມຕົ້ນໃຊ້ງານ
+          <span>ສ້າງບັນຊີໃໝ່ເພື່ອເລີ່ມຕົ້ນໃຊ້ງານ</span>
         </p>
       </div>
 
@@ -27,7 +29,7 @@
         <v-row dense>
           <v-col cols="12">
             <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">
-              ຊື່ ແລະ ນາມສະກຸນ
+              <span>ຊື່ ແລະ ນາມສະກຸນ</span>
             </div>
             <v-text-field
               v-model="username"
@@ -45,7 +47,7 @@
 
           <v-col cols="12">
             <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">
-              ເບີໂທລະສັບ
+              <span>ເບີໂທລະສັບ</span>
             </div>
             <v-text-field
               v-model="phone"
@@ -62,7 +64,9 @@
           </v-col>
 
           <v-col cols="12">
-            <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">ອີເມວ</div>
+            <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">
+              <span>ອີເມວ</span>
+            </div>
             <v-text-field
               v-model="email"
               placeholder="ປ້ອນອີເມວ"
@@ -79,7 +83,7 @@
 
           <v-col cols="12">
             <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">
-              ລະຫັດຜູ້ແນະນຳ (ຖ້າມີ)
+              <span>ລະຫັດຜູ້ແນະນຳ (ຖ້າມີ)</span>
             </div>
             <v-text-field
               v-model="invit_code"
@@ -97,7 +101,7 @@
 
           <v-col cols="12" md="6">
             <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">
-              ລະຫັດຜ່ານ
+              <span>ລະຫັດຜ່ານ</span>
             </div>
             <v-text-field
               v-model="password"
@@ -116,7 +120,7 @@
 
           <v-col cols="12" md="6">
             <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">
-              ຢືນຢັນລະຫັດຜ່ານ
+              <span>ຢືນຢັນລະຫັດຜ່ານ</span>
             </div>
             <v-text-field
               v-model="confirm_password"
@@ -135,7 +139,7 @@
 
           <v-col cols="12">
             <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">
-              ທີ່ຢູ່ປັດຈຸບັນ
+              <span>ທີ່ຢູ່ປັດຈຸບັນ</span>
             </div>
             <v-textarea
               v-model="address"
@@ -164,11 +168,13 @@
           :loading="loading"
           class="text-body-1 font-weight-bold mb-4"
         >
-          ລົງທະບຽນ
+          <span>ລົງທະບຽນ</span>
         </v-btn>
 
         <div class="text-center">
-          <span class="text-body-2 text-medium-emphasis">ມີບັນຊີຢູ່ແລ້ວ? </span>
+          <span class="text-body-2 text-medium-emphasis"
+            ><span>ມີບັນຊີຢູ່ແລ້ວ? </span></span
+          >
           <v-btn
             variant="text"
             color="primary"
@@ -176,7 +182,7 @@
             to="/login"
             :ripple="false"
           >
-            ເຂົ້າສູ່ລະບົບ
+            <span>ເຂົ້າສູ່ລະບົບ</span>
           </v-btn>
         </div>
       </v-form>
@@ -201,7 +207,7 @@
               width="120"
               @click="dialog = false"
             >
-              ຕົກລົງ
+              <span>ຕົກລົງ</span>
             </v-btn>
           </v-card-actions>
         </v-card>
