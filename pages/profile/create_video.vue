@@ -99,7 +99,7 @@
           </v-row>
         </v-card-text>
 
-        <v-card-actions class="d-flex flex-column pa-0 mt-2">
+        <v-card-actions class="d-flex pa-0 mt-2">
           <v-btn
             color="primary"
             variant="flat"
