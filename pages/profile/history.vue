@@ -27,7 +27,7 @@
         <div class="d-flex align-center mb-3 px-2">
           <v-icon color="primary" class="mr-2">mdi-history</v-icon>
           <h3 class="text-subtitle-1 font-weight-bold text-primary">
-            ລາຍການສັ່ງຊື້
+            <span>ລາຍການສັ່ງຊື້</span>
           </h3>
         </div>
 
