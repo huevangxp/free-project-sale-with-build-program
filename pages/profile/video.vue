@@ -93,7 +93,7 @@
                       >mdi-calendar-clock</v-icon
                     >
                     <span class="text-caption text-medium-emphasis">
-                      {{ formatDate(item.createdAt) }}
+                      <span>{{ formatDate(item.createdAt) }}</span>
                     </span>
                   </div>
                 </div>
