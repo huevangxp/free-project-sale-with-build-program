@@ -82,7 +82,7 @@
         <v-col cols="6" sm="4" v-for="(item, i) in items" :key="i">
           <v-card
             class="rounded-xl fill-height border-0"
-            elevation="1"
+            elevation="0"
             color="white"
             :to="item.link"
             link
