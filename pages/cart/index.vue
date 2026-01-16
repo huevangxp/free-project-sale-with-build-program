@@ -60,7 +60,7 @@
                 <span class="text-caption text-medium-emphasis mb-1"
                   >ຕ້ອງຈ່າຍ</span
                 >
-                <span class="text-subtitle-1 font-weight-bold text-warning">
+                <span class="font-weight-bold text-warning">
                   <span>{{ formatMoneyLAK(paymentDue) }}</span>
                 </span>
               </div>
