@@ -26,7 +26,9 @@
       </div>
 
       <v-form @submit.prevent="handleLogin">
-        <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">ເບີໂທລະສັບ</div>
+        <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">
+          <span>ເບີໂທລະສັບ</span>
+        </div>
         <v-text-field
           v-model="phone"
           placeholder="ປ້ອນເບີໂທລະສັບ"
@@ -40,7 +42,9 @@
           hide-details="auto"
         ></v-text-field>
 
-        <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">ລະຫັດຜ່ານ</div>
+        <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">
+          <span>ລະຫັດຜ່ານ</span>
+        </div>
         <v-text-field
           v-model="password"
           placeholder="ປ້ອນລະຫັດຜ່ານ"
@@ -73,7 +77,9 @@
       </v-form>
 
       <div class="text-center">
-        <span class="text-body-2 text-medium-emphasis">ຍັງບໍ່ມີບັນຊີ? </span>
+        <span class="text-body-2 text-medium-emphasis"
+          ><span>ຍັງບໍ່ມີບັນຊີ? </span></span
+        >
         <v-btn
           variant="text"
           color="primary"
