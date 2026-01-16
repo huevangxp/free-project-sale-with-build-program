@@ -71,7 +71,7 @@
         >
       </v-btn>
       <v-btn
-        value="history"
+        value="profile/history"
         to="/profile/history"
         class="nav-btn"
         :active="route.path === '/profile/history'"
