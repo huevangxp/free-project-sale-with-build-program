@@ -95,7 +95,7 @@
 
             <v-col cols="12">
               <div class="text-caption font-weight-bold mb-1 ml-1">
-                ເບີໂທລະສັບ
+                <span>ເບີໂທລະສັບ</span>
               </div>
               <v-text-field
                 v-model="profile.phone"
@@ -112,7 +112,9 @@
             </v-col>
 
             <v-col cols="12">
-              <div class="text-caption font-weight-bold mb-1 ml-1">ອີເມວ</div>
+              <div class="text-caption font-weight-bold mb-1 ml-1">
+                <span>ອີເມວ</span>
+              </div>
               <v-text-field
                 v-model="profile.email"
                 placeholder="ປ້ອນອີເມວ"
@@ -129,7 +131,7 @@
 
             <v-col cols="12">
               <div class="text-caption font-weight-bold mb-1 ml-1">
-                ທີ່ຢູ່ປັດຈຸບັນ
+                <span>ທີ່ຢູ່ປັດຈຸບັນ</span>
               </div>
               <v-textarea
                 v-model="profile.address"
@@ -147,7 +149,9 @@
             </v-col>
 
             <v-col cols="12">
-              <div class="text-caption font-weight-bold mb-1 ml-1">ສະຖານະ</div>
+              <div class="text-caption font-weight-bold mb-1 ml-1">
+                <span>ສະຖານະ</span>
+              </div>
               <v-text-field
                 v-model="profile.role"
                 variant="outlined"
@@ -175,9 +179,11 @@
               >
             </v-avatar>
             <div>
-              <div class="text-subtitle-1 font-weight-bold">ເອກະສານຢືນຢັນ</div>
+              <div class="text-subtitle-1 font-weight-bold">
+                <span>ເອກະສານຢືນຢັນ</span>
+              </div>
               <div class="text-caption text-medium-emphasis">
-                ອັບໂຫຼດເອກະສານສຳຄັນ
+                <span>ອັບໂຫຼດເອກະສານສຳຄັນ</span>
               </div>
             </div>
           </div>
@@ -185,7 +191,7 @@
           <v-row dense>
             <v-col cols="12">
               <div class="text-caption font-weight-bold mb-1 ml-1">
-                ເລກບັດປະຈຳຕົວ
+                <span>ເລກບັດປະຈຳຕົວ</span>
               </div>
               <v-text-field
                 v-model="profile.id_card"
@@ -203,7 +209,7 @@
 
             <v-col cols="12">
               <div class="text-caption font-weight-bold mb-1 ml-1">
-                ຮູບຖ່າຍບັດປະຈຳຕົວ
+                <span>ຮູບຖ່າຍບັດປະຈຳຕົວ</span>
               </div>
               <v-card
                 @click="openClickIdIdCard"
@@ -239,7 +245,7 @@
 
             <v-col cols="12">
               <div class="text-caption font-weight-bold mb-1 ml-1">
-                ເລກບັນຊີທະນາຄານ
+                <span>ເລກບັນຊີທະນາຄານ</span>
               </div>
               <v-text-field
                 v-model="profile.bank_account"
@@ -257,7 +263,7 @@
 
             <v-col cols="12">
               <div class="text-caption font-weight-bold mb-1 ml-1">
-                ຮູບຖ່າຍບັນຊີທະນາຄານ
+                <span>ຮູບຖ່າຍບັນຊີທະນາຄານ</span>
               </div>
               <v-card
                 @click="openClickIdBankAccount"
@@ -271,7 +277,9 @@
                   <v-icon size="40" color="grey-lighten-1" class="mb-2"
                     >mdi-cloud-upload</v-icon
                   >
-                  <div class="text-caption text-grey">ກົດເພື່ອອັບໂຫຼດຮູບ</div>
+                  <div class="text-caption text-grey">
+                    <span>ກົດເພື່ອອັບໂຫຼດຮູບ</span>
+                  </div>
                 </div>
                 <v-img
                   v-else
