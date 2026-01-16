@@ -153,7 +153,7 @@
 
         <v-card-text class="pt-4 pb-2">
           <div class="d-flex justify-space-between align-center mb-4">
-            <span class="text-subtitle-1 text-medium-emphasis">ລາຄາ</span>
+            <span class="text-medium-emphasis">ລາຄາ</span>
             <h3 class="text-h4 font-weight-bold text-primary">
               <span>{{ formatMoneyLAK(itemDialog.price) }}</span>
             </h3>
