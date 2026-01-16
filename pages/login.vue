@@ -17,9 +17,11 @@
             contain
           ></v-img>
         </v-avatar>
-        <h2 class="text-h5 font-weight-bold text-primary mb-1">ຍິນດີຕ້ອນຮັບ</h2>
+        <h2 class="text-h5 font-weight-bold text-primary mb-1">
+          <span>ຍິນດີຕ້ອນຮັບ</span>
+        </h2>
         <p class="text-body-2 text-medium-emphasis">
-          ເຂົ້າສູ່ລະບົບເພື່ອສັ່ງຊື້ສິນຄ້າ
+          <span>ເຂົ້າສູ່ລະບົບເພື່ອສັ່ງຊື້ສິນຄ້າ</span>
         </p>
       </div>
 
