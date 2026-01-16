@@ -105,7 +105,7 @@
             <span>ແຈ້ງການໂອນເງິນ</span>
           </v-btn>
 
-          <v-btn
+          <!-- <v-btn
             block
             variant="text"
             color="grey-darken-1"
@@ -114,7 +114,7 @@
             to="/cart"
           >
             ກັບຄືນໄປກະຕ່າ
-          </v-btn>
+          </v-btn> -->
         </v-card-text>
       </v-card>
     </v-container>
