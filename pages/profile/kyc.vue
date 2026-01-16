@@ -34,7 +34,7 @@
                 <span>ຂໍ້ມູນສ່ວນຕົວ</span>
               </div>
               <div class="text-caption text-medium-emphasis">
-                ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບຖ້ວນ
+                <span>ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບຖ້ວນ</span>
               </div>
             </div>
           </div>
