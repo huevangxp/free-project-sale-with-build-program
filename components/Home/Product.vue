@@ -42,7 +42,9 @@
     <div class="d-flex align-center justify-space-between px-6 my-2">
       <div class="d-flex align-center">
         <v-icon color="primary" class="mr-2">mdi-shape-outline</v-icon>
-        <h2 class="text-h6 font-weight-bold text-primary">ສິນຄ້າທັງໝົດ</h2>
+        <h2 class="text-h6 font-weight-bold text-primary">
+          <span>ສິນຄ້າທັງໝົດ</span>
+        </h2>
       </div>
       <v-btn
         variant="text"
