@@ -41,7 +41,9 @@
 
           <v-row dense>
             <v-col cols="12">
-              <div class="text-caption font-weight-bold mb-1 ml-1">ຫົວຂໍ້</div>
+              <div class="text-caption font-weight-bold mb-1 ml-1">
+                <span>ຫົວຂໍ້</span>
+              </div>
               <v-text-field
                 v-model="title"
                 placeholder="ປ້ອນຫົວຂໍ້ວິດີໂອ"
@@ -59,7 +61,7 @@
 
             <v-col cols="12">
               <div class="text-caption font-weight-bold mb-1 ml-1">
-                ວິດີໂອ ID
+                <span>ວິດີໂອ ID</span>
               </div>
               <v-text-field
                 v-model="video_id"
