@@ -73,7 +73,9 @@
       <!-- Menu Grid -->
       <div class="d-flex align-center mb-3 mt-6">
         <v-icon color="primary" class="mr-2">mdi-cog</v-icon>
-        <h3 class="text-subtitle-1 font-weight-bold text-primary">ຈັດການ</h3>
+        <h3 class="text-subtitle-1 font-weight-bold text-primary">
+          <span>ຈັດການ</span>
+        </h3>
       </div>
 
       <v-row dense>
