@@ -61,7 +61,7 @@
                   >ຕ້ອງຈ່າຍ</span
                 >
                 <span class="text-subtitle-1 font-weight-bold text-warning">
-                  {{ formatMoneyLAK(paymentDue) }}
+                  <span>{{ formatMoneyLAK(paymentDue) }}</span>
                 </span>
               </div>
             </v-col>
