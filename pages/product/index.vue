@@ -6,7 +6,7 @@
     <Header />
     <!-- Filter Section -->
     <div class="px-4 pt-4">
-      <v-card elevation="0" rounded="xl" color="white" class="mb-4 border-0">
+      <v-card elevation="0" rounded="xl" color="white" class="my-4 border-0">
         <v-card-text class="pa-4">
           <v-row dense>
             <v-col cols="8" sm="8">
