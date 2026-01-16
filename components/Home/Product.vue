@@ -79,7 +79,7 @@
                 <v-img
                   :src="'http://localhost:8000/' + item.image"
                   aspect-ratio="1"
-                  cover
+                  fit="cover"
                   height="250"
                   class="product-image"
                   :class="{ 'zoom-effect': isHovering }"
