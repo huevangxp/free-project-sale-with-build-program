@@ -144,14 +144,12 @@
                 <div
                   class="text-subtitle-2 font-weight-bold text-truncate mb-1"
                 >
-                  {{ item.product.title }}
+                  <span>{{ item.product.title }}</span>
                 </div>
                 <div class="d-flex align-center justify-space-between">
-                  <span class="text-caption text-medium-emphasis"
-                    >ລາຄາຕໍ່ໜ່ວຍ</span
-                  >
-                  <span class="text-caption font-weight-bold">
-                    {{ formatMoneyLAK(item.price_by_init) }}
+                  <span class="text-medium-emphasis">ລາຄາຕໍ່ໜ່ວຍ</span>
+                  <span class="font-weight-bold">
+                    <span>{{ formatMoneyLAK(item.price_by_init) }}</span>
                   </span>
                 </div>
               </div>
@@ -170,9 +168,9 @@
                   >
                     <v-icon>mdi-minus</v-icon>
                   </v-btn>
-                  <span class="text-body-2 font-weight-bold mx-2">{{
-                    item.all_quantity
-                  }}</span>
+                  <span class="text-body-2 font-weight-bold mx-2">
+                    <span>{{ item.all_quantity }}</span>
+                  </span>
                   <v-btn
                     icon
                     size="x-small"
@@ -184,7 +182,7 @@
                   </v-btn>
                 </div>
                 <div class="text-subtitle-2 font-weight-bold text-primary">
-                  {{ formatMoneyLAK(item.all_price) }}
+                  <span>{{ formatMoneyLAK(item.all_price) }}</span>
                 </div>
               </div>
             </div>
