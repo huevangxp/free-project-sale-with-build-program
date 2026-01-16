@@ -22,21 +22,6 @@
         </div>
       </div>
 
-      <!-- Search Bar -->
-      <v-container fluid class="pa-0 mb-4">
-        <v-text-field
-          v-model="search"
-          placeholder="ຄົ້ນຫາເລກບິນ..."
-          variant="outlined"
-          density="comfortable"
-          hide-details
-          prepend-inner-icon="mdi-magnify"
-          class="rounded-lg"
-          bg-color="white"
-          color="primary"
-        ></v-text-field>
-      </v-container>
-
       <!-- Order List -->
       <v-container fluid class="pa-0">
         <div class="d-flex align-center mb-3 px-2">
