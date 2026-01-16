@@ -41,9 +41,11 @@
               </div>
             </div>
             <div class="text-right">
-              <div class="text-caption text-medium-emphasis">ລວມທັງໝົດ</div>
+              <div class="text-caption text-medium-emphasis">
+                <span>ລວມທັງໝົດ</span>
+              </div>
               <div class="text-h6 font-weight-bold text-primary">
-                {{ formatMoneyLAK(totalAmount) }}
+                <span>{{ formatMoneyLAK(totalAmount) }}</span>
               </div>
             </div>
           </div>
