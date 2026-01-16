@@ -101,7 +101,6 @@
 
         <v-card-actions class="d-flex flex-column pa-0 mt-2">
           <v-btn
-            block
             color="primary"
             variant="flat"
             size="large"
@@ -114,7 +113,6 @@
             ເພີ່ມວິດີໂອ
           </v-btn>
           <v-btn
-            block
             color="grey-darken-1"
             variant="text"
             size="large"
