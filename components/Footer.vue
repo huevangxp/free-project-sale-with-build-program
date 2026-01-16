@@ -54,20 +54,20 @@
       </div> -->
 
       <v-btn
-        value="history"
-        to="/history"
+        value="product"
+        to="/product"
         class="nav-btn"
-        :active="route.path === '/history'"
+        :active="route.path === '/product'"
       >
         <v-icon
           size="24"
-          :color="route.path === '/history' ? 'primary' : 'grey'"
+          :color="route.path === '/product' ? 'primary' : 'grey'"
           >mdi-history</v-icon
         >
         <span
-          :class="route.path === '/history' ? 'text-primary' : 'text-grey'"
+          :class="route.path === '/product' ? 'text-primary' : 'text-grey'"
           class="text-caption mt-1"
-          >History</span
+          >Product</span
         >
       </v-btn>
       <v-btn
