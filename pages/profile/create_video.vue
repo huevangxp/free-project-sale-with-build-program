@@ -34,7 +34,7 @@
                 <span>ຂໍ້ມູນວິດີໂອ</span>
               </div>
               <div class="text-caption text-medium-emphasis">
-                ກະລຸນາປ້ອນຂໍ້ມູນວິດີໂອຂອງທ່ານ
+                <span>ກະລຸນາປ້ອນຂໍ້ມູນວິດີໂອຂອງທ່ານ</span>
               </div>
             </div>
           </div>
