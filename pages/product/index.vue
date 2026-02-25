@@ -338,12 +338,23 @@ const addProductToCart = async () => {
       }
     });
 
+    // Calculate profit based on set.profit table
+    let profitValue = 0;
+    if (profit.value && profit.value.length > 0) {
+      const match = profit.value.find(
+        (p) => Number(p.amount || p.product_amount) === Number(quantity.value),
+      );
+      if (match) {
+        profitValue = match.profit || 0;
+      }
+    }
+
     const data = {
       user_id: userId.value,
       product_id: itemDialog.value.id,
       product_amount: quantity.value,
       price: discountPrice,
-      profit: itemDialog.value.price,
+      profit: profitValue,
     };
 
     await addCart(data);

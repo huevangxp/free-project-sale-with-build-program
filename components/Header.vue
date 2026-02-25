@@ -1,13 +1,18 @@
 <template>
   <div class="header-container bg-primary pt-4 pb-6 px-4 rounded-b-xl">
     <div class="d-flex align-center justify-space-between mb-4">
-      <div>
-        <h1 class="text-h5 font-weight-bold text-white mb-1">
-          <span>ສະບາຍດີ, ຍິນດີຕ້ອນຮັບ</span>
-        </h1>
-        <p class="text-body-2 text-white text-opacity-80">
-          <span>ບໍລິການທີ່ດີທີ່ສຸດ ສໍາລັບທ່ານ</span>
-        </p>
+      <div class="d-flex align-center">
+        <v-avatar size="50" class="mr-3" color="transparent">
+          <v-img src="/logo.png"></v-img>
+        </v-avatar>
+        <div>
+          <h1 class="text-h6 font-weight-bold text-white mb-0">
+            <span>ສະບາຍດີ, ຍິນດີຕ້ອນຮັບ</span>
+          </h1>
+          <p class="text-caption text-white text-opacity-80 mb-0">
+            <span>ບໍລິການທີ່ດີທີ່ສຸດ ສໍາລັບທ່ານ</span>
+          </p>
+        </div>
       </div>
       <div class="d-flex align-center">
         <v-btn

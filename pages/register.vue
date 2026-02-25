@@ -10,19 +10,20 @@
       max-width="500"
       color="white"
     >
-      <div class="text-center mb-6">
-        <v-avatar size="80" class="mb-4 elevation-2 bg-white pa-2">
-          <v-img
-            src="https://brandmark.io/logo-rank/random/pepsi.png"
-            contain
-          ></v-img>
-        </v-avatar>
-        <h2 class="text-h5 font-weight-bold text-primary mb-1">
-          <span>ລົງທະບຽນ</span>
-        </h2>
-        <p class="text-body-2 text-medium-emphasis">
-          <span>ສ້າງບັນຊີໃໝ່ເພື່ອເລີ່ມຕົ້ນໃຊ້ງານ</span>
-        </p>
+      <div class="d-flex align-center">
+        <div>
+          <v-avatar size="120" class="mb-4 elevation-0 bg-white">
+            <v-img src="/logo.png" contain></v-img>
+          </v-avatar>
+        </div>
+        <div>
+          <h2 class="text-h5 font-weight-bold text-primary mb-1">
+            <span>ລົງທະບຽນ</span>
+          </h2>
+          <p class="text-body-2 text-medium-emphasis">
+            <span>ສ້າງບັນຊີໃໝ່ເພື່ອເລີ່ມຕົ້ນໃຊ້ງານ</span>
+          </p>
+        </div>
       </div>
 
       <v-form @submit.prevent="handleRegister">

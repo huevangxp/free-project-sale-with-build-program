@@ -82,7 +82,7 @@
             rounded="xl"
             elevation="0"
             class="mt-4"
-            @click="navigateTo('/pay')"
+            @click="handleNext"
           >
             <v-icon start>mdi-qrcode-scan</v-icon>
             ຊຳລະເງິນ
@@ -146,6 +146,25 @@
                 >
                   <span>{{ item.product.title }}</span>
                 </div>
+                <!-- Promotion Status Chip -->
+                <div class="mb-1">
+                  <v-chip
+                    size="x-small"
+                    :color="checkPromotion(item) ? 'success' : 'warning'"
+                    variant="flat"
+                    class="font-weight-bold"
+                  >
+                    {{
+                      checkPromotion(item) ? "ຮອດເປົ້າແລ້ວ" : "ຍັງບໍ່ຮອດເປົ້າ"
+                    }}
+                    <span
+                      v-if="!checkPromotion(item) && item.product.target"
+                      class="ml-1"
+                    >
+                      (ຂາດ {{ item.product.target - item.all_quantity }})
+                    </span>
+                  </v-chip>
+                </div>
                 <div class="d-flex align-center justify-space-between">
                   <span class="text-medium-emphasis">ລາຄາຕໍ່ໜ່ວຍ</span>
                   <span class="font-weight-bold">
@@ -205,6 +224,65 @@
           <span>ເປໜ້າສິນຄ້າ</span>
         </v-btn>
       </div>
+      <!-- Warning Dialog -->
+      <v-dialog v-model="showDialog" max-width="320">
+        <v-card class="rounded-xl pa-4 text-center">
+          <div class="d-flex justify-center mb-2">
+            <v-icon color="warning" size="48">mdi-alert-circle-outline</v-icon>
+          </div>
+          <div class="text-h6 font-weight-bold mb-2">ແຈ້ງເຕືອນ</div>
+          <div class="text-body-1 text-medium-emphasis mb-4">
+            Please add product to cart!
+          </div>
+          <v-btn
+            color="primary"
+            variant="flat"
+            block
+            rounded="xl"
+            @click="showDialog = false"
+          >
+            ຕົກລົງ
+          </v-btn>
+        </v-card>
+      </v-dialog>
+
+      <!-- Promotion Warning Dialog -->
+      <v-dialog v-model="showPromotionDialog" max-width="320">
+        <v-card class="rounded-xl pa-4 text-center">
+          <div class="d-flex justify-center mb-2">
+            <v-icon color="warning" size="48">mdi-alert-circle-outline</v-icon>
+          </div>
+          <div class="text-h6 font-weight-bold mb-2">ແຈ້ງເຕືອນ</div>
+          <div class="text-body-1 text-medium-emphasis mb-4">
+            ມີສິນຄ້າບາງລາຍການຍັງບໍ່ຮອດເປົ້າ promotion.
+            ຕ້ອງການດຳເນີນການຕໍ່ຫຼືບໍ່?
+          </div>
+          <v-row dense>
+            <v-col cols="6">
+              <v-btn
+                color="grey-darken-1"
+                variant="tonal"
+                block
+                rounded="xl"
+                @click="showPromotionDialog = false"
+              >
+                ກັບຄືນ
+              </v-btn>
+            </v-col>
+            <v-col cols="6">
+              <v-btn
+                color="primary"
+                variant="flat"
+                block
+                rounded="xl"
+                @click="proceedAnyway"
+              >
+                ຢືນຢັນ
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-card>
+      </v-dialog>
     </v-container>
   </div>
 </template>
@@ -229,22 +307,53 @@ const plusQuantity = (id) => {
 const totalAmount = computed(() =>
   cart.value.reduce(
     (total, item) => total + item.product.price * item.all_quantity,
-    0
-  )
+    0,
+  ),
 );
 
 const paymentDue = computed(() =>
-  cart.value.reduce((total, item) => total + Number(item.all_price), 0)
+  cart.value.reduce((total, item) => total + Number(item.all_price), 0),
 );
 
-const totalProfit = computed(() =>
-  cart.value.reduce(
-    (total, item) => total + Number(item.profit) * item.all_quantity,
-    0
-  )
-);
+const totalProfit = computed(() => totalAmount.value - paymentDue.value);
 const minusQuantity = (id) => {
   apiCartStore.minusQuantity(id);
+};
+
+// Dialog state
+const showDialog = ref(false);
+const showPromotionDialog = ref(false);
+
+// Check if item meets promotion target
+// Assuming 'target' is the field for promotion goal in product
+const checkPromotion = (item) => {
+  const target = item.product.target || 1; // Default to 1 if no target
+  return item.all_quantity >= target;
+};
+
+// Computed property for items not meeting target
+const unmetPromotionItems = computed(() => {
+  return cart.value.filter((item) => !checkPromotion(item));
+});
+
+// Handle next button click
+const handleNext = () => {
+  if (cart.value.length === 0) {
+    showDialog.value = true;
+    return;
+  }
+
+  // Check for promotion targets
+  if (unmetPromotionItems.value.length > 0) {
+    showPromotionDialog.value = true;
+  } else {
+    navigateTo("/pay");
+  }
+};
+
+const proceedAnyway = () => {
+  showPromotionDialog.value = false;
+  navigateTo("/pay");
 };
 </script>
 

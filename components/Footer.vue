@@ -70,6 +70,36 @@
           >Product</span
         >
       </v-btn>
+
+      <v-btn
+        value="chat"
+        to="/chat"
+        class="nav-btn"
+        :active="route.path === '/chat'"
+      >
+        <v-badge
+          v-if="chatStore.unreadCount > 0"
+          color="error"
+          :content="chatStore.unreadCount"
+          offset-x="8"
+          offset-y="8"
+        >
+          <v-icon size="24" :color="route.path === '/chat' ? 'primary' : 'grey'"
+            >mdi-chat-outline</v-icon
+          >
+        </v-badge>
+        <v-icon
+          v-else
+          size="24"
+          :color="route.path === '/chat' ? 'primary' : 'grey'"
+          >mdi-chat-outline</v-icon
+        >
+        <span
+          :class="route.path === '/chat' ? 'text-primary' : 'text-grey'"
+          class="text-caption mt-1"
+          >Chat</span
+        >
+      </v-btn>
       <!-- <v-btn
         value="profile/history"
         to="/profile/history"
@@ -111,14 +141,19 @@
   </v-layout>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useRoute } from "vue-router";
+import { useApiChatStore } from "~/stores/apiChat";
 
 const route = useRoute();
-const token = ref(null);
+const chatStore = useApiChatStore();
+const token = useCookie("token");
+const userId = useCookie("id");
 
-onMounted(() => {
-  token.value = useCookie("token");
+onMounted(async () => {
+  if (token.value && userId.value) {
+    await chatStore.getUnreadCount(userId.value as string);
+  }
 });
 </script>
 

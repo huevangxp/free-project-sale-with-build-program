@@ -11,11 +11,8 @@
       color="white"
     >
       <div class="text-center mb-8">
-        <v-avatar size="120" class="mb-4 elevation-2 bg-white pa-2">
-          <v-img
-            src="https://brandmark.io/logo-rank/random/pepsi.png"
-            contain
-          ></v-img>
+        <v-avatar size="140" class="mb-4 elevation-0 bg-white">
+          <v-img src="/logo.png" contain></v-img>
         </v-avatar>
         <h2 class="text-h5 font-weight-bold text-primary mb-1">
           <span>ຍິນດີຕ້ອນຮັບ</span>

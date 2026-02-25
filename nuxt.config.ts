@@ -1,43 +1,40 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'Lisfoom',
+      title: "Lisfoom",
       meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'format-detection', content: 'telephone=no' },
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "format-detection", content: "telephone=no" },
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: 'icon.png' },
+        { rel: "icon", type: "image/x-icon", href: "logo.png" },
         {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap',
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap",
         },
       ],
     },
-
   },
 
-  compatibilityDate: '2025-05-15',
+  compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
   build: {
-    transpile: ['vuetify'],
+    transpile: ["vuetify"],
   },
-  plugins:[
-    '~/plugins/axios.ts'
-  ],
+  plugins: ["~/plugins/axios.ts", "~/plugins/socket.client.ts"],
   modules: [
     "@vite-pwa/nuxt",
-    '@nuxt/content', 
-    '@nuxt/eslint',
-    '@pinia/nuxt',
+    "@nuxt/content",
+    "@nuxt/eslint",
+    "@pinia/nuxt",
     (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
+      nuxt.hooks.hook("vite:extendConfig", (config) => {
         // @ts-expect-error
-        config.plugins.push(vuetify({ autoImport: true }))
-      })
+        config.plugins.push(vuetify({ autoImport: true }));
+      });
     },
     //...
   ],
@@ -48,17 +45,17 @@ export default defineNuxtConfig({
       },
     },
   },
- 
- devServer: {
-    host: '0.0.0.0'
+
+  devServer: {
+    host: "0.0.0.0",
   },
 
-  // use pwa 
+  // use pwa
   pwa: {
     manifest: {
       name: "Lis Foom Vaj",
       short_name: "LFV",
-      theme_color:'#8a8a5e',
+      theme_color: "#8a8a5e",
       description: "Lis Foom Vaj",
       icons: [
         {
@@ -82,8 +79,6 @@ export default defineNuxtConfig({
           type: "image/png",
         },
       ],
-
-
     },
     client: {
       installPrompt: true,
@@ -91,19 +86,17 @@ export default defineNuxtConfig({
     },
     workbox: {
       navigateFallback: "/",
-      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
     },
     injectManifest: {
-      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
     },
     devOptions: {
       enabled: true,
       suppressWarnings: true,
-      navigateFallback: '/',
+      navigateFallback: "/",
       navigateFallbackAllowlist: [/^\/$/],
-      type: 'module',
-    }
-
-  }
-
-})
+      type: "module",
+    },
+  },
+});
