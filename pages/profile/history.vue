@@ -73,15 +73,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Inline chart -->
-          <div class="chart-inner">
-            <Line
-              :data="chartData"
-              :options="chartOptions"
-              style="height: 90px"
-            />
-          </div>
         </v-card>
       </v-container>
     </div>
