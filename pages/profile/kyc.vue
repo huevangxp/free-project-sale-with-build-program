@@ -79,7 +79,7 @@
           </div>
           <v-textarea
             v-if="f.type === 'textarea'"
-            v-model="profile[f.key]"
+            v-model="profile[f.key as keyof typeof profile]"
             :placeholder="f.placeholder"
             :prepend-inner-icon="f.icon"
             variant="outlined"
@@ -92,7 +92,7 @@
           ></v-textarea>
           <v-text-field
             v-else
-            v-model="profile[f.key]"
+            v-model="profile[f.key as keyof typeof profile]"
             :placeholder="f.placeholder"
             :prepend-inner-icon="f.icon"
             :disabled="f.disabled"
