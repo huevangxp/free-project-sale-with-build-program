@@ -373,12 +373,6 @@ onMounted(async () => {
   backdrop-filter: blur(10px);
 }
 
-.chart-inner {
-  background: rgba(0, 0, 0, 0.12);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 8px 12px;
-}
-
 /* Order cards */
 .order-card {
   border-radius: 16px !important;
