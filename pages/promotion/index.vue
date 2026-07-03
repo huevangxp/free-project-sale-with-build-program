@@ -131,8 +131,14 @@ const { promotions } = storeToRefs(apiPromotionStore);
 
 const { fetchPromotions } = apiPromotionStore;
 
-onMounted(() => {
-  fetchPromotions();
+const loading = ref(true);
+
+onMounted(async () => {
+  try {
+    await fetchPromotions();
+  } finally {
+    loading.value = false;
+  }
 });
 
 const downloadImage = (image) => {
