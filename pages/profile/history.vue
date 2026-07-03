@@ -55,9 +55,7 @@
               <v-icon size="16" color="teal-lighten-4" class="mb-1"
                 >mdi-trending-up</v-icon
               >
-              <div class="text-caption text-white" style="opacity: 0.7">
                 <span>ກຳໄລທີ່ໄດ້</span>
-              </div>
               <div class="text-subtitle-2 font-weight-bold text-teal-lighten-4">
                 + {{ formatMoneyLAK(totalProfit) }}
               </div>
