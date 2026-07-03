@@ -388,14 +388,17 @@ const shouldShowDate = (index) => {
 
 /* ============ Messages Area ============ */
 .messages-area {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
   gap: 6px;
   scrollbar-width: thin;
   scrollbar-color: #ddd transparent;
+  overscroll-behavior: contain;
 }
 
 .welcome-bubble {
