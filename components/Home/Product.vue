@@ -1,6 +1,57 @@
 <template>
   <div class="product-container pb-16 bg-grey-lighten-5">
-   
+    <!-- Categories Section -->
+    <div class="pt-6 px-4">
+      <div class="d-flex align-center justify-space-between mb-4">
+        <div class="d-flex align-center">
+          <v-icon color="primary" class="mr-2">mdi-shape</v-icon>
+          <h2 class="text-h6 font-weight-bold text-primary">
+            <span>ປະເພດສິນຄ້າ</span>
+          </h2>
+        </div>
+        <div
+          class="d-flex align-center text-primary cursor-pointer"
+          @click="navigateTo('/category')"
+        >
+          <span class="text-body-2 font-weight-medium">
+            <span>ເບິ່ງທັງໝົດ</span>
+          </span>
+          <v-icon size="small" class="ml-1">mdi-arrow-right</v-icon>
+        </div>
+      </div>
+
+      <v-slide-group show-arrows>
+        <v-slide-group-item
+          v-for="i in types"
+          :key="i.id"
+          v-slot="{ isSelected, toggle }"
+        >
+          <div class="d-flex flex-column align-center mr-4" @click="toggle">
+            <v-card
+              class="d-flex align-center justify-center rounded-xl mb-2"
+              :color="isSelected ? 'primary' : 'white'"
+              :elevation="0"
+              height="70"
+              width="70"
+              link
+            >
+              <v-img
+                :src="'http://localhost:8000/' + i.image"
+                cover
+                height="40"
+                width="40"
+              ></v-img>
+            </v-card>
+            <span
+              class="text-caption font-weight-medium text-grey-darken-1 text-truncate"
+              style="max-width: 70px"
+            >
+              <span>{{ i.title }}</span>
+            </span>
+          </div>
+        </v-slide-group-item>
+      </v-slide-group>
+    </div>
 
     <!-- Product Grid -->
     <v-container fluid class="px-4 mt-2">
