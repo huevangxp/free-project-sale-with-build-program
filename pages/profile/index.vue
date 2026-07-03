@@ -197,7 +197,7 @@ const items = [
   {
     icon: "mdi-cog-outline",
     title: "ຕັ້ງຄ່າ",
-    color: "grey-darken-1",
+    color: "blue-grey",
     description: "ຕັ້ງຄ່າບັນຊີ",
     link: "/profile/setting",
   },
