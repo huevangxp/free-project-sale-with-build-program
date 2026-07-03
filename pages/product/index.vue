@@ -140,6 +140,15 @@
           </v-hover>
         </v-col>
       </v-row>
+
+      <!-- Empty state -->
+      <div
+        v-if="filteredProducts.length === 0"
+        class="text-center py-16 text-medium-emphasis"
+      >
+        <v-icon size="64" color="grey-lighten-1">mdi-magnify-close</v-icon>
+        <p class="text-body-2 mt-2">ບໍ່ພົບສິນຄ້າ</p>
+      </div>
     </v-container>
 
     <!-- Add to Cart Dialog -->
