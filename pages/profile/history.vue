@@ -42,7 +42,7 @@
               style="line-height: 1"
               >{{ formatMoneyLAK(totalMoney).replace(" ₭", "") }}</span
             >
-            <span class="text-subtitle-1 text-white ml-2 mb-1">₭</span>
+            <span class="text-subtitle-1 text-white ml-2 mb-3">₭</span>
           </div>
 
           <!-- Stat pills -->
