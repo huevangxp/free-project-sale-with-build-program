@@ -25,51 +25,48 @@
         </div>
 
         <!-- Wallet summary -->
-        <v-card v-if="orders.length > 0" class="wallet-card" flat>
-          <div class="pa-5">
-            <div class="d-flex justify-space-between align-start">
-              <div>
-                <div class="text-caption text-white mb-1" style="opacity: 0.8">
-                  <span>ຍອດລວມທັງໝົດ</span>
-                </div>
-                <div class="d-flex align-end">
-                  <span
-                    class="text-h4 font-weight-bold text-white"
-                    style="line-height: 1"
-                    >{{ formatMoneyLAK(totalMoney).replace(" ₭", "") }}</span
-                  >
-                  <span class="text-subtitle-1 text-white ml-1">₭</span>
-                </div>
-              </div>
-              <v-avatar size="44" color="rgba(255,255,255,0.18)">
-                <v-icon color="white">mdi-wallet-outline</v-icon>
-              </v-avatar>
-            </div>
+        <v-card v-if="orders.length > 0" class="wallet-card pa-5" flat>
+          <!-- Balance -->
+          <div class="d-flex align-center mb-3">
+            <v-avatar size="38" color="rgba(255,255,255,0.18)" class="mr-3">
+              <v-icon color="white" size="20">mdi-wallet-outline</v-icon>
+            </v-avatar>
+            <span class="text-caption text-white" style="opacity: 0.85">
+              <span>ຍອດລວມທັງໝົດ</span>
+            </span>
+          </div>
 
-            <div class="d-flex align-center mt-5">
-              <div class="flex-grow-1">
-                <div class="text-caption text-white" style="opacity: 0.7">
-                  <span>ອໍເດີ້</span>
-                </div>
-                <div class="text-subtitle-1 font-weight-bold text-white">
-                  {{ orders.length }}
-                </div>
+          <div class="d-flex align-end mb-5">
+            <span
+              class="text-h3 font-weight-bold text-white"
+              style="line-height: 1"
+              >{{ formatMoneyLAK(totalMoney).replace(" ₭", "") }}</span
+            >
+            <span class="text-subtitle-1 text-white ml-2 mb-1">₭</span>
+          </div>
+
+          <!-- Stat pills -->
+          <div class="d-flex ga-3">
+            <div class="stat-pill flex-grow-1">
+              <v-icon size="16" color="white" class="mb-1"
+                >mdi-receipt-text-outline</v-icon
+              >
+              <div class="text-caption text-white" style="opacity: 0.7">
+                <span>ອໍເດີ້</span>
               </div>
-              <v-divider
-                vertical
-                color="white"
-                class="mx-4"
-                style="opacity: 0.2"
-              ></v-divider>
-              <div class="flex-grow-1 text-right">
-                <div class="text-caption text-white" style="opacity: 0.7">
-                  <span>ກຳໄລທີ່ໄດ້</span>
-                </div>
-                <div
-                  class="text-subtitle-1 font-weight-bold text-teal-lighten-4"
-                >
-                  + {{ formatMoneyLAK(totalProfit) }}
-                </div>
+              <div class="text-subtitle-2 font-weight-bold text-white">
+                {{ orders.length }}
+              </div>
+            </div>
+            <div class="stat-pill flex-grow-1">
+              <v-icon size="16" color="teal-lighten-4" class="mb-1"
+                >mdi-trending-up</v-icon
+              >
+              <div class="text-caption text-white" style="opacity: 0.7">
+                <span>ກຳໄລທີ່ໄດ້</span>
+              </div>
+              <div class="text-subtitle-2 font-weight-bold text-teal-lighten-4">
+                + {{ formatMoneyLAK(totalProfit) }}
               </div>
             </div>
           </div>
