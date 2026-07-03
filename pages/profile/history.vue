@@ -45,9 +45,7 @@
               <v-icon size="16" color="white" class="mb-1"
                 >mdi-receipt-text-outline</v-icon
               >
-              <div class="text-caption text-white" style="opacity: 0.7">
-                <span>ອໍເດີ້</span>
-              </div>
+               
               <div class="text-subtitle-2 font-weight-bold text-white">
                 {{ orders.length }}
               </div>
