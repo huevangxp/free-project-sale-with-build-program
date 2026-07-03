@@ -4,8 +4,6 @@
     style="min-height: 100vh"
   >
     <Header />
- 
-
     <!-- Product Grid -->
     <v-container fluid class="px-4">
       <div class="d-flex align-center justify-space-between mb-4">
