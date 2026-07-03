@@ -309,6 +309,20 @@ const dialogAddCart = ref(false);
 const itemDialog = ref({});
 const quantity = ref(1);
 
+// Search + category filter
+const search = ref("");
+const selectedCategory = ref(null);
+
+const filteredProducts = computed(() => {
+  const q = (search.value || "").trim().toLowerCase();
+  return products.value.filter((p) => {
+    const matchCategory =
+      !selectedCategory.value || p.category_id === selectedCategory.value;
+    const matchSearch = !q || (p.title || "").toLowerCase().includes(q);
+    return matchCategory && matchSearch;
+  });
+});
+
 onMounted(() => {
   fetchProducts();
   fetchProductTypes();
