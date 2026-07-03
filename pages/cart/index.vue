@@ -233,7 +233,7 @@
           </div>
           <div class="text-h6 font-weight-bold mb-2">ແຈ້ງເຕືອນ</div>
           <div class="text-body-1 text-medium-emphasis mb-4">
-            Please add product to cart!
+            ກະລຸນາເພີ່ມສິນຄ້າໃສ່ກະຕ່າກ່ອນ!
           </div>
           <v-btn
             color="primary"
