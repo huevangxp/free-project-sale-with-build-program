@@ -5,7 +5,7 @@
   >
     <!-- Profile Header -->
     <div
-      class="bg-primary pt-8 pb-16 rounded-xl mt-2 px-4 text-center position-relative"
+      class="bg-primary pt-10 pb-16 rounded-b-xl px-4 text-center position-relative"
     >
       <!-- Logout (top right) -->
       <v-btn
