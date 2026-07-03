@@ -116,27 +116,8 @@
               type="password"
               bg-color="grey-lighten-5"
               hide-details="auto"
-              class="mb-3"
-            ></v-text-field>
-          </v-col>
-
-          <v-col cols="12">
-            <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">
-              <span>ທີ່ຢູ່ປັດຈຸບັນ</span>
-            </div>
-            <v-textarea
-              v-model="address"
-              placeholder="ປ້ອນທີ່ຢູ່ຂອງທ່ານ"
-              variant="outlined"
-              density="comfortable"
-              color="primary"
-              rounded="lg"
-              prepend-inner-icon="mdi-map-marker-outline"
-              bg-color="grey-lighten-5"
-              hide-details="auto"
-              rows="2"
               class="mb-4"
-            ></v-textarea>
+            ></v-text-field>
           </v-col>
         </v-row>
 
