@@ -15,13 +15,54 @@
         </div>
       </div>
 
+      <!-- Search -->
+      <v-text-field
+        v-model="search"
+        placeholder="ຄົ້ນຫາສິນຄ້າ..."
+        prepend-inner-icon="mdi-magnify"
+        variant="solo-filled"
+        flat
+        density="comfortable"
+        hide-details
+        clearable
+        rounded="pill"
+        bg-color="white"
+        class="mb-4"
+      ></v-text-field>
+
+      <!-- Category filter -->
+      <v-slide-group class="mb-4" show-arrows>
+        <v-slide-group-item>
+          <v-chip
+            class="mr-2"
+            :color="selectedCategory === null ? 'primary' : undefined"
+            :variant="selectedCategory === null ? 'flat' : 'tonal'"
+            label
+            @click="selectedCategory = null"
+          >
+            ທັງໝົດ
+          </v-chip>
+        </v-slide-group-item>
+        <v-slide-group-item v-for="c in types" :key="c.id">
+          <v-chip
+            class="mr-2"
+            :color="selectedCategory === c.id ? 'primary' : undefined"
+            :variant="selectedCategory === c.id ? 'flat' : 'tonal'"
+            label
+            @click="selectedCategory = c.id"
+          >
+            {{ c.title }}
+          </v-chip>
+        </v-slide-group-item>
+      </v-slide-group>
+
       <v-row dense>
         <v-col
           cols="6"
           sm="4"
           md="3"
           lg="2"
-          v-for="(item, i) in products"
+          v-for="(item, i) in filteredProducts"
           :key="i"
         >
           <v-hover v-slot="{ isHovering, props }">
