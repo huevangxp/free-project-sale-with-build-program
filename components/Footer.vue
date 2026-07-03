@@ -10,14 +10,13 @@
       class="rounded-t-xl footer-shadow"
     >
       <v-btn value="home" to="/" class="nav-btn" :active="route.path === '/'">
-        <v-icon size="24" :color="route.path === '/' ? 'primary' : 'grey'"
-          >mdi-home</v-icon
-        >
-        <span
-          :class="route.path === '/' ? 'text-primary' : 'text-grey'"
-          class="text-caption mt-1"
-          >ໜ້າຫຼັກ</span
-        >
+        <div class="nav-pill" :class="{ 'nav-pill--active': route.path === '/' }">
+          <v-icon
+            size="26"
+            :color="route.path === '/' ? 'primary' : 'grey-darken-1'"
+            >mdi-home</v-icon
+          >
+        </div>
       </v-btn>
 
       <v-btn
@@ -26,32 +25,17 @@
         class="nav-btn"
         :active="route.path === '/promotion'"
       >
-        <v-icon
-          size="24"
-          :color="route.path === '/promotion' ? 'primary' : 'grey'"
-          >mdi-view-grid</v-icon
+        <div
+          class="nav-pill"
+          :class="{ 'nav-pill--active': route.path === '/promotion' }"
         >
-        <span
-          :class="route.path === '/promotion' ? 'text-primary' : 'text-grey'"
-          class="text-caption mt-1"
-          >ໂປຣໂມຊັ່ນ</span
-        >
+          <v-icon
+            size="26"
+            :color="route.path === '/promotion' ? 'primary' : 'grey-darken-1'"
+            >mdi-view-grid</v-icon
+          >
+        </div>
       </v-btn>
-
-      <!-- Central Floating Button -->
-      <!-- <div class="position-relative d-flex justify-center" style="width: 80px">
-        <v-btn
-          icon
-          class="floating-btn"
-          color="primary"
-          size="x-large"
-          elevation="4"
-          to="/scan"
-          style="position: absolute; top: -25px"
-        >
-          <v-icon size="32" color="white">mdi-magnify</v-icon>
-        </v-btn>
-      </div> -->
 
       <v-btn
         value="product"
@@ -59,16 +43,16 @@
         class="nav-btn"
         :active="route.path === '/product'"
       >
-        <v-icon
-          size="24"
-          :color="route.path === '/product' ? 'primary' : 'grey'"
-          >mdi-cart-outline</v-icon
+        <div
+          class="nav-pill"
+          :class="{ 'nav-pill--active': route.path === '/product' }"
         >
-        <span
-          :class="route.path === '/product' ? 'text-primary' : 'text-grey'"
-          class="text-caption mt-1"
-          >ສິນຄ້າ</span
-        >
+          <v-icon
+            size="26"
+            :color="route.path === '/product' ? 'primary' : 'grey-darken-1'"
+            >mdi-cart-outline</v-icon
+          >
+        </div>
       </v-btn>
 
       <v-btn
@@ -77,48 +61,31 @@
         class="nav-btn"
         :active="route.path === '/chat'"
       >
-        <v-badge
-          v-if="chatStore.unreadCount > 0"
-          color="error"
-          :content="chatStore.unreadCount"
-          offset-x="8"
-          offset-y="8"
+        <div
+          class="nav-pill"
+          :class="{ 'nav-pill--active': route.path === '/chat' }"
         >
-          <v-icon size="24" :color="route.path === '/chat' ? 'primary' : 'grey'"
+          <v-badge
+            v-if="chatStore.unreadCount > 0"
+            color="error"
+            :content="chatStore.unreadCount"
+            offset-x="6"
+            offset-y="6"
+          >
+            <v-icon
+              size="26"
+              :color="route.path === '/chat' ? 'primary' : 'grey-darken-1'"
+              >mdi-chat-outline</v-icon
+            >
+          </v-badge>
+          <v-icon
+            v-else
+            size="26"
+            :color="route.path === '/chat' ? 'primary' : 'grey-darken-1'"
             >mdi-chat-outline</v-icon
           >
-        </v-badge>
-        <v-icon
-          v-else
-          size="24"
-          :color="route.path === '/chat' ? 'primary' : 'grey'"
-          >mdi-chat-outline</v-icon
-        >
-        <span
-          :class="route.path === '/chat' ? 'text-primary' : 'text-grey'"
-          class="text-caption mt-1"
-          >ສົນທະນາ</span
-        >
+        </div>
       </v-btn>
-      <!-- <v-btn
-        value="profile/history"
-        to="/profile/history"
-        class="nav-btn"
-        :active="route.path === '/profile/history'"
-      >
-        <v-icon
-          size="24"
-          :color="route.path === '/profile/history' ? 'primary' : 'grey'"
-          >mdi-history</v-icon
-        >
-        <span
-          :class="
-            route.path === '/profile/history' ? 'text-primary' : 'text-grey'
-          "
-          class="text-caption mt-1"
-          >History</span
-        >
-      </v-btn> -->
 
       <v-btn
         value="profile"
@@ -126,16 +93,16 @@
         class="nav-btn"
         :active="route.path === '/profile'"
       >
-        <v-icon
-          size="24"
-          :color="route.path === '/profile' ? 'primary' : 'grey'"
-          >mdi-account</v-icon
+        <div
+          class="nav-pill"
+          :class="{ 'nav-pill--active': route.path === '/profile' }"
         >
-        <span
-          :class="route.path === '/profile' ? 'text-primary' : 'text-grey'"
-          class="text-caption mt-1"
-          >ໂປຣໄຟລ໌</span
-        >
+          <v-icon
+            size="26"
+            :color="route.path === '/profile' ? 'primary' : 'grey-darken-1'"
+            >mdi-account</v-icon
+          >
+        </div>
       </v-btn>
     </v-bottom-navigation>
   </v-layout>
