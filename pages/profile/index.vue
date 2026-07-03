@@ -91,36 +91,34 @@
         </h3>
       </div>
 
-      <v-card class="rounded-xl mb-4" border flat color="white">
-        <v-list class="py-0 bg-transparent">
-          <template v-for="(item, i) in items" :key="i">
-            <v-list-item :to="item.link" class="px-4 py-2 menu-line" link>
-              <template #prepend>
-                <v-avatar
-                  size="42"
-                  :color="item.color + '-lighten-5'"
-                  class="mr-3"
-                >
-                  <v-icon size="22" :color="item.color">{{ item.icon }}</v-icon>
-                </v-avatar>
-              </template>
-
-              <v-list-item-title class="font-weight-bold">
-                {{ item.title }}
-              </v-list-item-title>
-              <v-list-item-subtitle class="text-caption">
-                {{ item.description }}
-              </v-list-item-subtitle>
-
-              <template #append>
-                <v-icon color="grey-lighten-1">mdi-chevron-right</v-icon>
-              </template>
-            </v-list-item>
-
-            <v-divider v-if="i < items.length - 1" class="mx-4"></v-divider>
-          </template>
-        </v-list>
-      </v-card>
+      <v-row dense>
+        <v-col cols="6" sm="4" v-for="(item, i) in items" :key="i">
+          <v-card
+            class="rounded-xl fill-height menu-card"
+            border
+            flat
+            color="white"
+            :to="item.link"
+            link
+          >
+            <div class="pa-4 d-flex flex-column align-center text-center h-100">
+              <v-avatar
+                size="52"
+                :color="item.color + '-lighten-5'"
+                class="mb-3"
+              >
+                <v-icon size="26" :color="item.color">{{ item.icon }}</v-icon>
+              </v-avatar>
+              <div class="text-subtitle-2 font-weight-bold mb-1">
+                <span>{{ item.title }}</span>
+              </div>
+              <div class="text-caption text-medium-emphasis line-clamp-2">
+                <span>{{ item.description }}</span>
+              </div>
+            </div>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>
