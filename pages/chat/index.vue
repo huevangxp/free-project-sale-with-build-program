@@ -178,7 +178,7 @@ const shouldShowDate = (index) => {
       <!-- Welcome message -->
       <div class="welcome-bubble">
         <v-icon size="32" color="primary">mdi-hand-wave</v-icon>
-        <p>Welcome! How can we help you today?</p>
+        <p>ຍິນດີຕ້ອນຮັບ! ມີຫຍັງໃຫ້ພວກເຮົາຊ່ວຍບໍ?</p>
       </div>
 
       <template v-for="(msg, index) in chatStore.messages" :key="msg.id">
