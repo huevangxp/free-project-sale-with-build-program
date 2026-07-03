@@ -97,7 +97,7 @@
         <span
           :class="route.path === '/chat' ? 'text-primary' : 'text-grey'"
           class="text-caption mt-1"
-          >Chat</span
+          >ສົນທະນາ</span
         >
       </v-btn>
       <!-- <v-btn
@@ -134,7 +134,7 @@
         <span
           :class="route.path === '/profile' ? 'text-primary' : 'text-grey'"
           class="text-caption mt-1"
-          >Profile</span
+          >ໂປຣໄຟລ໌</span
         >
       </v-btn>
     </v-bottom-navigation>
