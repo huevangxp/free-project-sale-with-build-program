@@ -131,13 +131,23 @@ onMounted(async () => {
 }
 .nav-btn {
   min-width: auto !important;
-  padding: 0 12px;
+  padding: 0 8px;
 }
 .nav-btn :deep(.v-btn__content) {
-  flex-direction: column;
   opacity: 1 !important;
 }
-.floating-btn {
-  border: 4px solid white;
+/* Modern Material-3 style pill highlight behind the active icon */
+.nav-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 34px;
+  border-radius: 999px;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+.nav-pill--active {
+  background-color: rgba(var(--v-theme-primary), 0.12);
+  transform: translateY(-1px);
 }
 </style>
