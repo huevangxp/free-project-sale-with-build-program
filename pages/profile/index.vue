@@ -190,7 +190,7 @@ const items = [
   {
     icon: "mdi-lock-reset",
     title: "ລະຫັດຜ່ານ",
-    color: "red",
+    color: "blue-grey",
     description: "ປ່ຽນລະຫັດຜ່ານ",
     link: "/profile/change_password",
   },
