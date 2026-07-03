@@ -37,11 +37,7 @@
           </div>
 
           <div class="d-flex align-end">
-            <span
-              class="text-h3 font-weight-bold text-white"
-              style="line-height: 1"
-              >{{ formatMoneyLAK(totalMoney).replace(" ₭", "") }}</span
-            >
+           
             <span class="text-subtitle-1 text-white ml-2 mb-1">₭</span>
           </div>
         </v-card>
