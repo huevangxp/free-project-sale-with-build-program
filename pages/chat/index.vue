@@ -606,7 +606,8 @@ const shouldShowDate = (index) => {
 @media (max-width: 600px) {
   .chat-page-customer {
     border-radius: 0;
-    height: 100vh;
+    height: calc(100dvh - 70px);
+    max-height: calc(100dvh - 70px);
     max-width: 100%;
   }
 
