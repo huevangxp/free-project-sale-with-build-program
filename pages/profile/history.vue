@@ -290,23 +290,36 @@ const sortedOrders = computed(() => {
   );
 });
 
-// Group orders by date for the sectioned list
+// Group orders by day (newest first) for the sectioned list
 const groupedOrders = computed(() => {
   const groups = {};
   sortedOrders.value.forEach((order) => {
     const d = new Date(order.created_at);
-    const dateStr = d.toLocaleDateString("en-GB", {
-      weekday: "short",
-      day: "2-digit",
-      month: "short",
-    });
-    if (!groups[dateStr]) {
-      groups[dateStr] = [];
+    const key = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+    if (!groups[key]) {
+      groups[key] = { key, date: d, items: [] };
     }
-    groups[dateStr].push(order);
+    groups[key].items.push(order);
   });
-  return groups;
+  return Object.values(groups);
 });
+
+// Friendly label: ມື້ນີ້ (Today) / ມື້ວານນີ້ (Yesterday) / full date
+const groupLabel = (date) => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const d = new Date(date);
+  d.setHours(0, 0, 0, 0);
+  const diffDays = Math.round((today - d) / 86400000);
+
+  if (diffDays === 0) return "ມື້ນີ້";
+  if (diffDays === 1) return "ມື້ວານນີ້";
+  return d.toLocaleDateString("en-GB", {
+    weekday: "short",
+    day: "2-digit",
+    month: "short",
+  });
+};
 
 const getStatusColor = (status) => {
   const colors = {
