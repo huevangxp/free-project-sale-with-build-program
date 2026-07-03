@@ -4,45 +4,7 @@
     style="min-height: 100vh"
   >
     <Header />
-    <!-- Filter Section -->
-    <div class="px-4 pt-4">
-      <v-card elevation="0" rounded="xl" color="white" class="my-4 border-0">
-        <v-card-text class="pa-4">
-          <v-row dense>
-            <v-col cols="8" sm="8">
-              <v-select
-                v-model="select_id"
-                :items="types"
-                placeholder="ເລືອກປະເພດສິນຄ້າ"
-                item-title="title"
-                item-value="id"
-                variant="outlined"
-                density="comfortable"
-                rounded="lg"
-                color="primary"
-                prepend-inner-icon="mdi-filter-variant"
-                bg-color="grey-lighten-5"
-                class="rounded-lg"
-              ></v-select>
-            </v-col>
-            <v-col cols="4" sm="4">
-              <v-btn
-                color="primary"
-                elevation="0"
-                rounded="lg"
-                height="48"
-                block
-                @click="fetchProducts"
-                class="text-capitalize"
-              >
-                <v-icon start>mdi-magnify</v-icon>
-                ຄົ້ນຫາ
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-card-text>
-      </v-card>
-    </div>
+ 
 
     <!-- Product Grid -->
     <v-container fluid class="px-4">
