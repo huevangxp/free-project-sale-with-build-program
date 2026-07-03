@@ -66,24 +66,6 @@
 
           <v-col cols="12">
             <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">
-              <span>ອີເມວ</span>
-            </div>
-            <v-text-field
-              v-model="email"
-              placeholder="ປ້ອນອີເມວ"
-              variant="outlined"
-              density="comfortable"
-              color="primary"
-              rounded="lg"
-              prepend-inner-icon="mdi-email-outline"
-              bg-color="grey-lighten-5"
-              hide-details="auto"
-              class="mb-3"
-            ></v-text-field>
-          </v-col>
-
-          <v-col cols="12">
-            <div class="text-subtitle-2 font-weight-bold mb-1 ml-1">
               <span>ລະຫັດຜູ້ແນະນຳ (ຖ້າມີ)</span>
             </div>
             <v-text-field
