@@ -194,13 +194,7 @@ const items = [
     description: "ປ່ຽນລະຫັດຜ່ານ",
     link: "/profile/change_password",
   },
-  {
-    icon: "mdi-cog-outline",
-    title: "ຕັ້ງຄ່າ",
-    color: "blue-grey",
-    description: "ຕັ້ງຄ່າບັນຊີ",
-    link: "/profile/setting",
-  },
+  
 ];
 </script>
 
