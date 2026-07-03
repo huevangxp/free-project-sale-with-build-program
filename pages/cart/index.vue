@@ -222,7 +222,7 @@
           <span>ເລືອກຊື້ສິນຄ້າທີ່ທ່ານຕ້ອງການ</span>
         </p>
         <v-btn color="primary" variant="tonal" rounded="xl" to="/product">
-          <span>ເປໜ້າສິນຄ້າ</span>
+          <span>ໄປໜ້າສິນຄ້າ</span>
         </v-btn>
       </div>
       <!-- Warning Dialog -->
