@@ -109,31 +109,17 @@
     <!-- Add to Cart Dialog -->
     <v-dialog
       v-model="dialogAddCart"
-      max-width="450"
+      max-width="440"
       transition="dialog-bottom-transition"
     >
-      <v-card class="rounded-xl overflow-hidden">
+      <v-card rounded="xl" class="overflow-hidden">
+        <!-- Hero image -->
         <div class="position-relative">
           <v-img
             :src="'http://localhost:8000/' + itemDialog.image"
-            height="300"
+            height="240"
             cover
-          >
-            <div
-              class="d-flex flex-column fill-height justify-end pa-4"
-              style="
-                background: linear-gradient(
-                  to top,
-                  rgba(0, 0, 0, 0.7),
-                  transparent
-                );
-              "
-            >
-              <h3 class="text-h5 font-weight-bold text-white">
-                <span>{{ itemDialog.title }}</span>
-              </h3>
-            </div>
-          </v-img>
+          ></v-img>
           <v-btn
             icon="mdi-close"
             variant="flat"
@@ -144,84 +130,104 @@
           ></v-btn>
         </div>
 
-        <v-card-text class="pt-4 pb-2">
-          <div class="d-flex justify-space-between align-center mb-4">
-            <span class="text-medium-emphasis">ລາຄາ</span>
-            <h3 class="text-h4 font-weight-bold text-primary">
-              <span>{{ formatMoneyLAK(itemDialog.price) }}</span>
+        <v-card-text class="pa-5">
+          <!-- Title + price -->
+          <div class="d-flex align-start justify-space-between ga-3 mb-4">
+            <h3 class="text-subtitle-1 font-weight-bold">
+              <span>{{ itemDialog.title }}</span>
             </h3>
+            <v-chip
+              color="primary"
+              variant="flat"
+              label
+              size="large"
+              class="font-weight-bold flex-shrink-0"
+            >
+              {{ formatMoneyLAK(itemDialog.price) }}
+            </v-chip>
           </div>
 
-          <p
-            class="text-body-2 text-medium-emphasis mb-4 bg-grey-lighten-5 pa-3 rounded-lg"
-          >
+          <!-- Description -->
+          <p class="text-body-2 text-medium-emphasis mb-5">
             <span>{{ itemDialog.description || "ບໍ່ມີຄຳອະທິບາຍ" }}</span>
           </p>
 
-          <v-divider class="mb-4"></v-divider>
-
-          <!-- Profit Info -->
-          <div
-            class="bg-teal-lighten-5 rounded-lg pa-3 mb-4 border-dashed"
-            style="border-color: rgba(0, 128, 128, 0.2)"
-          >
+          <!-- Profit / discount info -->
+          <v-sheet color="teal-lighten-5" rounded="lg" class="pa-4 mb-5">
             <div
-              class="text-subtitle-2 font-weight-bold text-primary mb-2 d-flex align-center"
+              class="d-flex align-center text-subtitle-2 font-weight-bold text-primary mb-3"
             >
-              <v-icon start size="small" color="primary">mdi-chart-line</v-icon>
+              <v-icon start size="small">mdi-chart-line</v-icon>
               <span>ກຳໄລ່ຈາກການຊື້ສິນຄ້າ</span>
             </div>
-            <div class="text-caption text-medium-emphasis pl-1">
-              <div class="d-flex justify-space-between mb-1">
-                <span>10 ລົງມາ:</span>
-                <span class="font-weight-bold text-secondary"
-                  >{{ formatMoneyLAK(0) }} ກິບ / ອັນ</span
-                >
-              </div>
-              <div
-                v-for="(d, index) in discount"
-                :key="index"
-                class="d-flex justify-space-between mb-1"
+            <div class="d-flex justify-space-between text-body-2 mb-2">
+              <span class="text-medium-emphasis">10 ລົງມາ</span>
+              <span class="font-weight-bold text-secondary">
+                {{ formatMoneyLAK(0) }} ກິບ / ອັນ
+              </span>
+            </div>
+            <div
+              v-for="(d, index) in discount"
+              :key="index"
+              class="d-flex justify-space-between text-body-2 mb-2"
+            >
+              <span class="text-medium-emphasis">{{ d.product_amount }} ຂື້ນໄປ</span>
+              <span class="font-weight-bold text-secondary">
+                {{ formatMoneyLAK(d.discount_price) }} ກິບ / ອັນ
+              </span>
+            </div>
+          </v-sheet>
+
+          <!-- Quantity stepper -->
+          <div class="d-flex align-center justify-space-between">
+            <span class="text-subtitle-2 font-weight-medium">ຈຳນວນ</span>
+            <div class="d-flex align-center ga-3">
+              <v-btn
+                icon="mdi-minus"
+                variant="tonal"
+                color="primary"
+                size="small"
+                :disabled="quantity <= 1"
+                @click="quantity--"
+              ></v-btn>
+              <span
+                class="text-subtitle-1 font-weight-bold text-center d-inline-block"
+                style="min-width: 32px"
               >
-                <span>{{ d.product_amount }} ຂື້ນໄປ:</span>
-                <span class="font-weight-bold text-secondary"
-                  >{{ formatMoneyLAK(d.discount_price) }} ກິບ / ອັນ</span
-                >
-              </div>
+                {{ quantity }}
+              </span>
+              <v-btn
+                icon="mdi-plus"
+                variant="tonal"
+                color="primary"
+                size="small"
+                @click="quantity++"
+              ></v-btn>
             </div>
           </div>
         </v-card-text>
 
-        <v-card-actions class="pa-4 pt-0">
-          <v-row dense align="center">
-            <v-col cols="4">
-              <v-text-field
-                v-model.number="quantity"
-                type="number"
-                variant="outlined"
-                density="compact"
-                hide-details
-                label="ຈຳນວນ"
-                min="1"
-                class="centered-input rounded-lg"
-                color="primary"
-              ></v-text-field>
-            </v-col>
-            <v-col cols="8">
-              <v-btn
-                block
-                color="primary"
-                size="large"
-                rounded="pill"
-                elevation="0"
-                :disabled="quantity <= 0"
-                @click="addProductToCart"
-              >
-                <v-icon start>mdi-cart-arrow-down</v-icon>
-                ເພີ່ມເຂົ້າກະຕ່າ
-              </v-btn>
-            </v-col>
-          </v-row>
+        <v-divider></v-divider>
+
+        <v-card-actions class="pa-4 d-block">
+          <div class="d-flex align-center justify-space-between mb-3">
+            <span class="text-body-2 text-medium-emphasis">ລວມທັງໝົດ</span>
+            <span class="text-h6 font-weight-bold text-primary">
+              {{ formatMoneyLAK((itemDialog.price || 0) * quantity) }}
+            </span>
+          </div>
+          <v-btn
+            block
+            color="primary"
+            size="large"
+            rounded="pill"
+            variant="flat"
+            :disabled="quantity <= 0"
+            @click="addProductToCart"
+          >
+            <v-icon start>mdi-cart-arrow-down</v-icon>
+            ເພີ່ມເຂົ້າກະຕ່າ
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
