@@ -282,6 +282,7 @@ const shouldShowDate = (index) => {
 
 /* ============ Top Bar ============ */
 .chat-top-bar {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
