@@ -395,6 +395,13 @@ onMounted(async () => {
   backdrop-filter: blur(10px);
 }
 
+.stat-pill {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 12px 14px;
+}
+
 /* Order cards */
 .order-card {
   border-radius: 16px !important;
