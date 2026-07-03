@@ -87,18 +87,7 @@
             <v-icon size="16" color="primary" class="mr-2"
               >mdi-calendar-blank-outline</v-icon
             >
-            <span class="text-caption font-weight-bold text-primary">
-              {{ groupLabel(group.date) }}
-            </span>
-            <v-divider class="ml-3"></v-divider>
-            <v-chip
-              size="x-small"
-              variant="tonal"
-              color="primary"
-              class="ml-3 font-weight-bold"
-            >
-              {{ group.items.length }}
-            </v-chip>
+           
           </div>
 
           <v-slide-y-transition group>
