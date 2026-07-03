@@ -231,7 +231,6 @@
 <script setup>
 import { useFormat } from "@/composables/useFormat";
 import { storeToRefs } from "pinia";
-import { useApiProductTypeStore } from "@/stores/apiProductType";
 import { useApiProductStore } from "@/stores/apiProduct";
 import { useApiCartStore } from "@/stores/apiCart";
 import { useApiSetProfitStore } from "@/stores/apiSetProfit";
