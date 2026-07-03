@@ -7,6 +7,19 @@
     <div
       class="bg-primary pt-8 pb-16 rounded-xl mt-2 px-4 text-center position-relative"
     >
+      <!-- Logout (top right) -->
+      <v-btn
+        icon
+        variant="tonal"
+        color="white"
+        size="small"
+        class="position-absolute"
+        style="top: 12px; right: 12px"
+        @click="logout"
+      >
+        <v-icon size="20">mdi-logout</v-icon>
+      </v-btn>
+
       <v-avatar
         size="100"
         class="mb-3 border-2 border-white"
