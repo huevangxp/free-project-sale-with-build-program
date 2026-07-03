@@ -220,4 +220,21 @@ const submitPayment = () => {
 .product-container {
   background-color: #f8f9fa;
 }
+/* QR framed box */
+.qr-frame {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  background: #fff;
+}
+/* Prominent amount-due banner */
+.due-banner {
+  padding: 14px;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgb(var(--v-theme-primary)) 0%,
+    #2d7a74 100%
+  );
+}
 </style>
