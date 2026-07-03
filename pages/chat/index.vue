@@ -161,14 +161,14 @@ const shouldShowDate = (index) => {
           <span class="online-indicator"></span>
         </div>
         <div class="admin-info">
-          <span class="admin-name">Customer Support</span>
+          <span class="admin-name">ຝ່າຍບໍລິການລູກຄ້າ</span>
           <span v-if="isTyping" class="admin-status typing">
             <span class="dot-typing"
               ><span></span><span></span><span></span
             ></span>
-            typing...
+            ກຳລັງພິມ...
           </span>
-          <span v-else class="admin-status">Online</span>
+          <span v-else class="admin-status">ອອນລາຍ</span>
         </div>
       </div>
     </div>
