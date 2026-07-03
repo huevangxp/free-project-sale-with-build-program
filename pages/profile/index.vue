@@ -39,7 +39,7 @@
 
     <!-- Info Card -->
     <v-container class="mt-n12 px-4">
-      <v-card class="rounded-xl mb-4" elevation="6" color="white">
+      <v-card class="rounded-xl mb-4" border flat color="white">
         <v-card-text class="pa-4">
           <v-row dense>
             <v-col cols="4" class="text-center border-e">
