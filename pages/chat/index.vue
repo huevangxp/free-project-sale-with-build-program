@@ -128,11 +128,11 @@ const formatDateSeparator = (dateStr) => {
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
 
-  if (date.toDateString() === today.toDateString()) return "Today";
-  if (date.toDateString() === yesterday.toDateString()) return "Yesterday";
-  return date.toLocaleDateString("en-US", {
-    month: "short",
+  if (date.toDateString() === today.toDateString()) return "ມື້ນີ້";
+  if (date.toDateString() === yesterday.toDateString()) return "ມື້ວານນີ້";
+  return date.toLocaleDateString("en-GB", {
     day: "numeric",
+    month: "short",
     year: "numeric",
   });
 };
