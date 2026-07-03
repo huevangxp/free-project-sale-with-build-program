@@ -162,12 +162,14 @@
           </v-btn>
         </div>
 
-        <div class="d-flex justify-center" style="background: #000">
+        <div class="video-stage d-flex justify-center">
           <iframe
-            :src="`https://www.tiktok.com/embed/${link.video_id}`"
-            style="width: 100%; max-width: 440px; height: 550px; border: none"
+            v-if="link.video_id"
+            :src="`https://www.tiktok.com/embed/v2/${link.video_id}`"
+            class="video-frame"
             allow="encrypted-media"
             loading="lazy"
+            scrolling="no"
           ></iframe>
         </div>
       </v-card>
