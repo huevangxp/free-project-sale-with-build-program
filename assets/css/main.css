@@ -1,0 +1,79 @@
+/* =====================================================================
+   Global typography normalization
+   - Titles / headings ........ 16px
+   - Body / general text ...... 12px
+   Applies across the whole app (Vuetify + plain HTML).
+   ===================================================================== */
+
+:root {
+  --app-title-size: 16px;
+  --app-text-size: 12px;
+}
+
+/* ---- Base ---------------------------------------------------------- */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body,
+.v-application {
+  font-family: "Noto Sans Lao", sans-serif;
+  font-size: var(--app-text-size);
+  line-height: 1.6;
+}
+
+/* Plain span/div/p inherit their parent's size (title = 16, body = 12),
+   so titles that wrap text in <span> stay 16px automatically. */
+
+/* ---- Titles / headings  → 16px ------------------------------------ */
+h1, h2, h3, h4, h5, h6,
+.text-h1, .text-h2, .text-h3, .text-h4, .text-h5, .text-h6,
+.text-subtitle-1, .text-subtitle-2,
+.v-card-title,
+.v-toolbar-title,
+.v-list-item-title,
+.v-app-bar-title {
+  font-size: var(--app-title-size) !important;
+  line-height: 1.4 !important;
+  letter-spacing: normal !important;
+  word-break: break-word;
+}
+
+/* Keep title weight readable but not oversized */
+.v-card-title {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+/* ---- Body / supporting text  → 12px ------------------------------- */
+.text-body-1, .text-body-2,
+.text-caption, .text-overline,
+.v-card-text,
+.v-list-item-subtitle,
+.v-btn,
+.v-btn__content,
+.v-field,
+.v-field__input,
+.v-label,
+.v-chip,
+.v-tab,
+.v-table {
+  font-size: var(--app-text-size) !important;
+  line-height: 1.6 !important;
+  letter-spacing: normal !important;
+}
+
+/* Overline is usually a hair smaller as a label; keep it aligned to text */
+.text-overline {
+  text-transform: uppercase;
+}
+
+/* ---- Small polish so the UI reads cleanly ------------------------- */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  max-width: 100%;
+}
