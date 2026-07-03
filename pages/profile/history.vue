@@ -87,18 +87,30 @@
         </v-card>
       </template>
 
-      <div v-else-if="Object.keys(groupedOrders).length > 0">
-        <div v-for="(items, date) in groupedOrders" :key="date" class="mb-5">
+      <div v-else-if="groupedOrders.length > 0">
+        <div v-for="group in groupedOrders" :key="group.key" class="mb-5">
           <!-- Date header -->
-          <div
-            class="text-caption font-weight-bold text-medium-emphasis mb-2 px-1"
-          >
-            {{ date }}
+          <div class="d-flex align-center mb-3 px-1">
+            <v-icon size="16" color="primary" class="mr-2"
+              >mdi-calendar-blank-outline</v-icon
+            >
+            <span class="text-caption font-weight-bold text-primary">
+              {{ groupLabel(group.date) }}
+            </span>
+            <v-divider class="ml-3"></v-divider>
+            <v-chip
+              size="x-small"
+              variant="tonal"
+              color="primary"
+              class="ml-3 font-weight-bold"
+            >
+              {{ group.items.length }}
+            </v-chip>
           </div>
 
           <v-slide-y-transition group>
             <v-card
-              v-for="(order, i) in items"
+              v-for="(order, i) in group.items"
               :key="i"
               class="order-card mb-3"
               flat
