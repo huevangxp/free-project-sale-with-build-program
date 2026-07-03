@@ -40,7 +40,11 @@
             >
             </span>
           </div>
-
+          <span
+              class="text-h3 font-weight-bold text-white"
+              style="line-height: 1"
+              >{{ formatMoneyLAK(totalMoney).replace(" ₭", "") }}</span
+            >
       
         </v-card>
         
@@ -317,13 +321,6 @@ const getStatusText = (status) => {
 const totalMoney = computed(() => {
   return orders.value.reduce(
     (sum, order) => sum + parseFloat(order.total_price || 0),
-    0,
-  );
-});
-
-const totalProfit = computed(() => {
-  return orders.value.reduce(
-    (sum, order) => sum + parseFloat(order.all_profit || 0),
     0,
   );
 });
