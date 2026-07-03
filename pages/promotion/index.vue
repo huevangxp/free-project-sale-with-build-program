@@ -154,17 +154,28 @@ const downloadImage = (image) => {
   background-color: #f8f9fa;
 }
 .promotion-card {
-  transition: all 0.3s ease;
-  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .promotion-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05) !important;
 }
 .promotion-image {
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 .zoom-effect {
-  transform: scale(1.05);
+  transform: scale(1.06);
+}
+.promotion-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.35),
+    transparent 45%
+  );
+  pointer-events: none;
+}
+.promotion-overlay .v-chip {
+  pointer-events: auto;
 }
 </style>
