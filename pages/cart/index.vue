@@ -104,8 +104,9 @@
         <v-card
           v-for="(item, i) in cart"
           :key="i"
-          class="mb-3 rounded-xl border-0"
-          elevation="0"
+          class="mb-3 rounded-xl"
+          border
+          flat
           color="white"
         >
           <div class="d-flex pa-3">
