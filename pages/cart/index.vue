@@ -24,7 +24,7 @@
 
     <v-container fluid class="px-4 mt-n8">
       <!-- Summary Card -->
-      <v-card class="rounded-xl mb-4" elevation="4" color="white">
+      <v-card class="rounded-xl mb-4" border flat color="white">
         <v-card-text class="pa-4">
           <div class="d-flex align-center justify-space-between mb-4">
             <div class="d-flex align-center">
