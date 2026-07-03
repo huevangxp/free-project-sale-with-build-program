@@ -40,25 +40,28 @@
             >
             </span>
           </div>
-          <div class="d-flex ga-3">
-            <div class="stat-pill flex-grow-1">
-              <v-icon size="16" color="white" class="mb-1"
-                >mdi-receipt-text-outline</v-icon>
-              <span>ອໍເດີ້</span>
-
-               
-              <div class="text-subtitle-2 font-weight-bold text-white">
-                {{ orders.length }}
-              </div>
+          <div class="d-flex align-center ga-5">
+            <div class="d-flex align-center">
+              <v-icon size="15" color="white" class="mr-1" style="opacity: 0.8"
+                >mdi-receipt-text-outline</v-icon
+              >
+              <span class="text-caption text-white mr-1" style="opacity: 0.7"
+                >ອໍເດີ້</span
+              >
+              <span class="text-caption font-weight-bold text-white">{{
+                orders.length
+              }}</span>
             </div>
-            <div class="stat-pill flex-grow-1">
-              <v-icon size="16" color="teal-lighten-4" class="mb-1"
+            <div class="d-flex align-center">
+              <v-icon size="15" color="teal-lighten-4" class="mr-1"
                 >mdi-trending-up</v-icon
               >
-                <span>ກຳໄລທີ່ໄດ້</span>
-              <div class="text-subtitle-2 font-weight-bold text-teal-lighten-4">
-                + {{ formatMoneyLAK(totalProfit) }}
-              </div>
+              <span class="text-caption text-white mr-1" style="opacity: 0.7"
+                >ກຳໄລ</span
+              >
+              <span class="text-caption font-weight-bold text-teal-lighten-4"
+                >+ {{ formatMoneyLAK(totalProfit) }}</span
+              >
             </div>
           </div>
       
