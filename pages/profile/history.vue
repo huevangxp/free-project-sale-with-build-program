@@ -341,6 +341,13 @@ const totalMoney = computed(() => {
   );
 });
 
+const totalProfit = computed(() => {
+  return orders.value.reduce(
+    (sum, order) => sum + parseFloat(order.all_profit || 0),
+    0,
+  );
+});
+
 onMounted(async () => {
   try {
     await getOrders();
