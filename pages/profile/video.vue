@@ -246,4 +246,18 @@ const openVideo = (item) => {
     #2d7a74 100%
   );
 }
+
+/* Video player stage — responsive, fits the screen */
+.video-stage {
+  background: #000;
+  padding: 8px;
+}
+.video-frame {
+  width: 100%;
+  max-width: 420px;
+  height: 78vh;
+  max-height: 740px;
+  border: none;
+  border-radius: 8px;
+}
 </style>
