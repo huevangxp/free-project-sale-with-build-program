@@ -148,10 +148,12 @@ const firstLetter = computed(
   background-color: #f8f9fa;
 }
 .team-card {
-  transition: all 0.3s ease;
+  transition: border-color 0.25s ease, background-color 0.25s ease,
+    transform 0.25s ease;
 }
 .team-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(var(--v-theme-primary), 0.5) !important;
+  background-color: rgba(var(--v-theme-primary), 0.04) !important;
+  transform: translateY(-3px);
 }
 </style>
