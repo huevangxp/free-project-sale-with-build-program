@@ -81,8 +81,9 @@
       <v-row dense>
         <v-col cols="6" sm="4" v-for="(item, i) in items" :key="i">
           <v-card
-            class="rounded-xl fill-height border-0"
-            elevation="0"
+            class="rounded-xl fill-height menu-card"
+            border
+            flat
             color="white"
             :to="item.link"
             link
