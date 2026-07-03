@@ -183,7 +183,7 @@ const items = [
   {
     icon: "mdi-video",
     title: "ວິດີໂອ",
-    color: "purple",
+    color: "blue-grey",
     description: "ບັນທຶກວິດີໂອ",
     link: "/profile/video",
   },
