@@ -85,6 +85,16 @@ export default defineNuxtConfig({
     },
     workbox: {
       navigateFallback: "/",
+      // Don't serve index.html (SPA fallback) for these — otherwise the
+      // Vue router tries to match paths like /workbox-*.js and warns
+      // "No match found for location with path ...".
+      navigateFallbackDenylist: [
+        /^\/workbox-.*\.js$/,
+        /^\/sw\.js$/,
+        /^\/dev-sw\.js$/,
+        /^\/manifest.*\.(json|webmanifest)$/,
+        /\.(js|css|png|jpg|jpeg|svg|ico|json|txt|map)$/,
+      ],
       globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
     },
     injectManifest: {
