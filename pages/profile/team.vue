@@ -128,8 +128,14 @@ import { useApiAuthStore } from "@/stores/apiAuth";
 const apiAuthStore = useApiAuthStore();
 const { teams } = storeToRefs(apiAuthStore);
 
-onMounted(() => {
-  apiAuthStore.getTeamByMycodeInvite();
+const loading = ref(true);
+
+onMounted(async () => {
+  try {
+    await apiAuthStore.getTeamByMycodeInvite();
+  } finally {
+    loading.value = false;
+  }
 });
 
 const firstLetter = computed(
