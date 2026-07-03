@@ -82,14 +82,7 @@
 
       <div v-else-if="groupedOrders.length > 0">
         <div v-for="group in groupedOrders" :key="group.key" class="mb-5">
-          <!-- Date header -->
-          <div class="d-flex align-center mb-3 px-1">
-            <v-icon size="16" color="primary" class="mr-2"
-              >mdi-calendar-blank-outline</v-icon
-            >
-           
-          </div>
-
+         
           <v-slide-y-transition group>
             <v-card
               v-for="(order, i) in group.items"
