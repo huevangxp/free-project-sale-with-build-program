@@ -1,6 +1,90 @@
 <template>
   <div class="page-container">
- 
+    <!-- Header -->
+    <div class="header-section">
+      <v-container class="pt-6 pb-16 position-relative">
+        <div class="d-flex align-center mb-6">
+          <v-btn
+            icon
+            variant="tonal"
+            color="white"
+            size="small"
+            class="mr-3 glass-btn"
+            @click="$router.back()"
+          >
+            <v-icon>mdi-chevron-left</v-icon>
+          </v-btn>
+          <div>
+            <h1 class="text-h6 font-weight-bold text-white mb-0">
+              ປະຫວັດການຊື້
+            </h1>
+            <p class="text-caption text-white mb-0" style="opacity: 0.8">
+              ບົດລາຍງານການເຄື່ອນໄຫວທັງໝົດ
+            </p>
+          </div>
+        </div>
+
+        <!-- Wallet summary -->
+        <v-card v-if="orders.length > 0" class="wallet-card" flat>
+          <div class="pa-5">
+            <div class="d-flex justify-space-between align-start">
+              <div>
+                <div class="text-caption text-white mb-1" style="opacity: 0.8">
+                  <span>ຍອດລວມທັງໝົດ</span>
+                </div>
+                <div class="d-flex align-end">
+                  <span
+                    class="text-h4 font-weight-bold text-white"
+                    style="line-height: 1"
+                    >{{ formatMoneyLAK(totalMoney).replace(" ₭", "") }}</span
+                  >
+                  <span class="text-subtitle-1 text-white ml-1">₭</span>
+                </div>
+              </div>
+              <v-avatar size="44" color="rgba(255,255,255,0.18)">
+                <v-icon color="white">mdi-wallet-outline</v-icon>
+              </v-avatar>
+            </div>
+
+            <div class="d-flex align-center mt-5">
+              <div class="flex-grow-1">
+                <div class="text-caption text-white" style="opacity: 0.7">
+                  <span>ອໍເດີ້</span>
+                </div>
+                <div class="text-subtitle-1 font-weight-bold text-white">
+                  {{ orders.length }}
+                </div>
+              </div>
+              <v-divider
+                vertical
+                color="white"
+                class="mx-4"
+                style="opacity: 0.2"
+              ></v-divider>
+              <div class="flex-grow-1 text-right">
+                <div class="text-caption text-white" style="opacity: 0.7">
+                  <span>ກຳໄລທີ່ໄດ້</span>
+                </div>
+                <div
+                  class="text-subtitle-1 font-weight-bold text-teal-lighten-4"
+                >
+                  + {{ formatMoneyLAK(totalProfit) }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Inline chart -->
+          <div class="chart-inner">
+            <Line
+              :data="chartData"
+              :options="chartOptions"
+              style="height: 90px"
+            />
+          </div>
+        </v-card>
+      </v-container>
+    </div>
 
     <!-- History list -->
     <v-container class="px-4 mt-n8 pb-12">
