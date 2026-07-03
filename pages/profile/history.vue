@@ -32,7 +32,7 @@
               <v-icon color="white" size="20">mdi-wallet-outline</v-icon>
             </v-avatar>
             <span class="text-caption text-white" style="opacity: 0.85">
-              <span>ຍອດລວມທັງໝົດ</span>
+              <span>ຍອດລວມທັງໝົດ</span> 
               <span
               class="text-h3 font-weight-bold text-white"
               style="line-height: 1"
