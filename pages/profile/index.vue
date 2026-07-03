@@ -210,12 +210,15 @@ const items = [
 .border-2 {
   border: 2px solid white;
 }
-/* Modern, shadow-free menu list rows */
-.menu-line {
-  transition: background-color 0.2s ease;
+/* Modern, shadow-free menu cards */
+.menu-card {
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease;
 }
-.menu-line:hover {
+.menu-card:hover {
+  border-color: rgba(var(--v-theme-primary), 0.4) !important;
   background-color: rgba(var(--v-theme-primary), 0.04) !important;
+  transform: translateY(-2px);
 }
 /* Never render Vuetify elevation shadows on this page */
 :deep(.v-card) {
