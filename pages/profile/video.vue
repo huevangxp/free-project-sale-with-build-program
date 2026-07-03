@@ -148,7 +148,7 @@
           <div class="d-flex align-center min-width-0">
             <v-icon class="mr-2">mdi-play-circle</v-icon>
             <span class="text-subtitle-1 font-weight-bold text-truncate">
-           <div>   {{ link.title || "ວິດີໂອ" }}</div>
+              {{ link.title || "ວິດີໂອ" }}
             </span>
           </div>
           <v-btn
