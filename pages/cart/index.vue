@@ -255,7 +255,7 @@
           </div>
           <div class="text-h6 font-weight-bold mb-2">ແຈ້ງເຕືອນ</div>
           <div class="text-body-1 text-medium-emphasis mb-4">
-            ມີສິນຄ້າບາງລາຍການຍັງບໍ່ຮອດເປົ້າ promotion.
+            ມີສິນຄ້າບາງລາຍການຍັງບໍ່ຮອດເປົ້າໂປຣໂມຊັ່ນ.
             ຕ້ອງການດຳເນີນການຕໍ່ຫຼືບໍ່?
           </div>
           <v-row dense>
