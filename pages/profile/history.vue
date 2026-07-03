@@ -44,8 +44,9 @@
             <div class="stat-pill flex-grow-1">
               <v-icon size="16" color="white" class="mb-1"
                 >mdi-receipt-text-outline</v-icon
+                <span>ອໍເດີ້</span>
               >
-               
+               <
               <div class="text-subtitle-2 font-weight-bold text-white">
                 {{ orders.length }}
               </div>
