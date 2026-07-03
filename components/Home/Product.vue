@@ -244,20 +244,15 @@ const apiSetProfitStore = useApiSetProfitStore();
 const { setProfit } = apiSetProfitStore;
 const { profit } = storeToRefs(apiSetProfitStore);
 
-const apiProductTypeStore = useApiProductTypeStore();
-const { types } = storeToRefs(apiProductTypeStore);
-
 const apiProductStore = useApiProductStore();
 const { products } = storeToRefs(apiProductStore);
 
 const apiCartStore = useApiCartStore();
 const { addCart } = apiCartStore;
 const { fetchCart } = apiCartStore;
-const { fetchProductTypes } = apiProductTypeStore;
 const { fetchProducts } = apiProductStore;
 
 onMounted(() => {
-  fetchProductTypes();
   fetchProducts();
   fetchCart();
   setProfit();
