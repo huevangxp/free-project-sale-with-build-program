@@ -259,31 +259,8 @@
 import { useFormat } from "@/composables/useFormat";
 import { storeToRefs } from "pinia";
 import { useApiOrderStore } from "@/stores/apiOrder";
-import { Line } from "vue-chartjs";
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  LineElement,
-  PointElement,
-  CategoryScale,
-  LinearScale,
-  Filler,
-} from "chart.js";
 
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  LineElement,
-  PointElement,
-  CategoryScale,
-  LinearScale,
-  Filler,
-);
-
-const { formatMoneyLAK, formatDate, formatTime } = useFormat();
+const { formatMoneyLAK, formatTime } = useFormat();
 const apiOrderStore = useApiOrderStore();
 const { getOrders } = apiOrderStore;
 const { orders } = storeToRefs(apiOrderStore);
@@ -355,54 +332,6 @@ const totalProfit = computed(() => {
     0,
   );
 });
-
-const chartData = computed(() => {
-  const historyOrders = [...orders.value].sort(
-    (a, b) => new Date(a.created_at) - new Date(b.created_at),
-  );
-
-  return {
-    labels: historyOrders.map((o) => formatDate(o.created_at)),
-    datasets: [
-      {
-        label: "Profit Trend",
-        borderColor: "#FFFFFF",
-        borderWidth: 2.5,
-        pointRadius: 0,
-        backgroundColor: (context) => {
-          const chart = context.chart;
-          const { ctx, chartArea } = chart;
-          if (!chartArea) return null;
-          const gradient = ctx.createLinearGradient(
-            0,
-            chartArea.top,
-            0,
-            chartArea.bottom,
-          );
-          gradient.addColorStop(0, "rgba(255, 255, 255, 0.45)");
-          gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-          return gradient;
-        },
-        data: historyOrders.map((o) => parseFloat(o.all_profit || 0)),
-        fill: true,
-        tension: 0.5,
-      },
-    ],
-  };
-});
-
-const chartOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: { display: false },
-    tooltip: { enabled: false },
-  },
-  scales: {
-    x: { display: false },
-    y: { display: false },
-  },
-};
 
 onMounted(async () => {
   try {
