@@ -209,4 +209,18 @@ const items = [
 .border-2 {
   border: 2px solid white;
 }
+/* Modern, shadow-free menu cards */
+.menu-card {
+  transition: border-color 0.25s ease, background-color 0.25s ease,
+    transform 0.25s ease;
+}
+.menu-card:hover {
+  border-color: rgba(var(--v-theme-primary), 0.5) !important;
+  background-color: rgba(var(--v-theme-primary), 0.04) !important;
+  transform: translateY(-2px);
+}
+/* Never render Vuetify elevation shadows on this page */
+:deep(.v-card) {
+  box-shadow: none !important;
+}
 </style>
