@@ -16,7 +16,7 @@
         <span
           :class="route.path === '/' ? 'text-primary' : 'text-grey'"
           class="text-caption mt-1"
-          >Home</span
+          >ໜ້າຫຼັກ</span
         >
       </v-btn>
 
