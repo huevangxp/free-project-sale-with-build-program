@@ -162,7 +162,7 @@ const items = [
   {
     icon: "mdi-account-group",
     title: "ທິມງານ",
-    color: "blue",
+    color: "blue-grey",
     description: "ທິມງານທັງຫມົດ",
     link: "/profile/team",
   },
