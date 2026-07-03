@@ -1,5 +1,5 @@
 <template>
-  <v-layout class="overflow-visible" style="min-height: 80px" fixed app>
+  <v-layout class="overflow-visible" style="min-height: 40px" fixed app>
     <v-bottom-navigation
       bg-color="white"
       mode="shift"
