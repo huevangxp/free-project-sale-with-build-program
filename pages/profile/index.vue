@@ -169,14 +169,14 @@ const items = [
   {
     icon: "mdi-history",
     title: "ປະຫວັດ",
-    color: "green",
+    color: "blue-grey",
     description: "ປະຫວັດການຊື້",
     link: "/profile/history",
   },
   {
     icon: "mdi-card-account-details",
     title: "KYC",
-    color: "orange",
+    color: "blue-grey",
     description: "ຢືນຢັນຕົວຕົນ",
     link: "/profile/kyc",
   },
