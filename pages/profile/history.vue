@@ -25,9 +25,9 @@
         </div>
 
         <!-- Wallet summary -->
-        <v-card v-if="orders.length > 0" class="wallet-card pa-2" flat>
+        <v-card v-if="orders.length > 0" class="wallet-card pa-5" flat>
           <!-- Balance -->
-          <div class="d-flex align-center ">
+          <div class="d-flex align-center mb-3">
             <v-avatar size="38" color="rgba(255,255,255,0.18)" class="mr-3">
               <v-icon color="white" size="20">mdi-wallet-outline</v-icon>
             </v-avatar>
@@ -36,7 +36,7 @@
             </span>
           </div>
 
-          <div class="d-flex align-end mb-5">
+          <div class="d-flex align-end">
             <span
               class="text-h3 font-weight-bold text-white"
               style="line-height: 1"
@@ -44,9 +44,6 @@
             >
             <span class="text-subtitle-1 text-white ml-2 mb-1">₭</span>
           </div>
-
-          <!-- Stat pills -->
-     
         </v-card>
       </v-container>
     </div>
