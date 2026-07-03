@@ -22,13 +22,50 @@
         </div>
       </div>
 
+      <!-- Summary card -->
+      <v-card class="rounded-xl mb-4 mx-2" flat color="primary">
+        <v-card-text class="d-flex align-center pa-4">
+          <v-avatar size="52" color="white" class="mr-4">
+            <v-icon color="primary" size="28">mdi-account-group</v-icon>
+          </v-avatar>
+          <div>
+            <div class="text-white text-h5 font-weight-bold">
+              {{ teams?.length || 0 }}
+            </div>
+            <div class="text-caption text-white" style="opacity: 0.85">
+              <span>ສະມາຊິກໃນທິມ</span>
+            </div>
+          </div>
+        </v-card-text>
+      </v-card>
+
       <!-- Team Grid -->
       <v-container fluid class="pa-0">
-        <v-row dense>
+        <!-- Loading skeletons -->
+        <v-row v-if="loading && (!teams || teams.length === 0)" dense>
+          <v-col cols="6" sm="4" md="3" v-for="n in 8" :key="n">
+            <v-card class="rounded-xl" border flat color="white">
+              <div class="pt-6 pb-4 d-flex flex-column align-center">
+                <v-skeleton-loader
+                  type="avatar"
+                  class="mb-2"
+                ></v-skeleton-loader>
+                <v-skeleton-loader
+                  type="text"
+                  width="80"
+                ></v-skeleton-loader>
+              </div>
+            </v-card>
+          </v-col>
+        </v-row>
+
+        <!-- Members -->
+        <v-row v-else dense>
           <v-col cols="6" sm="4" md="3" v-for="(item, i) in teams" :key="i">
             <v-card
-              class="team-card rounded-xl fill-height border-0"
-              elevation="0"
+              class="team-card rounded-xl fill-height"
+              border
+              flat
               color="white"
             >
               <div
@@ -68,6 +105,17 @@
             </v-card>
           </v-col>
         </v-row>
+
+        <!-- Empty state -->
+        <div
+          v-if="!loading && (!teams || teams.length === 0)"
+          class="text-center py-16 text-medium-emphasis"
+        >
+          <v-icon size="64" color="grey-lighten-1"
+            >mdi-account-group-outline</v-icon
+          >
+          <p class="text-body-2 mt-2">ຍັງບໍ່ມີສະມາຊິກໃນທິມ</p>
+        </div>
       </v-container>
     </div>
   </div>
