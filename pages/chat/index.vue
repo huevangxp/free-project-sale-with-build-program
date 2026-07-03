@@ -542,6 +542,7 @@ const shouldShowDate = (index) => {
 
 /* ============ Input Bar ============ */
 .chat-input-bar {
+  flex: 0 0 auto;
   padding: 12px 16px;
   background: #fff;
   border-top: 1px solid #f0f0f5;
