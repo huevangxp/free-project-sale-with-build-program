@@ -270,7 +270,8 @@ const shouldShowDate = (index) => {
 .chat-page-customer {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 80px);
+  height: calc(100dvh - 70px);
+  max-height: calc(100dvh - 70px);
   max-width: 700px;
   margin: 0 auto;
   background: #f8f9fd;
