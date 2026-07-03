@@ -34,7 +34,7 @@
         <span
           :class="route.path === '/promotion' ? 'text-primary' : 'text-grey'"
           class="text-caption mt-1"
-          >Promotion</span
+          >ໂປຣໂມຊັ່ນ</span
         >
       </v-btn>
 
