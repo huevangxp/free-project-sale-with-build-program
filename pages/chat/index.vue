@@ -246,7 +246,7 @@ const shouldShowDate = (index) => {
         <input
           v-model="messageInput"
           type="text"
-          placeholder="Type your message..."
+          placeholder="ພິມຂໍ້ຄວາມ..."
           class="chat-text-input"
           @keyup.enter="sendMessage"
           @input="handleTyping"
