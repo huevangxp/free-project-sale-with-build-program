@@ -45,6 +45,30 @@
             <span class="text-subtitle-1 text-white ml-2 mb-1">₭</span>
           </div>
         </v-card>
+        <div class="d-flex ga-3">
+            <div class="stat-pill flex-grow-1">
+              <v-icon size="16" color="white" class="mb-1"
+                >mdi-receipt-text-outline</v-icon
+              >
+              <div class="text-caption text-white" style="opacity: 0.7">
+                <span>ອໍເດີ້</span>
+              </div>
+              <div class="text-subtitle-2 font-weight-bold text-white">
+                {{ orders.length }}
+              </div>
+            </div>
+            <div class="stat-pill flex-grow-1">
+              <v-icon size="16" color="teal-lighten-4" class="mb-1"
+                >mdi-trending-up</v-icon
+              >
+              <div class="text-caption text-white" style="opacity: 0.7">
+                <span>ກຳໄລທີ່ໄດ້</span>
+              </div>
+              <div class="text-subtitle-2 font-weight-bold text-teal-lighten-4">
+                + {{ formatMoneyLAK(totalProfit) }}
+              </div>
+            </div>
+          </div>
       </v-container>
     </div>
 
