@@ -67,7 +67,7 @@
         <span
           :class="route.path === '/product' ? 'text-primary' : 'text-grey'"
           class="text-caption mt-1"
-          >Product</span
+          >ສິນຄ້າ</span
         >
       </v-btn>
 
