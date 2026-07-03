@@ -27,7 +27,7 @@
         <!-- Wallet summary -->
         <v-card v-if="orders.length > 0" class="wallet-card pa-5" flat>
           <!-- Balance -->
-          <div class="d-flex align-center mb-3">
+          <div class="d-flex align-center ">
             <v-avatar size="38" color="rgba(255,255,255,0.18)" class="mr-3">
               <v-icon color="white" size="20">mdi-wallet-outline</v-icon>
             </v-avatar>
