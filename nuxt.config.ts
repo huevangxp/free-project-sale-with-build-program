@@ -19,15 +19,13 @@ export default defineNuxtConfig({
     },
   },
 
-  compatibilityDate: "2025-05-15",
+  compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   build: {
     transpile: ["vuetify"],
   },
-  plugins: ["~/plugins/axios.ts", "~/plugins/socket.client.ts"],
   modules: [
     "@vite-pwa/nuxt",
-    "@nuxt/content",
     "@nuxt/eslint",
     "@pinia/nuxt",
     (_options, nuxt) => {
