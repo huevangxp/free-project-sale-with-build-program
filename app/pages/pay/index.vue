@@ -24,72 +24,59 @@
 
     <v-container fluid class="px-4 mt-n8">
       <!-- Payment Card -->
-      <v-card class="rounded-xl mb-4" elevation="4" color="white">
-        <v-card-text class="pa-4 text-center">
-          <div class="d-flex justify-center mb-6 mt-2">
-            <v-card class="rounded-xl pa-2" elevation="0" border>
+      <v-card class="rounded-xl mb-4" border flat color="white">
+        <v-card-text class="pa-5 text-center">
+          <!-- QR -->
+          <div class="d-flex justify-center mb-4 mt-1">
+            <div class="qr-frame">
               <v-img
                 src="/static/qr.png"
-                height="250"
-                width="250"
+                height="220"
+                width="220"
                 cover
                 class="rounded-lg"
               ></v-img>
-            </v-card>
+            </div>
           </div>
 
-          <div class="text-h6 font-weight-bold text-primary mb-1">
+          <div class="text-subtitle-1 font-weight-bold mb-1">
             <span>ສະແກນເພື່ອຈ່າຍ</span>
           </div>
-          <div class="text-caption text-medium-emphasis mb-6">
+          <div class="text-caption text-medium-emphasis mb-5">
             <span>ກະລຸນາສະແກນ QR Code ຜ່ານແອັບທະນາຄານ</span>
           </div>
 
-          <v-divider class="mb-4 border-opacity-10"></v-divider>
+          <!-- Amount due highlight -->
+          <div class="due-banner mb-4">
+            <span class="text-caption text-white" style="opacity: 0.85">
+              <span>ຈຳນວນທີ່ຕ້ອງຈ່າຍ</span>
+            </span>
+            <div class="text-h4 font-weight-bold text-white">
+              {{ formatMoneyLAK(paymentDue) }}
+            </div>
+          </div>
 
-          <v-row dense class="mb-4">
-            <v-col cols="6">
-              <div
-                class="d-flex flex-column align-center pa-3 bg-grey-lighten-5 rounded-lg"
-              >
-                <span class="text-medium-emphasis mb-1">ຈຳນວນສິນຄ້າ</span>
-                <span class="text-subtitle-1 font-weight-bold text-primary">
-                  {{ formatNumber(cart.length) }}
-                  <span class="">ອັນ</span>
-                </span>
-              </div>
-            </v-col>
-            <v-col cols="6">
-              <div
-                class="d-flex flex-column align-center pa-3 bg-grey-lighten-5 rounded-lg"
-              >
-                <span class="text-medium-emphasis mb-1">ລວມທັງໝົດ</span>
-                <span class="text-subtitle-1 font-weight-bold text-primary">
-                  {{ formatMoneyLAK(totalAmount) }}
-                </span>
-              </div>
-            </v-col>
-            <v-col cols="6">
-              <div
-                class="d-flex flex-column align-center pa-3 bg-grey-lighten-5 rounded-lg"
-              >
-                <span class="text-medium-emphasis mb-1">ຕ້ອງຈ່າຍ</span>
-                <span class="text-subtitle-1 font-weight-bold text-warning">
-                  {{ formatMoneyLAK(paymentDue) }}
-                </span>
-              </div>
-            </v-col>
-            <v-col cols="6">
-              <div
-                class="d-flex flex-column align-center pa-3 bg-grey-lighten-5 rounded-lg"
-              >
-                <span class="text-medium-emphasis mb-1">ກຳໄລ</span>
-                <span class="text-subtitle-1 font-weight-bold text-success">
-                  {{ formatMoneyLAK(totalProfit) }}
-                </span>
-              </div>
-            </v-col>
-          </v-row>
+          <!-- Order details -->
+          <v-sheet border rounded="lg" class="pa-4 mb-5 text-start">
+            <div class="d-flex justify-space-between align-center mb-3">
+              <span class="text-body-2 text-medium-emphasis">ຈຳນວນສິນຄ້າ</span>
+              <span class="text-body-2 font-weight-bold">
+                {{ formatNumber(cart.length) }} ອັນ
+              </span>
+            </div>
+            <div class="d-flex justify-space-between align-center mb-3">
+              <span class="text-body-2 text-medium-emphasis">ລວມທັງໝົດ</span>
+              <span class="text-body-2 font-weight-bold">
+                {{ formatMoneyLAK(totalAmount) }}
+              </span>
+            </div>
+            <div class="d-flex justify-space-between align-center">
+              <span class="text-body-2 text-medium-emphasis">ກຳໄລ</span>
+              <span class="text-body-2 font-weight-bold text-success">
+                {{ formatMoneyLAK(totalProfit) }}
+              </span>
+            </div>
+          </v-sheet>
 
           <v-btn
             block
@@ -97,24 +84,13 @@
             size="large"
             rounded="xl"
             elevation="0"
-            class="mb-3"
-            @click="openDialogSubmit"
             height="56"
+            class="font-weight-bold"
+            @click="openDialogSubmit"
           >
             <v-icon start size="24">mdi-check-circle-outline</v-icon>
             <span>ແຈ້ງການໂອນເງິນ</span>
           </v-btn>
-
-          <!-- <v-btn
-            block
-            variant="text"
-            color="grey-darken-1"
-            size="large"
-            rounded="xl"
-            to="/cart"
-          >
-            ກັບຄືນໄປກະຕ່າ
-          </v-btn> -->
         </v-card-text>
       </v-card>
     </v-container>
@@ -243,5 +219,22 @@ const submitPayment = () => {
 <style scoped>
 .product-container {
   background-color: #f8f9fa;
+}
+/* QR framed box */
+.qr-frame {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  background: #fff;
+}
+/* Prominent amount-due banner */
+.due-banner {
+  padding: 14px;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgb(var(--v-theme-primary)) 0%,
+    #2d7a74 100%
+  );
 }
 </style>

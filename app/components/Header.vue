@@ -1,5 +1,5 @@
 <template>
-  <div class="header-container bg-primary pt-4 pb-6 px-4 rounded-b-xl">
+  <div class="header-container bg-primary pt-4 pb-1 px-4 rounded-b-xl">
     <div class="d-flex align-center justify-space-between mb-4">
       <div class="d-flex align-center">
         <v-avatar size="50" class="mr-3" color="transparent">

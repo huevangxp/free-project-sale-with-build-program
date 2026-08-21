@@ -128,11 +128,11 @@ const formatDateSeparator = (dateStr) => {
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
 
-  if (date.toDateString() === today.toDateString()) return "Today";
-  if (date.toDateString() === yesterday.toDateString()) return "Yesterday";
-  return date.toLocaleDateString("en-US", {
-    month: "short",
+  if (date.toDateString() === today.toDateString()) return "ມື້ນີ້";
+  if (date.toDateString() === yesterday.toDateString()) return "ມື້ວານນີ້";
+  return date.toLocaleDateString("en-GB", {
     day: "numeric",
+    month: "short",
     year: "numeric",
   });
 };
@@ -161,14 +161,14 @@ const shouldShowDate = (index) => {
           <span class="online-indicator"></span>
         </div>
         <div class="admin-info">
-          <span class="admin-name">Customer Support</span>
+          <span class="admin-name">ຝ່າຍບໍລິການລູກຄ້າ</span>
           <span v-if="isTyping" class="admin-status typing">
             <span class="dot-typing"
               ><span></span><span></span><span></span
             ></span>
-            typing...
+            ກຳລັງພິມ...
           </span>
-          <span v-else class="admin-status">Online</span>
+          <span v-else class="admin-status">ອອນລາຍ</span>
         </div>
       </div>
     </div>
@@ -178,7 +178,7 @@ const shouldShowDate = (index) => {
       <!-- Welcome message -->
       <div class="welcome-bubble">
         <v-icon size="32" color="primary">mdi-hand-wave</v-icon>
-        <p>Welcome! How can we help you today?</p>
+        <p>ຍິນດີຕ້ອນຮັບ! ມີຫຍັງໃຫ້ພວກເຮົາຊ່ວຍບໍ?</p>
       </div>
 
       <template v-for="(msg, index) in chatStore.messages" :key="msg.id">
@@ -246,7 +246,7 @@ const shouldShowDate = (index) => {
         <input
           v-model="messageInput"
           type="text"
-          placeholder="Type your message..."
+          placeholder="ພິມຂໍ້ຄວາມ..."
           class="chat-text-input"
           @keyup.enter="sendMessage"
           @input="handleTyping"
@@ -270,7 +270,8 @@ const shouldShowDate = (index) => {
 .chat-page-customer {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 80px);
+  height: calc(100dvh - 70px);
+  max-height: calc(100dvh - 70px);
   max-width: 700px;
   margin: 0 auto;
   background: #f8f9fd;
@@ -281,6 +282,7 @@ const shouldShowDate = (index) => {
 
 /* ============ Top Bar ============ */
 .chat-top-bar {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -387,14 +389,17 @@ const shouldShowDate = (index) => {
 
 /* ============ Messages Area ============ */
 .messages-area {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
   gap: 6px;
   scrollbar-width: thin;
   scrollbar-color: #ddd transparent;
+  overscroll-behavior: contain;
 }
 
 .welcome-bubble {
@@ -538,6 +543,7 @@ const shouldShowDate = (index) => {
 
 /* ============ Input Bar ============ */
 .chat-input-bar {
+  flex: 0 0 auto;
   padding: 12px 16px;
   background: #fff;
   border-top: 1px solid #f0f0f5;
@@ -600,7 +606,8 @@ const shouldShowDate = (index) => {
 @media (max-width: 600px) {
   .chat-page-customer {
     border-radius: 0;
-    height: 100vh;
+    height: calc(100dvh - 70px);
+    max-height: calc(100dvh - 70px);
     max-width: 100%;
   }
 

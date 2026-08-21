@@ -5,8 +5,21 @@
   >
     <!-- Profile Header -->
     <div
-      class="bg-primary pt-8 pb-16 rounded-xl mt-2 px-4 text-center position-relative"
+      class="bg-primary pt-10 pb-16 rounded-b-xl px-4 text-center position-relative"
     >
+      <!-- Logout (top right) -->
+      <v-btn
+        icon
+        variant="tonal"
+        color="white"
+        size="small"
+        class="position-absolute"
+        style="top: 12px; right: 12px"
+        @click="logout"
+      >
+        <v-icon size="20">mdi-logout</v-icon>
+      </v-btn>
+
       <v-avatar
         size="100"
         class="mb-3 border-2 border-white"
@@ -39,7 +52,7 @@
 
     <!-- Info Card -->
     <v-container class="mt-n12 px-4">
-      <v-card class="rounded-xl mb-4" elevation="6" color="white">
+      <v-card class="rounded-xl mb-4" border flat color="white">
         <v-card-text class="pa-4">
           <v-row dense>
             <v-col cols="4" class="text-center border-e">
@@ -81,19 +94,20 @@
       <v-row dense>
         <v-col cols="6" sm="4" v-for="(item, i) in items" :key="i">
           <v-card
-            class="rounded-xl fill-height border-0"
-            elevation="0"
+            class="rounded-xl fill-height menu-card"
+            border
+            flat
             color="white"
             :to="item.link"
             link
           >
             <div class="pa-4 d-flex flex-column align-center text-center h-100">
               <v-avatar
-                size="50"
+                size="52"
                 :color="item.color + '-lighten-5'"
                 class="mb-3"
               >
-                <v-icon size="28" :color="item.color">{{ item.icon }}</v-icon>
+                <v-icon size="26" :color="item.color">{{ item.icon }}</v-icon>
               </v-avatar>
               <div class="text-subtitle-2 font-weight-bold mb-1">
                 <span>{{ item.title }}</span>
@@ -105,19 +119,6 @@
           </v-card>
         </v-col>
       </v-row>
-
-      <v-btn
-        block
-        color="error"
-        variant="tonal"
-        size="large"
-        rounded="xl"
-        class="mt-6 mb-4"
-        prepend-icon="mdi-logout"
-        @click="logout"
-      >
-        ອອກຈາກລະບົບ
-      </v-btn>
     </v-container>
   </div>
 </template>
@@ -159,38 +160,39 @@ const items = [
   {
     icon: "mdi-account-group",
     title: "ທິມງານ",
-    color: "blue",
+    color: "blue-grey",
     description: "ທິມງານທັງຫມົດ",
     link: "/profile/team",
   },
   {
     icon: "mdi-history",
     title: "ປະຫວັດ",
-    color: "green",
+    color: "blue-grey",
     description: "ປະຫວັດການຊື້",
     link: "/profile/history",
   },
   {
     icon: "mdi-card-account-details",
     title: "KYC",
-    color: "orange",
+    color: "blue-grey",
     description: "ຢືນຢັນຕົວຕົນ",
     link: "/profile/kyc",
   },
   {
     icon: "mdi-video",
     title: "ວິດີໂອ",
-    color: "purple",
+    color: "blue-grey",
     description: "ບັນທຶກວິດີໂອ",
     link: "/profile/video",
   },
   {
     icon: "mdi-lock-reset",
     title: "ລະຫັດຜ່ານ",
-    color: "red",
+    color: "blue-grey",
     description: "ປ່ຽນລະຫັດຜ່ານ",
     link: "/profile/change_password",
   },
+  
 ];
 </script>
 
@@ -207,5 +209,19 @@ const items = [
 }
 .border-2 {
   border: 2px solid white;
+}
+/* Modern, shadow-free menu cards */
+.menu-card {
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease;
+}
+.menu-card:hover {
+  border-color: rgba(var(--v-theme-primary), 0.4) !important;
+  background-color: rgba(var(--v-theme-primary), 0.04) !important;
+  transform: translateY(-2px);
+}
+/* Never render Vuetify elevation shadows on this page */
+:deep(.v-card) {
+  box-shadow: none !important;
 }
 </style>

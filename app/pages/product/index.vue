@@ -4,46 +4,6 @@
     style="min-height: 100vh"
   >
     <Header />
-    <!-- Filter Section -->
-    <div class="px-4 pt-4">
-      <v-card elevation="0" rounded="xl" color="white" class="my-4 border-0">
-        <v-card-text class="pa-4">
-          <v-row dense>
-            <v-col cols="8" sm="8">
-              <v-select
-                v-model="select_id"
-                :items="types"
-                placeholder="ເລືອກປະເພດສິນຄ້າ"
-                item-title="title"
-                item-value="id"
-                variant="outlined"
-                density="comfortable"
-                rounded="lg"
-                color="primary"
-                prepend-inner-icon="mdi-filter-variant"
-                bg-color="grey-lighten-5"
-                class="rounded-lg"
-              ></v-select>
-            </v-col>
-            <v-col cols="4" sm="4">
-              <v-btn
-                color="primary"
-                elevation="0"
-                rounded="lg"
-                height="48"
-                block
-                @click="fetchProducts"
-                class="text-capitalize"
-              >
-                <v-icon start>mdi-magnify</v-icon>
-                ຄົ້ນຫາ
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-card-text>
-      </v-card>
-    </div>
-
     <!-- Product Grid -->
     <v-container fluid class="px-4">
       <div class="d-flex align-center justify-space-between mb-4">
@@ -55,13 +15,54 @@
         </div>
       </div>
 
+      <!-- Search -->
+      <v-text-field
+        v-model="search"
+        placeholder="ຄົ້ນຫາສິນຄ້າ..."
+        prepend-inner-icon="mdi-magnify"
+        variant="solo-filled"
+        flat
+        density="comfortable"
+        hide-details
+        clearable
+        rounded="pill"
+        bg-color="white"
+        class="mb-4"
+      ></v-text-field>
+
+      <!-- Category filter -->
+      <v-slide-group class="mb-4" show-arrows>
+        <v-slide-group-item>
+          <v-chip
+            class="mr-2"
+            :color="selectedCategory === null ? 'primary' : undefined"
+            :variant="selectedCategory === null ? 'flat' : 'tonal'"
+            label
+            @click="selectedCategory = null"
+          >
+            ທັງໝົດ
+          </v-chip>
+        </v-slide-group-item>
+        <v-slide-group-item v-for="c in types" :key="c.id">
+          <v-chip
+            class="mr-2"
+            :color="selectedCategory === c.id ? 'primary' : undefined"
+            :variant="selectedCategory === c.id ? 'flat' : 'tonal'"
+            label
+            @click="selectedCategory = c.id"
+          >
+            {{ c.title }}
+          </v-chip>
+        </v-slide-group-item>
+      </v-slide-group>
+
       <v-row dense>
         <v-col
           cols="6"
           sm="4"
           md="3"
           lg="2"
-          v-for="(item, i) in products"
+          v-for="(item, i) in filteredProducts"
           :key="i"
         >
           <v-hover v-slot="{ isHovering, props }">
@@ -139,6 +140,15 @@
           </v-hover>
         </v-col>
       </v-row>
+
+      <!-- Empty state -->
+      <div
+        v-if="filteredProducts.length === 0"
+        class="text-center py-16 text-medium-emphasis"
+      >
+        <v-icon size="64" color="grey-lighten-1">mdi-magnify-close</v-icon>
+        <p class="text-body-2 mt-2">ບໍ່ພົບສິນຄ້າ</p>
+      </div>
     </v-container>
 
     <!-- Add to Cart Dialog -->
@@ -298,6 +308,20 @@ const select_id = ref(null);
 const dialogAddCart = ref(false);
 const itemDialog = ref({});
 const quantity = ref(1);
+
+// Search + category filter
+const search = ref("");
+const selectedCategory = ref(null);
+
+const filteredProducts = computed(() => {
+  const q = (search.value || "").trim().toLowerCase();
+  return products.value.filter((p) => {
+    const matchCategory =
+      !selectedCategory.value || p.category_id === selectedCategory.value;
+    const matchSearch = !q || (p.title || "").toLowerCase().includes(q);
+    return matchCategory && matchSearch;
+  });
+});
 
 onMounted(() => {
   fetchProducts();

@@ -24,7 +24,7 @@
 
     <v-container fluid class="px-4 mt-n8">
       <!-- Summary Card -->
-      <v-card class="rounded-xl mb-4" elevation="4" color="white">
+      <v-card class="rounded-xl mb-4" border flat color="white">
         <v-card-text class="pa-4">
           <div class="d-flex align-center justify-space-between mb-4">
             <div class="d-flex align-center">
@@ -104,8 +104,9 @@
         <v-card
           v-for="(item, i) in cart"
           :key="i"
-          class="mb-3 rounded-xl border-0"
-          elevation="0"
+          class="mb-3 rounded-xl"
+          border
+          flat
           color="white"
         >
           <div class="d-flex pa-3">
@@ -221,7 +222,7 @@
           <span>ເລືອກຊື້ສິນຄ້າທີ່ທ່ານຕ້ອງການ</span>
         </p>
         <v-btn color="primary" variant="tonal" rounded="xl" to="/product">
-          <span>ເປໜ້າສິນຄ້າ</span>
+          <span>ໄປໜ້າສິນຄ້າ</span>
         </v-btn>
       </div>
       <!-- Warning Dialog -->
@@ -232,7 +233,7 @@
           </div>
           <div class="text-h6 font-weight-bold mb-2">ແຈ້ງເຕືອນ</div>
           <div class="text-body-1 text-medium-emphasis mb-4">
-            Please add product to cart!
+            ກະລຸນາເພີ່ມສິນຄ້າໃສ່ກະຕ່າກ່ອນ!
           </div>
           <v-btn
             color="primary"
@@ -254,7 +255,7 @@
           </div>
           <div class="text-h6 font-weight-bold mb-2">ແຈ້ງເຕືອນ</div>
           <div class="text-body-1 text-medium-emphasis mb-4">
-            ມີສິນຄ້າບາງລາຍການຍັງບໍ່ຮອດເປົ້າ promotion.
+            ມີສິນຄ້າບາງລາຍການຍັງບໍ່ຮອດເປົ້າໂປຣໂມຊັ່ນ.
             ຕ້ອງການດຳເນີນການຕໍ່ຫຼືບໍ່?
           </div>
           <v-row dense>

@@ -10,7 +10,7 @@ export default defineNuxtConfig({
         { name: "format-detection", content: "telephone=no" },
       ],
       link: [
-        { rel: "icon", type: "image/x-icon", href: "logo.png" },
+        { rel: "icon", type: "image/x-icon", href: "/logo.png" },
         {
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap",
@@ -18,6 +18,8 @@ export default defineNuxtConfig({
       ],
     },
   },
+
+  css: ["~/assets/css/main.css"],
 
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
@@ -44,10 +46,7 @@ export default defineNuxtConfig({
     },
   },
 
-  devServer: {
-    host: "0.0.0.0",
-  },
-
+ 
   // use pwa
   pwa: {
     manifest: {
@@ -84,6 +83,16 @@ export default defineNuxtConfig({
     },
     workbox: {
       navigateFallback: "/",
+      // Don't serve index.html (SPA fallback) for these — otherwise the
+      // Vue router tries to match paths like /workbox-*.js and warns
+      // "No match found for location with path ...".
+      navigateFallbackDenylist: [
+        /^\/workbox-.*\.js$/,
+        /^\/sw\.js$/,
+        /^\/dev-sw\.js$/,
+        /^\/manifest.*\.(json|webmanifest)$/,
+        /\.(js|css|png|jpg|jpeg|svg|ico|json|txt|map)$/,
+      ],
       globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
     },
     injectManifest: {
