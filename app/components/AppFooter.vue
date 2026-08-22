@@ -4,6 +4,29 @@ import { Phone, Facebook, MapPin } from "lucide-vue-next";
 
 <template>
   <footer class="mt-16 bg-primary-900 text-primary-100">
+    <!-- Custom-order CTA banner -->
+    <div class="mx-auto max-w-6xl px-4 pt-10">
+      <div
+        class="flex flex-col items-center gap-4 rounded-2xl bg-primary-700 px-6 py-10 text-center text-white sm:flex-row sm:justify-between sm:text-left"
+      >
+        <div>
+          <h2 class="text-xl font-bold sm:text-2xl">
+            ສັ່ງຕັດຊຸດມົ້ງຕາມແບບທີ່ທ່ານຕ້ອງການ
+          </h2>
+          <p class="mt-1 text-primary-100">
+            ທັກຫາເຮົາໄດ້ເລີຍ ຊ່າງຂອງເຮົາພ້ອມອອກແບບໃຫ້ຟຣີ
+          </p>
+        </div>
+        <a
+          href="tel:02055555555"
+          class="flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-bold whitespace-nowrap text-primary-700 transition hover:bg-primary-50"
+        >
+          <Phone class="h-5 w-5" />
+          ໂທ 020 5555 5555
+        </a>
+      </div>
+    </div>
+
     <div
       class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-3"
     >
