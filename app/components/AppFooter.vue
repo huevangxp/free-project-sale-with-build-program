@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { Phone, Facebook, MapPin } from "lucide-vue-next";
+</script>
+
 <template>
   <footer class="mt-16 bg-primary-900 text-primary-100">
     <div
