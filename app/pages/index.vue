@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Scissors, Truck, Banknote, ShieldCheck, Phone } from "lucide-vue-next";
+import { Scissors, Truck, Banknote, ShieldCheck } from "lucide-vue-next";
 
 const { categories, featured } = useProducts();
 
@@ -117,27 +117,5 @@ const features = [
       </div>
     </section>
 
-    <!-- CTA banner -->
-    <section class="mx-auto max-w-6xl px-4 py-8">
-      <div
-        class="flex flex-col items-center gap-4 rounded-2xl bg-primary-700 px-6 py-10 text-center text-white sm:flex-row sm:justify-between sm:text-left"
-      >
-        <div>
-          <h2 class="text-xl font-bold sm:text-2xl">
-            ສັ່ງຕັດຊຸດມົ້ງຕາມແບບທີ່ທ່ານຕ້ອງການ
-          </h2>
-          <p class="mt-1 text-primary-100">
-            ທັກຫາເຮົາໄດ້ເລີຍ ຊ່າງຂອງເຮົາພ້ອມອອກແບບໃຫ້ຟຣີ
-          </p>
-        </div>
-        <a
-          href="tel:02055555555"
-          class="flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-bold whitespace-nowrap text-primary-700 transition hover:bg-primary-50"
-        >
-          <Phone class="h-5 w-5" />
-          ໂທ 020 5555 5555
-        </a>
-      </div>
-    </section>
   </div>
 </template>
