@@ -1,8 +1,8 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>
-    <h1>Welcome</h1>
+  <div class="flex min-h-screen items-center justify-center">
+    <h1 class="text-3xl font-bold">Welcome</h1>
   </div>
 </template>
 
