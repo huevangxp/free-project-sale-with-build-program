@@ -35,6 +35,11 @@ export default defineNuxtConfig({
  
   // use pwa
   pwa: {
+    // Unregisters any previously-installed (stale) service worker from
+    // visitors' browsers. The old Lisfoom SW keeps requesting deleted
+    // files like /components/Footer.vue, crashing the Vite dev server.
+    // Set back to false when you want to enable the PWA again.
+    selfDestroying: true,
     manifest: {
       name: "Lis Foom Vaj",
       short_name: "LFV",
