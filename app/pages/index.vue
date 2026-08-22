@@ -1,11 +1,21 @@
 <script setup lang="ts">
+import { Scissors, Truck, Banknote, ShieldCheck, Phone } from "lucide-vue-next";
+
 const { categories, featured } = useProducts();
 
 const features = [
-  { icon: "🧵", title: "ປັກມືແທ້ 100%", text: "ທຸກຜືນປັກດ້ວຍມືໂດຍຊ່າງມີຝີມື" },
-  { icon: "🚚", title: "ສົ່ງໄວທົ່ວປະເທດ", text: "ຈັດສົ່ງພາຍໃນ 1-3 ວັນ" },
-  { icon: "💵", title: "ຈ່າຍເງິນປາຍທາງ", text: "ຮັບສິນຄ້າກ່ອນ ຈ່າຍທີຫຼັງ" },
-  { icon: "✅", title: "ຮັບປະກັນຄຸນນະພາບ", text: "ປ່ຽນ-ຄືນໄດ້ພາຍໃນ 7 ວັນ" },
+  {
+    icon: Scissors,
+    title: "ປັກມືແທ້ 100%",
+    text: "ທຸກຜືນປັກດ້ວຍມືໂດຍຊ່າງມີຝີມື",
+  },
+  { icon: Truck, title: "ສົ່ງໄວທົ່ວປະເທດ", text: "ຈັດສົ່ງພາຍໃນ 1-3 ວັນ" },
+  { icon: Banknote, title: "ຈ່າຍເງິນປາຍທາງ", text: "ຮັບສິນຄ້າກ່ອນ ຈ່າຍທີຫຼັງ" },
+  {
+    icon: ShieldCheck,
+    title: "ຮັບປະກັນຄຸນນະພາບ",
+    text: "ປ່ຽນ-ຄືນໄດ້ພາຍໃນ 7 ວັນ",
+  },
 ];
 </script>
 
@@ -56,7 +66,10 @@ const features = [
           :key="feature.title"
           class="rounded-xl bg-white p-4 text-center shadow-sm ring-1 ring-gray-100"
         >
-          <div class="text-3xl">{{ feature.icon }}</div>
+          <component
+            :is="feature.icon"
+            class="mx-auto h-8 w-8 text-primary-600"
+          />
           <h3 class="mt-2 font-bold text-gray-800">{{ feature.title }}</h3>
           <p class="mt-1 text-xs text-gray-500 sm:text-sm">
             {{ feature.text }}
@@ -119,8 +132,9 @@ const features = [
         </div>
         <a
           href="tel:02055555555"
-          class="rounded-lg bg-white px-6 py-3 font-bold whitespace-nowrap text-primary-700 transition hover:bg-primary-50"
+          class="flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-bold whitespace-nowrap text-primary-700 transition hover:bg-primary-50"
         >
+          <Phone class="h-5 w-5" />
           ໂທ 020 5555 5555
         </a>
       </div>
