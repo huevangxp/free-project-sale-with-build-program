@@ -53,6 +53,21 @@ import { Phone, Facebook, MapPin } from "lucide-vue-next";
               >ກະຕ່າສິນຄ້າ</NuxtLink
             >
           </li>
+          <li>
+            <NuxtLink to="/orders" class="transition hover:text-white"
+              >ປະຫວັດການສັ່ງຊື້</NuxtLink
+            >
+          </li>
+          <li>
+            <NuxtLink to="/about" class="transition hover:text-white"
+              >ກ່ຽວກັບເຮົາ</NuxtLink
+            >
+          </li>
+          <li>
+            <NuxtLink to="/contact" class="transition hover:text-white"
+              >ຕິດຕໍ່ເຮົາ</NuxtLink
+            >
+          </li>
         </ul>
       </div>
       <div>
