@@ -17,10 +17,10 @@ function submit() {
 
 <template>
   <div class="mx-auto max-w-4xl px-4 py-8">
-    <h1 class="text-2xl font-bold text-gray-800 sm:text-3xl">ຕິດຕໍ່ເຮົາ</h1>
-    <p class="mt-1 text-gray-500">
-      ມີຄຳຖາມ ຫຼື ຢາກສັ່ງຕັດຊຸດພິເສດ? ທັກຫາເຮົາໄດ້ເລີຍ
-    </p>
+    <h1 class="text-2xl font-bold text-gray-800 sm:text-3xl">
+      {{ $t("contact.title") }}
+    </h1>
+    <p class="mt-1 text-gray-500">{{ $t("contact.subtitle") }}</p>
 
     <div class="mt-6 grid gap-6 md:grid-cols-2">
       <div class="space-y-3">
@@ -29,7 +29,9 @@ function submit() {
         >
           <Phone class="h-6 w-6 text-primary-600" />
           <div>
-            <p class="text-sm font-bold text-gray-800">ໂທ / WhatsApp</p>
+            <p class="text-sm font-bold text-gray-800">
+              {{ $t("contact.phone") }}
+            </p>
             <p class="text-sm text-gray-500">020 5555 5555</p>
           </div>
         </div>
@@ -38,8 +40,10 @@ function submit() {
         >
           <Facebook class="h-6 w-6 text-primary-600" />
           <div>
-            <p class="text-sm font-bold text-gray-800">Facebook</p>
-            <p class="text-sm text-gray-500">ຮ້ານເສື້ອຜ້າມົ້ງ</p>
+            <p class="text-sm font-bold text-gray-800">
+              {{ $t("contact.facebook") }}
+            </p>
+            <p class="text-sm text-gray-500">{{ $t("brand") }}</p>
           </div>
         </div>
         <div
@@ -47,8 +51,10 @@ function submit() {
         >
           <MapPin class="h-6 w-6 text-primary-600" />
           <div>
-            <p class="text-sm font-bold text-gray-800">ທີ່ຢູ່ຮ້ານ</p>
-            <p class="text-sm text-gray-500">ນະຄອນຫຼວງວຽງຈັນ, ລາວ</p>
+            <p class="text-sm font-bold text-gray-800">
+              {{ $t("contact.address") }}
+            </p>
+            <p class="text-sm text-gray-500">{{ $t("contact.addressValue") }}</p>
           </div>
         </div>
         <div
@@ -56,8 +62,10 @@ function submit() {
         >
           <Clock class="h-6 w-6 text-primary-600" />
           <div>
-            <p class="text-sm font-bold text-gray-800">ເວລາເປີດ</p>
-            <p class="text-sm text-gray-500">ຈັນ - ເສົາ: 8:00 - 18:00</p>
+            <p class="text-sm font-bold text-gray-800">
+              {{ $t("contact.hours") }}
+            </p>
+            <p class="text-sm text-gray-500">{{ $t("contact.hoursValue") }}</p>
           </div>
         </div>
       </div>
@@ -66,27 +74,27 @@ function submit() {
         class="rounded-xl bg-white p-5 shadow-sm ring-1 ring-gray-100"
         @submit.prevent="submit"
       >
-        <h2 class="font-bold text-gray-800">ສົ່ງຂໍ້ຄວາມຫາເຮົາ</h2>
+        <h2 class="font-bold text-gray-800">{{ $t("contact.formTitle") }}</h2>
         <div class="mt-4 space-y-3">
           <input
             v-model="name"
             type="text"
             required
-            placeholder="ຊື່ຂອງທ່ານ"
+            :placeholder="$t('contact.yourName')"
             class="w-full rounded-lg border border-gray-200 px-3 py-2.5 outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200"
           />
           <input
             v-model="phone"
             type="tel"
             required
-            placeholder="ເບີໂທຕິດຕໍ່ກັບ"
+            :placeholder="$t('contact.yourPhone')"
             class="w-full rounded-lg border border-gray-200 px-3 py-2.5 outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200"
           />
           <textarea
             v-model="message"
             rows="4"
             required
-            placeholder="ຂໍ້ຄວາມຂອງທ່ານ..."
+            :placeholder="$t('contact.message')"
             class="w-full rounded-lg border border-gray-200 px-3 py-2.5 outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200"
           ></textarea>
           <button
@@ -95,7 +103,7 @@ function submit() {
           >
             <Check v-if="sent" class="h-5 w-5" />
             <Send v-else class="h-5 w-5" />
-            {{ sent ? "ສົ່ງແລ້ວ ຂອບໃຈ!" : "ສົ່ງຂໍ້ຄວາມ" }}
+            {{ sent ? $t("contact.sent") : $t("contact.send") }}
           </button>
         </div>
       </form>
