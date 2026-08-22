@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ShoppingCart, Menu, X } from "lucide-vue-next";
 import { useCartStore } from "~/stores/cart";
 
 const cart = useCartStore();
@@ -50,19 +51,7 @@ watch(
           class="relative flex items-center gap-1 rounded-lg bg-primary-600 px-3 py-2 font-medium transition hover:bg-primary-500"
           aria-label="ກະຕ່າສິນຄ້າ"
         >
-          <svg
-            class="h-5 w-5"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 4.6a1 1 0 0 0 .9 1.4H19M9 22a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
-            />
-          </svg>
+          <ShoppingCart class="h-5 w-5" />
           <span
             v-if="cart.count > 0"
             class="absolute -top-2 -right-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-rose-500 px-1 text-xs font-bold"
