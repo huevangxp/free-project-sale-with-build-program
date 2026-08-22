@@ -11,26 +11,7 @@ const { formatNumber } = useFormat();
     <h1 class="text-2xl font-bold text-gray-800 sm:text-3xl">ກະຕ່າສິນຄ້າ</h1>
 
     <div
-      v-if="ordered"
-      class="mt-6 rounded-xl bg-white p-8 text-center shadow-sm ring-1 ring-gray-100"
-    >
-      <PartyPopper class="mx-auto h-14 w-14 text-primary-600" />
-      <h2 class="mt-3 text-xl font-bold text-primary-700">
-        ສັ່ງຊື້ສຳເລັດແລ້ວ!
-      </h2>
-      <p class="mt-2 text-gray-500">
-        ຂອບໃຈທີ່ອຸດໜູນ ທີມງານຈະຕິດຕໍ່ກັບເພື່ອຢືນຢັນການຈັດສົ່ງ
-      </p>
-      <NuxtLink
-        to="/products"
-        class="mt-4 inline-block rounded-lg bg-primary-600 px-6 py-3 font-bold text-white transition hover:bg-primary-700"
-      >
-        ຊື້ສິນຄ້າຕໍ່
-      </NuxtLink>
-    </div>
-
-    <div
-      v-else-if="cart.items.length === 0"
+      v-if="cart.items.length === 0"
       class="mt-6 rounded-xl bg-white p-8 text-center shadow-sm ring-1 ring-gray-100"
     >
       <ShoppingCart class="mx-auto h-14 w-14 text-primary-300" />
