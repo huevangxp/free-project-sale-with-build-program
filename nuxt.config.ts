@@ -19,6 +19,10 @@ export default defineNuxtConfig({
     },
   },
 
+  devServer: {
+    port: 4000,
+  },
+
   css: ["~/assets/css/main.css"],
 
   compatibilityDate: "2025-07-15",

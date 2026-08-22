@@ -1,13 +1,8 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="">
-    <Header />
-    <VitePwaManifest />
-    <HomeSlide />
-    <HomeProduct />
-    <!-- <HomeVIPCustomer />
-    <HomeCustomerOrder /> -->
+  <div>
+    <h1>Welcome</h1>
   </div>
 </template>
 
