@@ -136,10 +136,19 @@ function addToCart() {
           </NuxtLink>
         </div>
 
-        <ul class="mt-2 space-y-1 text-sm text-gray-500">
-          <li>🚚 ສົ່ງໄວທົ່ວປະເທດ 1-3 ວັນ</li>
-          <li>💵 ຈ່າຍເງິນປາຍທາງໄດ້</li>
-          <li>✅ ປ່ຽນ-ຄືນໄດ້ພາຍໃນ 7 ວັນ</li>
+        <ul class="mt-2 space-y-2 text-sm text-gray-500">
+          <li class="flex items-center gap-2">
+            <Truck class="h-4 w-4 text-primary-600" />
+            ສົ່ງໄວທົ່ວປະເທດ 1-3 ວັນ
+          </li>
+          <li class="flex items-center gap-2">
+            <Banknote class="h-4 w-4 text-primary-600" />
+            ຈ່າຍເງິນປາຍທາງໄດ້
+          </li>
+          <li class="flex items-center gap-2">
+            <ShieldCheck class="h-4 w-4 text-primary-600" />
+            ປ່ຽນ-ຄືນໄດ້ພາຍໃນ 7 ວັນ
+          </li>
         </ul>
       </div>
     </div>
