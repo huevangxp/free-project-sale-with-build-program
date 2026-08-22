@@ -17,6 +17,7 @@ export interface Product {
 const products: Product[] = [
   {
     id: 1,
+    kind: "dress",
     name: "ຊຸດມົ້ງຜູ້ຍິງແບບດັ້ງເດີມ",
     category: "ຊຸດຜູ້ຍິງ",
     price: 850000,
@@ -29,6 +30,7 @@ const products: Product[] = [
   },
   {
     id: 2,
+    kind: "dress",
     name: "ເສື້ອມົ້ງປັກລາຍມື",
     category: "ຊຸດຜູ້ຍິງ",
     price: 450000,
@@ -40,6 +42,7 @@ const products: Product[] = [
   },
   {
     id: 3,
+    kind: "dress",
     name: "ກະໂປງມົ້ງລາຍໂບຮານ",
     category: "ຊຸດຜູ້ຍິງ",
     price: 380000,
@@ -50,6 +53,7 @@ const products: Product[] = [
   },
   {
     id: 4,
+    kind: "dress",
     name: "ຊຸດມົ້ງຜູ້ຊາຍເຕັມຊຸດ",
     category: "ຊຸດຜູ້ຊາຍ",
     price: 650000,
@@ -61,6 +65,7 @@ const products: Product[] = [
   },
   {
     id: 5,
+    kind: "hat",
     name: "ໝວກມົ້ງເດັກນ້ອຍ",
     category: "ເດັກນ້ອຍ",
     price: 120000,
@@ -72,6 +77,7 @@ const products: Product[] = [
   },
   {
     id: 6,
+    kind: "belt",
     name: "ສາຍແອວເງິນມົ້ງ",
     category: "ເຄື່ອງປະດັບ",
     price: 950000,
@@ -82,6 +88,7 @@ const products: Product[] = [
   },
   {
     id: 7,
+    kind: "scarf",
     name: "ຜ້າພັນຄໍປັກລາຍມົ້ງ",
     category: "ເຄື່ອງປະດັບ",
     price: 180000,
@@ -92,6 +99,7 @@ const products: Product[] = [
   },
   {
     id: 8,
+    kind: "dress",
     name: "ຊຸດມົ້ງເດັກຍິງ",
     category: "ເດັກນ້ອຍ",
     price: 320000,
