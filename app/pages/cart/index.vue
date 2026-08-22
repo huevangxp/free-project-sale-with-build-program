@@ -57,7 +57,13 @@ function checkout() {
           class="flex gap-3 rounded-xl bg-white p-3 shadow-sm ring-1 ring-gray-100 sm:gap-4 sm:p-4"
         >
           <div class="h-20 w-20 shrink-0 overflow-hidden rounded-lg sm:h-24 sm:w-24">
-            <ProductImage :colors="item.colors" :seed="item.id" />
+            <ProductImage
+              :colors="item.colors"
+              :seed="item.id"
+              :kind="item.kind"
+              :image="item.image"
+              :alt="item.name"
+            />
           </div>
           <div class="flex min-w-0 flex-1 flex-col">
             <div class="flex items-start justify-between gap-2">

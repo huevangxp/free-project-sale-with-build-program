@@ -8,6 +8,8 @@ export interface CartItem {
   size: string;
   qty: number;
   colors: [string, string, string];
+  kind: Product["kind"];
+  image?: string;
 }
 
 export const useCartStore = defineStore("cart", () => {
@@ -34,6 +36,8 @@ export const useCartStore = defineStore("cart", () => {
         size,
         qty,
         colors: product.colors,
+        kind: product.kind,
+        image: product.image,
       });
     }
   }

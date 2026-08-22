@@ -47,7 +47,13 @@ function addToCart() {
         class="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100"
       >
         <div class="aspect-square w-full">
-          <ProductImage :colors="product.colors" :seed="product.id" />
+          <ProductImage
+            :colors="product.colors"
+            :seed="product.id"
+            :kind="product.kind"
+            :image="product.image"
+            :alt="product.name"
+          />
         </div>
       </div>
 
