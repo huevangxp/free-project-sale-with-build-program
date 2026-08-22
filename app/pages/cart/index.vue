@@ -83,19 +83,21 @@ function checkout() {
                 class="flex items-center rounded-lg ring-1 ring-gray-200"
               >
                 <button
-                  class="px-3 py-1 font-bold text-primary-700 hover:bg-primary-50"
+                  class="px-3 py-1.5 text-primary-700 hover:bg-primary-50"
+                  aria-label="ຫຼຸດຈຳນວນ"
                   @click="cart.setQty(item.id, item.size, item.qty - 1)"
                 >
-                  −
+                  <Minus class="h-3.5 w-3.5" />
                 </button>
                 <span class="w-8 text-center text-sm font-semibold">{{
                   item.qty
                 }}</span>
                 <button
-                  class="px-3 py-1 font-bold text-primary-700 hover:bg-primary-50"
+                  class="px-3 py-1.5 text-primary-700 hover:bg-primary-50"
+                  aria-label="ເພີ່ມຈຳນວນ"
                   @click="cart.setQty(item.id, item.size, item.qty + 1)"
                 >
-                  +
+                  <Plus class="h-3.5 w-3.5" />
                 </button>
               </div>
               <p class="font-bold text-primary-700">
