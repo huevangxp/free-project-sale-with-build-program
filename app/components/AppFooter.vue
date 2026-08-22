@@ -10,11 +10,9 @@ import { Phone, Facebook, MapPin } from "lucide-vue-next";
         class="flex flex-col items-center gap-3 rounded-xl bg-primary-700 px-5 py-4 text-center text-white sm:flex-row sm:justify-between sm:text-left"
       >
         <div>
-          <h2 class="text-sm font-bold sm:text-base">
-            ສັ່ງຕັດຊຸດມົ້ງຕາມແບບທີ່ທ່ານຕ້ອງການ
-          </h2>
+          <h2 class="text-sm font-bold sm:text-base">{{ $t("footer.cta") }}</h2>
           <p class="mt-0.5 text-xs text-primary-100">
-            ທັກຫາເຮົາໄດ້ເລີຍ ຊ່າງຂອງເຮົາພ້ອມອອກແບບໃຫ້ຟຣີ
+            {{ $t("footer.ctaSub") }}
           </p>
         </div>
         <a
@@ -22,7 +20,7 @@ import { Phone, Facebook, MapPin } from "lucide-vue-next";
           class="flex items-center gap-1.5 rounded-lg bg-white px-4 py-2 text-sm font-bold whitespace-nowrap text-primary-700 transition hover:bg-primary-50"
         >
           <Phone class="h-4 w-4" />
-          ໂທ 020 5555 5555
+          {{ $t("footer.call") }}
         </a>
       </div>
     </div>
@@ -31,59 +29,60 @@ import { Phone, Facebook, MapPin } from "lucide-vue-next";
       class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-3"
     >
       <div>
-        <h3 class="mb-3 text-lg font-bold text-white">ຮ້ານເສື້ອຜ້າມົ້ງ</h3>
-        <p class="text-sm leading-6">
-          ຈຳໜ່າຍເສື້ອຜ້າມົ້ງແທ້ ປັກລາຍມືທຸກຜືນ ສືບສານວັດທະນະທຳ
-          ແລະ ພູມປັນຍາຂອງຊົນເຜົ່າມົ້ງ ສົ່ງໄວທົ່ວປະເທດ.
-        </p>
+        <h3 class="mb-3 text-lg font-bold text-white">{{ $t("brand") }}</h3>
+        <p class="text-sm leading-6">{{ $t("footer.text") }}</p>
       </div>
       <div>
-        <h3 class="mb-3 text-lg font-bold text-white">ເມນູ</h3>
+        <h3 class="mb-3 text-lg font-bold text-white">{{ $t("footer.menu") }}</h3>
         <ul class="space-y-2 text-sm">
           <li>
-            <NuxtLink to="/" class="transition hover:text-white">ໜ້າຫຼັກ</NuxtLink>
+            <NuxtLink to="/" class="transition hover:text-white">{{
+              $t("nav.home")
+            }}</NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/products" class="transition hover:text-white"
-              >ສິນຄ້າທັງໝົດ</NuxtLink
-            >
+            <NuxtLink to="/products" class="transition hover:text-white">{{
+              $t("nav.products")
+            }}</NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/cart" class="transition hover:text-white"
-              >ກະຕ່າສິນຄ້າ</NuxtLink
-            >
+            <NuxtLink to="/cart" class="transition hover:text-white">{{
+              $t("nav.cart")
+            }}</NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/orders" class="transition hover:text-white"
-              >ປະຫວັດການສັ່ງຊື້</NuxtLink
-            >
+            <NuxtLink to="/orders" class="transition hover:text-white">{{
+              $t("nav.orders")
+            }}</NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/about" class="transition hover:text-white"
-              >ກ່ຽວກັບເຮົາ</NuxtLink
-            >
+            <NuxtLink to="/about" class="transition hover:text-white">{{
+              $t("nav.about")
+            }}</NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/contact" class="transition hover:text-white"
-              >ຕິດຕໍ່ເຮົາ</NuxtLink
-            >
+            <NuxtLink to="/contact" class="transition hover:text-white">{{
+              $t("nav.contact")
+            }}</NuxtLink>
           </li>
         </ul>
       </div>
       <div>
-        <h3 class="mb-3 text-lg font-bold text-white">ຕິດຕໍ່ເຮົາ</h3>
+        <h3 class="mb-3 text-lg font-bold text-white">
+          {{ $t("footer.contactTitle") }}
+        </h3>
         <ul class="space-y-2 text-sm">
           <li class="flex items-center gap-2">
             <Phone class="h-4 w-4" />
-            ໂທ / WhatsApp: 020 5555 5555
+            {{ $t("footer.phone") }}
           </li>
           <li class="flex items-center gap-2">
             <Facebook class="h-4 w-4" />
-            Facebook: ຮ້ານເສື້ອຜ້າມົ້ງ
+            {{ $t("footer.facebook") }}
           </li>
           <li class="flex items-center gap-2">
             <MapPin class="h-4 w-4" />
-            ທີ່ຢູ່: ນະຄອນຫຼວງວຽງຈັນ, ລາວ
+            {{ $t("footer.address") }}
           </li>
         </ul>
       </div>
@@ -91,7 +90,7 @@ import { Phone, Facebook, MapPin } from "lucide-vue-next";
     <div
       class="border-t border-primary-800 py-4 text-center text-xs text-primary-300"
     >
-      © 2026 ຮ້ານເສື້ອຜ້າມົ້ງ. ສະຫງວນລິຂະສິດ.
+      {{ $t("footer.rights") }}
     </div>
   </footer>
 </template>
