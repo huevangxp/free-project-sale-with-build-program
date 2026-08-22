@@ -8,6 +8,10 @@ export interface Product {
   description: string;
   colors: [string, string, string];
   sizes: string[];
+  /** Illustration style used when no photo is set */
+  kind: "dress" | "hat" | "belt" | "scarf";
+  /** Real photo path, e.g. "/products/1.jpg" (put files in public/products/) */
+  image?: string;
 }
 
 const products: Product[] = [
