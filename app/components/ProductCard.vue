@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ShoppingCart } from "lucide-vue-next";
 import type { Product } from "~/composables/useProducts";
 import { useCartStore } from "~/stores/cart";
 
