@@ -38,7 +38,7 @@ export default defineNuxtConfig({
     manifest: {
       name: "Lis Foom Vaj",
       short_name: "LFV",
-      theme_color: "#8a8a5e",
+      theme_color: "#0d9488",
       description: "Lis Foom Vaj",
       icons: [
         {
