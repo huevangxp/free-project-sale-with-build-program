@@ -65,20 +65,8 @@ watch(
           aria-label="ເມນູ"
           @click="menuOpen = !menuOpen"
         >
-          <svg
-            class="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              v-if="!menuOpen"
-              stroke-linecap="round"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-            <path v-else stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
-          </svg>
+          <Menu v-if="!menuOpen" class="h-6 w-6" />
+          <X v-else class="h-6 w-6" />
         </button>
       </div>
     </div>
