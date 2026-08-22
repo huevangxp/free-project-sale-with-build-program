@@ -1,4 +1,14 @@
 <script setup lang="ts">
+import {
+  ArrowLeft,
+  ShoppingCart,
+  Check,
+  Minus,
+  Plus,
+  Truck,
+  Banknote,
+  ShieldCheck,
+} from "lucide-vue-next";
 import { useCartStore } from "~/stores/cart";
 
 const route = useRoute();
@@ -26,9 +36,10 @@ function addToCart() {
   <div v-if="product" class="mx-auto max-w-6xl px-4 py-8">
     <NuxtLink
       to="/products"
-      class="text-sm font-medium text-primary-700 hover:underline"
+      class="inline-flex items-center gap-1 text-sm font-medium text-primary-700 hover:underline"
     >
-      ← ກັບຄືນໜ້າສິນຄ້າ
+      <ArrowLeft class="h-4 w-4" />
+      ກັບຄືນໜ້າສິນຄ້າ
     </NuxtLink>
 
     <div class="mt-4 grid gap-8 md:grid-cols-2">
@@ -91,17 +102,19 @@ function addToCart() {
           <p class="mb-2 font-semibold text-gray-800">ຈຳນວນ</p>
           <div class="flex w-fit items-center rounded-lg ring-1 ring-gray-200">
             <button
-              class="px-4 py-2 text-lg font-bold text-primary-700 hover:bg-primary-50"
+              class="px-4 py-2.5 text-primary-700 hover:bg-primary-50"
+              aria-label="ຫຼຸດຈຳນວນ"
               @click="qty = Math.max(1, qty - 1)"
             >
-              −
+              <Minus class="h-4 w-4" />
             </button>
             <span class="w-12 text-center font-semibold">{{ qty }}</span>
             <button
-              class="px-4 py-2 text-lg font-bold text-primary-700 hover:bg-primary-50"
+              class="px-4 py-2.5 text-primary-700 hover:bg-primary-50"
+              aria-label="ເພີ່ມຈຳນວນ"
               @click="qty++"
             >
-              +
+              <Plus class="h-4 w-4" />
             </button>
           </div>
         </div>
