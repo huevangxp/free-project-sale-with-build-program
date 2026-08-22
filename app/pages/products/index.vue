@@ -5,7 +5,7 @@ const router = useRouter();
 
 const activeCategory = computed(() => {
   const cat = route.query.cat as string | undefined;
-  return cat && categories.includes(cat) ? cat : "ທັງໝົດ";
+  return cat && (categories as readonly string[]).includes(cat) ? cat : "all";
 });
 
 const products = computed(() => byCategory(activeCategory.value));
@@ -13,14 +13,16 @@ const products = computed(() => byCategory(activeCategory.value));
 function selectCategory(category: string) {
   router.push({
     path: "/products",
-    query: category === "ທັງໝົດ" ? {} : { cat: category },
+    query: category === "all" ? {} : { cat: category },
   });
 }
 </script>
 
 <template>
   <div class="mx-auto max-w-6xl px-4 py-8">
-    <h1 class="text-2xl font-bold text-gray-800 sm:text-3xl">ສິນຄ້າທັງໝົດ</h1>
+    <h1 class="text-2xl font-bold text-gray-800 sm:text-3xl">
+      {{ $t("product.allTitle") }}
+    </h1>
 
     <div class="mt-4 flex flex-wrap gap-2">
       <button
@@ -34,15 +36,17 @@ function selectCategory(category: string) {
         "
         @click="selectCategory(category)"
       >
-        {{ category }}
+        {{ $t(`categories.${category}`) }}
       </button>
     </div>
 
     <p class="mt-4 text-sm text-gray-500">
-      ພົບ {{ products.length }} ລາຍການ
+      {{ $t("product.found", { count: products.length }) }}
     </p>
 
-    <div class="mt-4 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
+    <div
+      class="mt-4 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4"
+    >
       <ProductCard
         v-for="product in products"
         :key="product.id"
