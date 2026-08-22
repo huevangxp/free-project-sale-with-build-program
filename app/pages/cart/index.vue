@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ShoppingCart, PartyPopper, X, Minus, Plus } from "lucide-vue-next";
 import { useCartStore } from "~/stores/cart";
 
 const cart = useCartStore();
@@ -19,7 +20,7 @@ function checkout() {
       v-if="ordered"
       class="mt-6 rounded-xl bg-white p-8 text-center shadow-sm ring-1 ring-gray-100"
     >
-      <div class="text-5xl">🎉</div>
+      <PartyPopper class="mx-auto h-14 w-14 text-primary-600" />
       <h2 class="mt-3 text-xl font-bold text-primary-700">
         ສັ່ງຊື້ສຳເລັດແລ້ວ!
       </h2>
