@@ -52,10 +52,11 @@ function quickAdd() {
           </p>
         </div>
         <button
-          class="rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-primary-700"
+          class="flex items-center gap-1 rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-primary-700"
           @click="quickAdd"
         >
-          + ກະຕ່າ
+          <ShoppingCart class="h-4 w-4" />
+          ກະຕ່າ
         </button>
       </div>
     </div>
