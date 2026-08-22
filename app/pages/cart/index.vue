@@ -4,23 +4,26 @@ import { useCartStore } from "~/stores/cart";
 
 const cart = useCartStore();
 const { formatNumber } = useFormat();
+const { productName, sizeLabel } = useProducts();
 </script>
 
 <template>
   <div class="mx-auto max-w-4xl px-4 py-8">
-    <h1 class="text-2xl font-bold text-gray-800 sm:text-3xl">ກະຕ່າສິນຄ້າ</h1>
+    <h1 class="text-2xl font-bold text-gray-800 sm:text-3xl">
+      {{ $t("cart.title") }}
+    </h1>
 
     <div
       v-if="cart.items.length === 0"
       class="mt-6 rounded-xl bg-white p-8 text-center shadow-sm ring-1 ring-gray-100"
     >
       <ShoppingCart class="mx-auto h-14 w-14 text-primary-300" />
-      <p class="mt-3 text-gray-500">ກະຕ່າຂອງທ່ານຍັງຫວ່າງຢູ່</p>
+      <p class="mt-3 text-gray-500">{{ $t("cart.empty") }}</p>
       <NuxtLink
         to="/products"
         class="mt-4 inline-block rounded-lg bg-primary-600 px-6 py-3 font-bold text-white transition hover:bg-primary-700"
       >
-        ເລືອກຊື້ສິນຄ້າ
+        {{ $t("cart.shop") }}
       </NuxtLink>
     </div>
 
@@ -31,13 +34,15 @@ const { formatNumber } = useFormat();
           :key="`${item.id}-${item.size}`"
           class="flex gap-3 rounded-xl bg-white p-3 shadow-sm ring-1 ring-gray-100 sm:gap-4 sm:p-4"
         >
-          <div class="h-20 w-20 shrink-0 overflow-hidden rounded-lg sm:h-24 sm:w-24">
+          <div
+            class="h-20 w-20 shrink-0 overflow-hidden rounded-lg sm:h-24 sm:w-24"
+          >
             <ProductImage
               :colors="item.colors"
               :seed="item.id"
               :kind="item.kind"
               :image="item.image"
-              :alt="item.name"
+              :alt="productName(item.id, item.name)"
             />
           </div>
           <div class="flex min-w-0 flex-1 flex-col">
@@ -47,25 +52,25 @@ const { formatNumber } = useFormat();
                   :to="`/products/${item.id}`"
                   class="line-clamp-1 font-semibold text-gray-800 hover:text-primary-700"
                 >
-                  {{ item.name }}
+                  {{ productName(item.id, item.name) }}
                 </NuxtLink>
-                <p class="text-xs text-gray-400">ຂະໜາດ: {{ item.size }}</p>
+                <p class="text-xs text-gray-400">
+                  {{ $t("cart.size") }}: {{ sizeLabel(item.size) }}
+                </p>
               </div>
               <button
                 class="text-gray-300 transition hover:text-rose-500"
-                aria-label="ລຶບອອກ"
+                aria-label="remove"
                 @click="cart.remove(item.id, item.size)"
               >
                 <X class="h-5 w-5" />
               </button>
             </div>
             <div class="mt-auto flex items-center justify-between pt-2">
-              <div
-                class="flex items-center rounded-lg ring-1 ring-gray-200"
-              >
+              <div class="flex items-center rounded-lg ring-1 ring-gray-200">
                 <button
                   class="px-3 py-1.5 text-primary-700 hover:bg-primary-50"
-                  aria-label="ຫຼຸດຈຳນວນ"
+                  aria-label="-"
                   @click="cart.setQty(item.id, item.size, item.qty - 1)"
                 >
                   <Minus class="h-3.5 w-3.5" />
@@ -75,7 +80,7 @@ const { formatNumber } = useFormat();
                 }}</span>
                 <button
                   class="px-3 py-1.5 text-primary-700 hover:bg-primary-50"
-                  aria-label="ເພີ່ມຈຳນວນ"
+                  aria-label="+"
                   @click="cart.setQty(item.id, item.size, item.qty + 1)"
                 >
                   <Plus class="h-3.5 w-3.5" />
@@ -92,26 +97,26 @@ const { formatNumber } = useFormat();
       <div
         class="w-full rounded-xl bg-white p-5 shadow-sm ring-1 ring-gray-100 lg:w-72"
       >
-        <h2 class="font-bold text-gray-800">ສະຫຼຸບຄຳສັ່ງຊື້</h2>
+        <h2 class="font-bold text-gray-800">{{ $t("cart.summary") }}</h2>
         <div class="mt-3 flex justify-between text-sm text-gray-500">
-          <span>ຈຳນວນສິນຄ້າ</span>
-          <span>{{ cart.count }} ຊິ້ນ</span>
+          <span>{{ $t("cart.count") }}</span>
+          <span>{{ cart.count }} {{ $t("cart.pieces") }}</span>
         </div>
         <div class="mt-1 flex justify-between text-sm text-gray-500">
-          <span>ຄ່າສົ່ງ</span>
-          <span>ຟຣີ</span>
+          <span>{{ $t("cart.shipping") }}</span>
+          <span>{{ $t("cart.free") }}</span>
         </div>
         <div
           class="mt-3 flex justify-between border-t border-gray-100 pt-3 font-bold text-gray-800"
         >
-          <span>ລວມທັງໝົດ</span>
+          <span>{{ $t("cart.total") }}</span>
           <span class="text-primary-700">{{ formatNumber(cart.total) }} ₭</span>
         </div>
         <NuxtLink
           to="/checkout"
           class="mt-4 block w-full rounded-lg bg-primary-600 py-3 text-center font-bold text-white transition hover:bg-primary-700"
         >
-          ສັ່ງຊື້ເລີຍ
+          {{ $t("cart.checkout") }}
         </NuxtLink>
       </div>
     </div>
