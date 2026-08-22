@@ -35,9 +35,18 @@ import { Phone, Facebook, MapPin } from "lucide-vue-next";
       <div>
         <h3 class="mb-3 text-lg font-bold text-white">ຕິດຕໍ່ເຮົາ</h3>
         <ul class="space-y-2 text-sm">
-          <li>ໂທ / WhatsApp: 020 5555 5555</li>
-          <li>Facebook: ຮ້ານເສື້ອຜ້າມົ້ງ</li>
-          <li>ທີ່ຢູ່: ນະຄອນຫຼວງວຽງຈັນ, ລາວ</li>
+          <li class="flex items-center gap-2">
+            <Phone class="h-4 w-4" />
+            ໂທ / WhatsApp: 020 5555 5555
+          </li>
+          <li class="flex items-center gap-2">
+            <Facebook class="h-4 w-4" />
+            Facebook: ຮ້ານເສື້ອຜ້າມົ້ງ
+          </li>
+          <li class="flex items-center gap-2">
+            <MapPin class="h-4 w-4" />
+            ທີ່ຢູ່: ນະຄອນຫຼວງວຽງຈັນ, ລາວ
+          </li>
         </ul>
       </div>
     </div>
