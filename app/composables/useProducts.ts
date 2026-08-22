@@ -10,7 +10,7 @@ export interface Product {
   sizes: string[];
   /** Illustration style used when no photo is set */
   kind: "dress" | "hat" | "belt" | "scarf";
-  /** Real photo path, e.g. "/products/1.jpg" (put files in public/products/) */
+  /** Real photo path, e.g. "/images/products/1.jpg" (put files in public/images/products/) */
   image?: string;
 }
 
