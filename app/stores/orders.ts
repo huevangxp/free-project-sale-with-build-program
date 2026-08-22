@@ -48,7 +48,7 @@ export const useOrdersStore = defineStore("orders", () => {
     const order: Order = {
       id: "ORD" + Date.now().toString().slice(-8),
       date: new Date().toISOString(),
-      status: "ລໍຖ້າຢືນຢັນ",
+      status: "pending",
       items: JSON.parse(JSON.stringify(items)),
       total,
       ...info,
