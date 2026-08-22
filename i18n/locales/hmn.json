@@ -1,0 +1,222 @@
+{
+  "brand": "Khw Khaub Ncaws Hmoob",
+  "nav": {
+    "home": "Tsev",
+    "products": "Khoom Muag",
+    "about": "Hais Txog Peb",
+    "contact": "Tiv Tauj",
+    "cart": "Tawb Khoom",
+    "profile": "Kuv Tus Account",
+    "orders": "Keeb Kwm Yuav Khoom",
+    "login": "Nkag Mus",
+    "register": "Sau Npe"
+  },
+  "hero": {
+    "tag": "✦ Tuav Tseg Hmoob Kev Cai ✦",
+    "title": "Khaub Ncaws Hmoob Tseeb, Xaws Paj Ntaub Nrog Lub Siab",
+    "subtitle": "Khaub ncaws Hmoob zoo nkauj, paj ntaub zoo tshaj, rau txhua tus neeg txhua lub hnub nyoog, xa mus txog koj lub tsev thoob teb chaws",
+    "buy": "Yuav Tam Sim No",
+    "viewAll": "Saib Tag Nrho Cov Khoom"
+  },
+  "features": {
+    "f1t": "Xaws Tes 100%",
+    "f1x": "Txhua daim xaws los ntawm cov kws txawj",
+    "f2t": "Xa Sai Thoob Teb Chaws",
+    "f2x": "Xa mus txog hauv 1-3 hnub",
+    "f3t": "Them Nyiaj Thaum Txais Khoom",
+    "f3x": "Txais khoom ua ntej, them tom qab",
+    "f4t": "Lav Qhov Zoo",
+    "f4x": "Pauv thiab xa rov qab tau hauv 7 hnub"
+  },
+  "home": {
+    "categories": "Pawg Khoom",
+    "featured": "Khoom Pom Zoo",
+    "viewAll": "Saib tag nrho"
+  },
+  "categories": {
+    "all": "Tag Nrho",
+    "women": "Poj Niam Cev Khaub Ncaws",
+    "men": "Txiv Neej Cev Khaub Ncaws",
+    "kids": "Me Nyuam",
+    "accessories": "Khoom Dai"
+  },
+  "badges": {
+    "bestseller": "Muag Zoo",
+    "new": "Tshiab",
+    "sale": "Txo Nqi"
+  },
+  "sizes": {
+    "free": "Ib qho loj xwb",
+    "1-2y": "1-2 xyoos",
+    "3-4y": "3-4 xyoos",
+    "5-6y": "5-6 xyoos",
+    "7-8y": "7-8 xyoos"
+  },
+  "product": {
+    "allTitle": "Tag Nrho Cov Khoom",
+    "found": "Pom {count} yam",
+    "back": "Rov qab mus rau cov khoom",
+    "size": "Qhov Loj",
+    "qty": "Pes Tsawg",
+    "add": "Ntxiv Rau Tawb",
+    "added": "Ntxiv Lawm",
+    "addShort": "Tawb",
+    "goCart": "Mus Rau Tawb Khoom",
+    "d1": "Xa sai thoob teb chaws 1-3 hnub",
+    "d2": "Them nyiaj thaum txais khoom tau",
+    "d3": "Pauv tau hauv 7 hnub",
+    "notFound": "Nrhiav tsis pom qhov khoom no"
+  },
+  "cart": {
+    "title": "Tawb Khoom",
+    "empty": "Koj lub tawb khoom tseem khoob",
+    "shop": "Mus Yuav Khoom",
+    "summary": "Cov Khoom Yuav",
+    "count": "Cov khoom",
+    "pieces": "daim",
+    "shipping": "Nqi xa",
+    "free": "Dawb",
+    "total": "Tag Nrho",
+    "checkout": "Yuav Tam Sim No",
+    "size": "Qhov loj"
+  },
+  "checkout": {
+    "title": "Lees Paub Qhov Yuav",
+    "empty": "Koj lub tawb khoom khoob, tseem yuav tsis tau",
+    "shipping": "Chaw Xa Khoom",
+    "name": "Tus txais lub npe",
+    "phone": "Xov tooj tiv tauj",
+    "address": "Chaw xa khoom: zos, nroog, xeev",
+    "note": "Lus qhia ntxiv (yog muaj)",
+    "payment": "Kev Them Nyiaj",
+    "cod": "Them Thaum Txais Khoom (COD)",
+    "transfer": "Xa Nyiaj Hauv Tuam Txhab",
+    "summary": "Cov Khoom Yuav",
+    "confirm": "Lees Paub Yuav",
+    "fillAll": "Thov sau cov ntaub ntawv xa khoom kom tiav",
+    "emptyCart": "Koj lub tawb khoom khoob"
+  },
+  "orders": {
+    "title": "Keeb Kwm Yuav Khoom",
+    "empty": "Koj tseem tsis tau yuav khoom",
+    "success": "Yuav tiav lawm! Koj tus lej yuav khoom: {id} — peb pab neeg yuav hu tuaj lees paub",
+    "total": "Tag nrho",
+    "loading": "Tab tom thauj...",
+    "status": {
+      "pending": "Tos lees paub",
+      "shipping": "Tab tom xa",
+      "delivered": "Xa txog lawm"
+    }
+  },
+  "auth": {
+    "loginTitle": "Nkag Mus",
+    "loginSubtitle": "Zoo siab txais tos koj rov qab los rau Khw Khaub Ncaws Hmoob",
+    "phone": "Xov tooj",
+    "password": "Password",
+    "passwordHint": "Tsawg kawg 4 tus ntawv",
+    "loginBtn": "Nkag Mus",
+    "noAccount": "Tseem tsis muaj account?",
+    "registerLink": "Sau npe",
+    "registerTitle": "Sau Npe",
+    "registerSubtitle": "Tsim ib tus account tshiab kom yuav khoom yooj yim thiab sai dua",
+    "fullName": "Npe thiab xeem",
+    "namePlaceholder": "Koj lub npe",
+    "registerBtn": "Sau Npe",
+    "haveAccount": "Twb muaj account lawm?",
+    "loginLink": "Nkag mus",
+    "errors": {
+      "fillAll": "Thov sau kom tiav txhua qhov",
+      "shortPassword": "Password yuav tsum muaj tsawg kawg 4 tus ntawv",
+      "phoneExists": "Tus xov tooj no twb sau npe lawm, thov nkag mus",
+      "invalid": "Xov tooj los sis password tsis raug"
+    }
+  },
+  "profile": {
+    "title": "Kuv Tus Account",
+    "fullName": "Npe thiab xeem",
+    "address": "Chaw xa khoom",
+    "addressPlaceholder": "Zos, nroog, xeev",
+    "save": "Khaws Cia",
+    "saved": "Khaws Lawm",
+    "ordersTitle": "Keeb Kwm Yuav Khoom",
+    "ordersSub": "Saib tag nrho koj cov khoom yuav",
+    "logoutTitle": "Tawm Mus",
+    "logoutSub": "Tawm ntawm tus account no"
+  },
+  "about": {
+    "title": "Hais Txog Peb",
+    "subtitle": "Khw Khaub Ncaws Hmoob tau tsim los ntawm txoj kev hlub rau Hmoob kev cai, kom tuav tseg cov paj ntaub uas yog Hmoob tug rau tej tub ki mus ib txhis",
+    "storyTitle": "Peb Zaj Dab Neeg",
+    "storyText": "Peb pib los ntawm ib lub khw me me hauv Vientiane, xaws thiab paj ntaub khaub ncaws Hmoob rau cov neeg hauv zej zog. Niaj hnub no peb loj hlob mus ua ib lub khw online, coj Hmoob paj ntaub qhov zoo nkauj mus txog txhua tus neeg thoob teb chaws. Txhua daim khoom raug xaiv thiab kuaj kom zoo ua ntej xa mus txog koj txhais tes.",
+    "v1t": "Tes Txawj Zoo Tshaj",
+    "v1x": "Txhua daim xaws tes los ntawm cov kws muaj kev paub ntau tshaj 10 xyoo",
+    "v2t": "Hlub Peb Kev Cai",
+    "v2x": "Peb tuav tseg cov paj ntaub thiab tswv yim ntawm peb poj koob yawm txwv",
+    "v3t": "Pab Peb Zej Zog",
+    "v3x": "Peb pab cov neeg xaws paj ntaub hauv zos kom muaj hauj lwm",
+    "v4t": "Lav Qhov Zoo",
+    "v4x": "Xaiv ntaub thiab khoom siv zoo, ruaj khov, hnav tau ntev"
+  },
+  "contact": {
+    "title": "Tiv Tauj Peb",
+    "subtitle": "Muaj lus nug, los sis xav xaws ib cev tshwj xeeb? Xa lus tuaj rau peb tau txhua lub sij hawm",
+    "phone": "Hu / WhatsApp",
+    "facebook": "Facebook",
+    "address": "Khw Qhov Chaw",
+    "addressValue": "Vientiane, Los Tsuas",
+    "hours": "Sij Hawm Qhib",
+    "hoursValue": "Mon - Sat: 8:00 - 18:00",
+    "formTitle": "Xa lus tuaj rau peb",
+    "yourName": "Koj lub npe",
+    "yourPhone": "Xov tooj hu rov rau koj",
+    "message": "Koj cov lus...",
+    "send": "Xa Lus",
+    "sent": "Xa lawm, ua tsaug!"
+  },
+  "footer": {
+    "text": "Muag khaub ncaws Hmoob tseeb, txhua daim xaws paj ntaub tes. Tuav tseg Hmoob kev cai thiab tswv yim, xa sai thoob teb chaws.",
+    "menu": "Menu",
+    "contactTitle": "Tiv Tauj Peb",
+    "phone": "Hu / WhatsApp: 020 5555 5555",
+    "facebook": "Facebook: Khw Khaub Ncaws Hmoob",
+    "address": "Chaw nyob: Vientiane, Los Tsuas",
+    "rights": "© 2026 Khw Khaub Ncaws Hmoob. Muaj cai tag nrho.",
+    "cta": "Xaws cev khaub ncaws Hmoob raws li koj siab nyiam",
+    "ctaSub": "Xa lus tuaj — peb cov kws xaws yuav tsim rau koj dawb",
+    "call": "Hu 020 5555 5555"
+  },
+  "products": {
+    "1": {
+      "name": "Cev Khaub Ncaws Poj Niam Hmoob Ib Txwm",
+      "desc": "Cev khaub ncaws poj niam Hmoob ib txwm, xaws paj ntaub tes txhua kauj ruam, nrog daim tiab nthws thiab daim sev paj ntaub qub. Zoo rau noj peb caug thiab hnub tseem ceeb."
+    },
+    "2": {
+      "name": "Tsho Hmoob Xaws Paj Ntaub Tes",
+      "desc": "Tsho Hmoob xaws paj ntaub tes 100%, cov paj zoo nkauj heev. Ntaub paj rwb zoo, hnav xis nyob, thiab yooj yim hnav nrog khaub ncaws niaj hnub."
+    },
+    "3": {
+      "name": "Daim Tiab Hmoob Paj Qub",
+      "desc": "Daim tiab Hmoob nthws nrog paj qub, xim ci ntsa iab. Ntaub zoo nkauj, ncig ua si zoo heev — zoo rau seev cev thiab thaij duab."
+    },
+    "4": {
+      "name": "Cev Khaub Ncaws Txiv Neej Hmoob",
+      "desc": "Ib cev khaub ncaws txiv neej Hmoob: tsho, ris, thiab siv. Ntaub dub tuab nrog paj ntaub zoo nkauj, hnav tau meej mom heev."
+    },
+    "5": {
+      "name": "Kaus Mom Me Nyuam Hmoob",
+      "desc": "Kaus mom me nyuam Hmoob zoo nkauj heev, xaws paj me me nrog cov qws xim ci. Muaj ntau qhov loj xaiv."
+    },
+    "6": {
+      "name": "Txoj Siv Nyiaj Hmoob",
+      "desc": "Txoj siv nyiaj Hmoob tseeb, ntaus tes los ntawm cov kws txawj, cov paj zoo heev. Ib yam khoom qub tuav tseg tau ntau tiam neeg."
+    },
+    "7": {
+      "name": "Phuam Paj Ntaub Hmoob",
+      "desc": "Phuam looj caj dab paj ntaub Hmoob, mos thiab sov, hnav tau txhua lub caij. Ib qho khoom plig muaj nqis rau peb kev cai."
+    },
+    "8": {
+      "name": "Cev Khaub Ncaws Me Ntxhais Hmoob",
+      "desc": "Ib cev khaub ncaws me ntxhais Hmoob nrog kaus mom thiab khoom dai. Xim ci zoo nkauj heev — zoo rau noj peb caug Hmoob."
+    }
+  }
+}
