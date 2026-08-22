@@ -1,12 +1,15 @@
 export interface Product {
   id: number;
+  /** Fallback name (Lao) — display uses the i18n key products.{id}.name */
   name: string;
-  category: string;
+  /** Category code, translated via categories.{code} */
+  category: "women" | "men" | "kids" | "accessories";
   price: number;
   oldPrice?: number;
-  badge?: string;
-  description: string;
+  /** Badge code, translated via badges.{code} */
+  badge?: "bestseller" | "new" | "sale";
   colors: [string, string, string];
+  /** Size codes: letter sizes pass through, others translated via sizes.{code} */
   sizes: string[];
   /** Illustration style used when no photo is set */
   kind: "dress" | "hat" | "belt" | "scarf";
@@ -19,12 +22,10 @@ const products: Product[] = [
     id: 1,
     kind: "dress",
     name: "ຊຸດມົ້ງຜູ້ຍິງແບບດັ້ງເດີມ",
-    category: "ຊຸດຜູ້ຍິງ",
+    category: "women",
     price: 850000,
     oldPrice: 990000,
-    badge: "ຂາຍດີ",
-    description:
-      "ຊຸດມົ້ງຜູ້ຍິງແບບດັ້ງເດີມ ປັກລາຍມືທຸກຂັ້ນຕອນ ພ້ອມກະໂປງອັດກີບ ແລະ ຜ້າກັນເປື້ອນລາຍໂບຮານ ເໝາະສຳລັບງານບຸນ ແລະ ວັນສຳຄັນ.",
+    badge: "bestseller",
     colors: ["#0d9488", "#e11d48", "#f59e0b"],
     sizes: ["S", "M", "L", "XL"],
   },
@@ -32,11 +33,9 @@ const products: Product[] = [
     id: 2,
     kind: "dress",
     name: "ເສື້ອມົ້ງປັກລາຍມື",
-    category: "ຊຸດຜູ້ຍິງ",
+    category: "women",
     price: 450000,
-    badge: "ໃໝ່",
-    description:
-      "ເສື້ອມົ້ງປັກລາຍມືແທ້ 100% ລວດລາຍລະອຽດງາມ ຜ້າຝ້າຍເນື້ອດີ ໃສ່ສະບາຍ ເຂົ້າກັບຊຸດທັນສະໄໝໄດ້ງ່າຍ.",
+    badge: "new",
     colors: ["#115e59", "#f43f5e", "#fbbf24"],
     sizes: ["S", "M", "L"],
   },
@@ -44,10 +43,8 @@ const products: Product[] = [
     id: 3,
     kind: "dress",
     name: "ກະໂປງມົ້ງລາຍໂບຮານ",
-    category: "ຊຸດຜູ້ຍິງ",
+    category: "women",
     price: 380000,
-    description:
-      "ກະໂປງມົ້ງອັດກີບລາຍໂບຮານ ສີສັນສົດໃສ ເນື້ອຜ້າພິ້ວສວຍ ໝູນແລ້ວບານງາມ ເໝາະກັບການຟ້ອນ ແລະ ຖ່າຍຮູບ.",
     colors: ["#0f766e", "#c026d3", "#f97316"],
     sizes: ["S", "M", "L", "XL"],
   },
@@ -55,11 +52,9 @@ const products: Product[] = [
     id: 4,
     kind: "dress",
     name: "ຊຸດມົ້ງຜູ້ຊາຍເຕັມຊຸດ",
-    category: "ຊຸດຜູ້ຊາຍ",
+    category: "men",
     price: 650000,
-    badge: "ຂາຍດີ",
-    description:
-      "ຊຸດມົ້ງຜູ້ຊາຍເຕັມຊຸດ ເສື້ອ+ໂສ້ງ+ສາຍແອວ ຜ້າດຳເນື້ອໜາ ປັກແຖບລາຍງາມ ໃສ່ແລ້ວສະຫງ່າຜ່າເຜີຍ.",
+    badge: "bestseller",
     colors: ["#042f2e", "#0d9488", "#e11d48"],
     sizes: ["M", "L", "XL", "XXL"],
   },
@@ -67,67 +62,76 @@ const products: Product[] = [
     id: 5,
     kind: "hat",
     name: "ໝວກມົ້ງເດັກນ້ອຍ",
-    category: "ເດັກນ້ອຍ",
+    category: "kids",
     price: 120000,
-    badge: "ໃໝ່",
-    description:
-      "ໝວກມົ້ງເດັກນ້ອຍ ປັກລາຍນ້ອຍໆໜ້າຮັກ ພ້ອມພູ່ຫ້ອຍສີສັນສົດໃສ ມີຫຼາຍຂະໜາດໃຫ້ເລືອກ.",
+    badge: "new",
     colors: ["#14b8a6", "#f43f5e", "#facc15"],
-    sizes: ["1-2 ປີ", "3-4 ປີ", "5-6 ປີ"],
+    sizes: ["1-2y", "3-4y", "5-6y"],
   },
   {
     id: 6,
     kind: "belt",
     name: "ສາຍແອວເງິນມົ້ງ",
-    category: "ເຄື່ອງປະດັບ",
+    category: "accessories",
     price: 950000,
-    description:
-      "ສາຍແອວເງິນມົ້ງແທ້ ຕີມືໂດຍຊ່າງມີປະສົບການ ລວດລາຍປານີດ ເປັນມໍລະດົກທີ່ສົ່ງຕໍ່ໄດ້ຫຼາຍລຸ້ນຄົນ.",
     colors: ["#134e4a", "#94a3b8", "#e2e8f0"],
-    sizes: ["ຟຣີໄຊສ໌"],
+    sizes: ["free"],
   },
   {
     id: 7,
     kind: "scarf",
     name: "ຜ້າພັນຄໍປັກລາຍມົ້ງ",
-    category: "ເຄື່ອງປະດັບ",
+    category: "accessories",
     price: 180000,
-    description:
-      "ຜ້າພັນຄໍປັກລາຍມົ້ງ ນຸ່ມສະບາຍ ໃສ່ໄດ້ທຸກລະດູ ເປັນຂອງຝາກທີ່ມີຄຸນຄ່າທາງວັດທະນະທຳ.",
     colors: ["#0d9488", "#fb7185", "#fde047"],
-    sizes: ["ຟຣີໄຊສ໌"],
+    sizes: ["free"],
   },
   {
     id: 8,
     kind: "dress",
     name: "ຊຸດມົ້ງເດັກຍິງ",
-    category: "ເດັກນ້ອຍ",
+    category: "kids",
     price: 320000,
     oldPrice: 380000,
-    badge: "ຫຼຸດລາຄາ",
-    description:
-      "ຊຸດມົ້ງເດັກຍິງເຕັມຊຸດ ພ້ອມໝວກ ແລະ ເຄື່ອງປະດັບ ສີສັນສົດໃສ ໜ້າຮັກ ເໝາະກັບງານບຸນປີໃໝ່ມົ້ງ.",
+    badge: "sale",
     colors: ["#0f766e", "#ec4899", "#f59e0b"],
-    sizes: ["3-4 ປີ", "5-6 ປີ", "7-8 ປີ"],
+    sizes: ["3-4y", "5-6y", "7-8y"],
   },
 ];
 
 export const useProducts = () => {
-  const categories = [
-    "ທັງໝົດ",
-    "ຊຸດຜູ້ຍິງ",
-    "ຊຸດຜູ້ຊາຍ",
-    "ເດັກນ້ອຍ",
-    "ເຄື່ອງປະດັບ",
-  ];
+  const { t, te } = useI18n();
+
+  const categories = ["all", "women", "men", "kids", "accessories"] as const;
 
   const all = () => products;
   const byId = (id: number) => products.find((p) => p.id === id);
   const byCategory = (category: string) =>
-    category === "ທັງໝົດ"
+    category === "all"
       ? products
       : products.filter((p) => p.category === category);
   const featured = () => products.slice(0, 4);
 
-  return { categories, all, byId, byCategory, featured };
+  /** Localized product name with fallback for items not in the i18n files */
+  const productName = (id: number, fallback = "") =>
+    te(`products.${id}.name`) ? t(`products.${id}.name`) : fallback;
+
+  /** Localized product description */
+  const productDesc = (id: number, fallback = "") =>
+    te(`products.${id}.desc`) ? t(`products.${id}.desc`) : fallback;
+
+  /** Localized size label — letter sizes (S, M, L...) pass through */
+  const sizeLabel = (size: string) =>
+    te(`sizes.${size}`) ? t(`sizes.${size}`) : size;
+
+  return {
+    categories,
+    all,
+    byId,
+    byCategory,
+    featured,
+    productName,
+    productDesc,
+    sizeLabel,
+  };
 };
