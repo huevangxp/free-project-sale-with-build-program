@@ -107,12 +107,12 @@ const { formatNumber } = useFormat();
           <span>ລວມທັງໝົດ</span>
           <span class="text-primary-700">{{ formatNumber(cart.total) }} ₭</span>
         </div>
-        <button
-          class="mt-4 w-full rounded-lg bg-primary-600 py-3 font-bold text-white transition hover:bg-primary-700"
-          @click="checkout"
+        <NuxtLink
+          to="/checkout"
+          class="mt-4 block w-full rounded-lg bg-primary-600 py-3 text-center font-bold text-white transition hover:bg-primary-700"
         >
           ສັ່ງຊື້ເລີຍ
-        </button>
+        </NuxtLink>
       </div>
     </div>
   </div>
