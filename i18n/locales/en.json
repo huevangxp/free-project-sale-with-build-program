@@ -1,0 +1,222 @@
+{
+  "brand": "Hmong Clothing Shop",
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About Us",
+    "contact": "Contact",
+    "cart": "Shopping Cart",
+    "profile": "My Profile",
+    "orders": "Order History",
+    "login": "Sign In",
+    "register": "Sign Up"
+  },
+  "hero": {
+    "tag": "✦ Preserving Hmong Heritage ✦",
+    "title": "Authentic Hmong Clothing, Hand-Embroidered with Heart",
+    "subtitle": "Finely crafted Hmong outfits with exquisite patterns for all ages, delivered to your door nationwide",
+    "buy": "Shop Now",
+    "viewAll": "View All Products"
+  },
+  "features": {
+    "f1t": "100% Hand-Embroidered",
+    "f1x": "Every piece embroidered by skilled artisans",
+    "f2t": "Fast Nationwide Delivery",
+    "f2x": "Delivered within 1-3 days",
+    "f3t": "Cash on Delivery",
+    "f3x": "Receive your order first, pay after",
+    "f4t": "Quality Guaranteed",
+    "f4x": "Returns and exchanges within 7 days"
+  },
+  "home": {
+    "categories": "Categories",
+    "featured": "Featured Products",
+    "viewAll": "View all"
+  },
+  "categories": {
+    "all": "All",
+    "women": "Women's Outfits",
+    "men": "Men's Outfits",
+    "kids": "Children",
+    "accessories": "Accessories"
+  },
+  "badges": {
+    "bestseller": "Best Seller",
+    "new": "New",
+    "sale": "Sale"
+  },
+  "sizes": {
+    "free": "Free size",
+    "1-2y": "1-2 yrs",
+    "3-4y": "3-4 yrs",
+    "5-6y": "5-6 yrs",
+    "7-8y": "7-8 yrs"
+  },
+  "product": {
+    "allTitle": "All Products",
+    "found": "{count} items found",
+    "back": "Back to products",
+    "size": "Size",
+    "qty": "Quantity",
+    "add": "Add to Cart",
+    "added": "Added",
+    "addShort": "Add",
+    "goCart": "Go to Cart",
+    "d1": "Fast delivery nationwide, 1-3 days",
+    "d2": "Cash on delivery available",
+    "d3": "Returns within 7 days",
+    "notFound": "Product not found"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "shop": "Shop Now",
+    "summary": "Order Summary",
+    "count": "Items",
+    "pieces": "pcs",
+    "shipping": "Shipping",
+    "free": "Free",
+    "total": "Total",
+    "checkout": "Checkout",
+    "size": "Size"
+  },
+  "checkout": {
+    "title": "Confirm Order",
+    "empty": "Your cart is empty, there is nothing to order yet",
+    "shipping": "Shipping Information",
+    "name": "Receiver name",
+    "phone": "Contact phone",
+    "address": "Delivery address: village, district, province",
+    "note": "Note (optional)",
+    "payment": "Payment Method",
+    "cod": "Cash on Delivery (COD)",
+    "transfer": "Bank Transfer",
+    "summary": "Order Summary",
+    "confirm": "Place Order",
+    "fillAll": "Please fill in all shipping information",
+    "emptyCart": "Your cart is empty"
+  },
+  "orders": {
+    "title": "Order History",
+    "empty": "You have no orders yet",
+    "success": "Order placed! Your order number: {id} — our team will contact you to confirm",
+    "total": "Total",
+    "loading": "Loading...",
+    "status": {
+      "pending": "Awaiting confirmation",
+      "shipping": "Out for delivery",
+      "delivered": "Delivered"
+    }
+  },
+  "auth": {
+    "loginTitle": "Sign In",
+    "loginSubtitle": "Welcome back to the Hmong Clothing Shop",
+    "phone": "Phone number",
+    "password": "Password",
+    "passwordHint": "At least 4 characters",
+    "loginBtn": "Sign In",
+    "noAccount": "Don't have an account?",
+    "registerLink": "Sign up",
+    "registerTitle": "Sign Up",
+    "registerSubtitle": "Create an account to order faster and easier",
+    "fullName": "Full name",
+    "namePlaceholder": "Your name",
+    "registerBtn": "Sign Up",
+    "haveAccount": "Already have an account?",
+    "loginLink": "Sign in",
+    "errors": {
+      "fillAll": "Please fill in all fields",
+      "shortPassword": "Password must be at least 4 characters",
+      "phoneExists": "This phone number is already registered, please sign in",
+      "invalid": "Incorrect phone number or password"
+    }
+  },
+  "profile": {
+    "title": "My Profile",
+    "fullName": "Full name",
+    "address": "Delivery address",
+    "addressPlaceholder": "Village, district, province",
+    "save": "Save",
+    "saved": "Saved",
+    "ordersTitle": "Order History",
+    "ordersSub": "View all of your orders",
+    "logoutTitle": "Sign Out",
+    "logoutSub": "Sign out of this account"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "The Hmong Clothing Shop was founded out of love for Hmong culture, to preserve its unique embroidery patterns for generations to come",
+    "storyTitle": "Our Story",
+    "storyText": "We started as a small shop in Vientiane, tailoring and embroidering Hmong outfits for our community. Today we have grown into an online store, bringing the beauty of Hmong embroidery to everyone nationwide. Every piece is carefully selected and quality-checked before it reaches your hands.",
+    "v1t": "Exquisite Craftsmanship",
+    "v1x": "Every piece hand-embroidered by artisans with over 10 years of experience",
+    "v2t": "Love for the Culture",
+    "v2x": "We carry on the patterns and wisdom of our ancestors",
+    "v3t": "Supporting the Community",
+    "v3x": "We support local embroiderers with fair, steady work",
+    "v4t": "Guaranteed Quality",
+    "v4x": "Carefully chosen fabrics and materials, made to last"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have a question, or want a custom-made outfit? Message us any time",
+    "phone": "Call / WhatsApp",
+    "facebook": "Facebook",
+    "address": "Shop Address",
+    "addressValue": "Vientiane Capital, Laos",
+    "hours": "Opening Hours",
+    "hoursValue": "Mon - Sat: 8:00 - 18:00",
+    "formTitle": "Send us a message",
+    "yourName": "Your name",
+    "yourPhone": "Phone number to reach you",
+    "message": "Your message...",
+    "send": "Send Message",
+    "sent": "Sent, thank you!"
+  },
+  "footer": {
+    "text": "Authentic Hmong clothing, every piece hand-embroidered. Preserving the culture and wisdom of the Hmong people, delivered fast nationwide.",
+    "menu": "Menu",
+    "contactTitle": "Contact Us",
+    "phone": "Call / WhatsApp: 020 5555 5555",
+    "facebook": "Facebook: Hmong Clothing Shop",
+    "address": "Address: Vientiane Capital, Laos",
+    "rights": "© 2026 Hmong Clothing Shop. All rights reserved.",
+    "cta": "Custom-made Hmong outfits, exactly how you want them",
+    "ctaSub": "Message us — our tailors will design for you for free",
+    "call": "Call 020 5555 5555"
+  },
+  "products": {
+    "1": {
+      "name": "Traditional Hmong Women's Outfit",
+      "desc": "A traditional Hmong women's outfit, hand-embroidered at every step, with a pleated skirt and classic-pattern apron. Perfect for festivals and special occasions."
+    },
+    "2": {
+      "name": "Hand-Embroidered Hmong Shirt",
+      "desc": "A 100% hand-embroidered Hmong shirt with fine, detailed patterns. Quality cotton, comfortable to wear, and easy to pair with modern outfits."
+    },
+    "3": {
+      "name": "Classic-Pattern Hmong Skirt",
+      "desc": "A pleated Hmong skirt with classic patterns and bright colors. Beautiful flowing fabric that fans out gracefully — perfect for dancing and photos."
+    },
+    "4": {
+      "name": "Complete Hmong Men's Outfit",
+      "desc": "A complete Hmong men's outfit: shirt, trousers, and sash. Thick black fabric with beautifully embroidered trim for a dignified look."
+    },
+    "5": {
+      "name": "Hmong Children's Hat",
+      "desc": "An adorable Hmong children's hat with delicate embroidery and colorful tassels. Available in several sizes."
+    },
+    "6": {
+      "name": "Hmong Silver Belt",
+      "desc": "An authentic Hmong silver belt, hand-forged by experienced silversmiths with intricate patterns. An heirloom to pass down for generations."
+    },
+    "7": {
+      "name": "Embroidered Hmong Scarf",
+      "desc": "A soft Hmong embroidered scarf for every season. A gift rich in cultural meaning."
+    },
+    "8": {
+      "name": "Hmong Girl's Outfit",
+      "desc": "A complete Hmong outfit for girls with hat and accessories. Bright, adorable colors — perfect for Hmong New Year celebrations."
+    }
+  }
+}
