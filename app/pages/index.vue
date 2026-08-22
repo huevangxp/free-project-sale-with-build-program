@@ -4,18 +4,10 @@ import { Scissors, Truck, Banknote, ShieldCheck } from "lucide-vue-next";
 const { categories, featured } = useProducts();
 
 const features = [
-  {
-    icon: Scissors,
-    title: "ປັກມືແທ້ 100%",
-    text: "ທຸກຜືນປັກດ້ວຍມືໂດຍຊ່າງມີຝີມື",
-  },
-  { icon: Truck, title: "ສົ່ງໄວທົ່ວປະເທດ", text: "ຈັດສົ່ງພາຍໃນ 1-3 ວັນ" },
-  { icon: Banknote, title: "ຈ່າຍເງິນປາຍທາງ", text: "ຮັບສິນຄ້າກ່ອນ ຈ່າຍທີຫຼັງ" },
-  {
-    icon: ShieldCheck,
-    title: "ຮັບປະກັນຄຸນນະພາບ",
-    text: "ປ່ຽນ-ຄືນໄດ້ພາຍໃນ 7 ວັນ",
-  },
+  { icon: Scissors, title: "features.f1t", text: "features.f1x" },
+  { icon: Truck, title: "features.f2t", text: "features.f2x" },
+  { icon: Banknote, title: "features.f3t", text: "features.f3x" },
+  { icon: ShieldCheck, title: "features.f4t", text: "features.f4x" },
 ];
 </script>
 
@@ -31,28 +23,26 @@ const features = [
         <span
           class="rounded-full bg-primary-600/60 px-4 py-1 text-sm font-medium"
         >
-          ✦ ສືບສານວັດທະນະທຳມົ້ງ ✦
+          {{ $t("hero.tag") }}
         </span>
-        <h1 class="text-3xl leading-snug font-bold sm:text-5xl">
-          ເສື້ອຜ້າມົ້ງແທ້<br class="sm:hidden" />
-          ປັກມືດ້ວຍໃຈ ໃສ່ແລ້ວສະຫງ່າງາມ
+        <h1 class="max-w-3xl text-3xl leading-snug font-bold sm:text-5xl">
+          {{ $t("hero.title") }}
         </h1>
         <p class="max-w-2xl text-primary-100 sm:text-lg">
-          ຄັດສັນຊຸດມົ້ງຄຸນນະພາບດີ ລວດລາຍປານີດ ສຳລັບທຸກເພດທຸກໄວ
-          ພ້ອມສົ່ງເຖິງໜ້າບ້ານທົ່ວປະເທດ
+          {{ $t("hero.subtitle") }}
         </p>
         <div class="flex flex-wrap justify-center gap-3">
           <NuxtLink
             to="/products"
             class="rounded-lg bg-white px-6 py-3 font-bold text-primary-700 shadow transition hover:bg-primary-50"
           >
-            ຊື້ເລີຍ
+            {{ $t("hero.buy") }}
           </NuxtLink>
           <NuxtLink
             to="/products"
             class="rounded-lg border border-white/60 px-6 py-3 font-bold transition hover:bg-primary-600"
           >
-            ເບິ່ງສິນຄ້າທັງໝົດ
+            {{ $t("hero.viewAll") }}
           </NuxtLink>
         </div>
       </div>
@@ -70,9 +60,9 @@ const features = [
             :is="feature.icon"
             class="mx-auto h-8 w-8 text-primary-600"
           />
-          <h3 class="mt-2 font-bold text-gray-800">{{ feature.title }}</h3>
+          <h3 class="mt-2 font-bold text-gray-800">{{ $t(feature.title) }}</h3>
           <p class="mt-1 text-xs text-gray-500 sm:text-sm">
-            {{ feature.text }}
+            {{ $t(feature.text) }}
           </p>
         </div>
       </div>
@@ -81,7 +71,7 @@ const features = [
     <!-- Categories -->
     <section class="mx-auto max-w-6xl px-4 py-4">
       <h2 class="mb-4 text-xl font-bold text-gray-800 sm:text-2xl">
-        ໝວດສິນຄ້າ
+        {{ $t("home.categories") }}
       </h2>
       <div class="flex flex-wrap gap-2">
         <NuxtLink
@@ -90,7 +80,7 @@ const features = [
           :to="{ path: '/products', query: { cat: category } }"
           class="rounded-full bg-white px-4 py-2 text-sm font-medium text-primary-700 ring-1 ring-primary-200 transition hover:bg-primary-600 hover:text-white"
         >
-          {{ category }}
+          {{ $t(`categories.${category}`) }}
         </NuxtLink>
       </div>
     </section>
@@ -99,13 +89,13 @@ const features = [
     <section class="mx-auto max-w-6xl px-4 py-8">
       <div class="mb-4 flex items-center justify-between">
         <h2 class="text-xl font-bold text-gray-800 sm:text-2xl">
-          ສິນຄ້າແນະນຳ
+          {{ $t("home.featured") }}
         </h2>
         <NuxtLink
           to="/products"
           class="text-sm font-semibold text-primary-700 hover:underline"
         >
-          ເບິ່ງທັງໝົດ →
+          {{ $t("home.viewAll") }} →
         </NuxtLink>
       </div>
       <div class="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
@@ -116,6 +106,5 @@ const features = [
         />
       </div>
     </section>
-
   </div>
 </template>
