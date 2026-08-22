@@ -77,6 +77,27 @@ watch(
           </span>
         </NuxtLink>
 
+        <NuxtLink
+          v-if="auth.isLoggedIn"
+          to="/profile"
+          class="flex items-center gap-1.5 rounded-lg bg-primary-600 px-3 py-2 font-medium transition hover:bg-primary-500"
+          aria-label="ໂປຣໄຟລ"
+        >
+          <User class="h-5 w-5" />
+          <span class="hidden max-w-24 truncate text-sm lg:inline">{{
+            auth.user?.name
+          }}</span>
+        </NuxtLink>
+        <NuxtLink
+          v-else
+          to="/login"
+          class="flex items-center gap-1.5 rounded-lg bg-primary-600 px-3 py-2 font-medium transition hover:bg-primary-500"
+          aria-label="ເຂົ້າສູ່ລະບົບ"
+        >
+          <LogIn class="h-5 w-5" />
+          <span class="hidden text-sm lg:inline">ເຂົ້າສູ່ລະບົບ</span>
+        </NuxtLink>
+
         <button
           class="rounded-lg p-2 transition hover:bg-primary-600 md:hidden"
           aria-label="ເມນູ"
@@ -93,7 +114,7 @@ watch(
       class="border-t border-primary-600 bg-primary-700 md:hidden"
     >
       <NuxtLink
-        v-for="link in links"
+        v-for="link in menuLinks"
         :key="link.to"
         :to="link.to"
         class="block px-4 py-3 font-medium transition hover:bg-primary-600"
