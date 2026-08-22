@@ -27,7 +27,22 @@ export default defineNuxtConfig({
 
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  modules: ["@vite-pwa/nuxt", "@nuxt/eslint", "@pinia/nuxt"],
+  modules: ["@vite-pwa/nuxt", "@nuxt/eslint", "@pinia/nuxt", "@nuxtjs/i18n"],
+
+  i18n: {
+    defaultLocale: "en",
+    strategy: "no_prefix",
+    locales: [
+      { code: "en", language: "en-US", name: "English", file: "en.json" },
+      { code: "lo", language: "lo-LA", name: "ລາວ", file: "lo.json" },
+      { code: "hmn", language: "hmn", name: "Hmoob", file: "hmn.json" },
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "shop_lang",
+      fallbackLocale: "en",
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },
