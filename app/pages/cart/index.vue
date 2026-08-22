@@ -39,7 +39,7 @@ function checkout() {
       v-else-if="cart.items.length === 0"
       class="mt-6 rounded-xl bg-white p-8 text-center shadow-sm ring-1 ring-gray-100"
     >
-      <div class="text-5xl">🛒</div>
+      <ShoppingCart class="mx-auto h-14 w-14 text-primary-300" />
       <p class="mt-3 text-gray-500">ກະຕ່າຂອງທ່ານຍັງຫວ່າງຢູ່</p>
       <NuxtLink
         to="/products"
@@ -75,7 +75,7 @@ function checkout() {
                 aria-label="ລຶບອອກ"
                 @click="cart.remove(item.id, item.size)"
               >
-                ✕
+                <X class="h-5 w-5" />
               </button>
             </div>
             <div class="mt-auto flex items-center justify-between pt-2">
