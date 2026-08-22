@@ -21,6 +21,9 @@ function quickAdd() {
         <ProductImage
           :colors="product.colors"
           :seed="product.id"
+          :kind="product.kind"
+          :image="product.image"
+          :alt="product.name"
           class="transition duration-300 group-hover:scale-105"
         />
       </div>
