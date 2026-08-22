@@ -1,15 +1,9 @@
 <script setup lang="ts">
-import { ShoppingCart, PartyPopper, X, Minus, Plus } from "lucide-vue-next";
+import { ShoppingCart, X, Minus, Plus } from "lucide-vue-next";
 import { useCartStore } from "~/stores/cart";
 
 const cart = useCartStore();
 const { formatNumber } = useFormat();
-const ordered = ref(false);
-
-function checkout() {
-  cart.clear();
-  ordered.value = true;
-}
 </script>
 
 <template>
