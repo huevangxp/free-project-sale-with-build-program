@@ -121,10 +121,12 @@ function addToCart() {
 
         <div class="mt-2 flex flex-col gap-3 sm:flex-row">
           <button
-            class="flex-1 rounded-lg bg-primary-600 px-6 py-3 font-bold text-white transition hover:bg-primary-700"
+            class="flex flex-1 items-center justify-center gap-2 rounded-lg bg-primary-600 px-6 py-3 font-bold text-white transition hover:bg-primary-700"
             @click="addToCart"
           >
-            {{ added ? "✓ ເພີ່ມແລ້ວ" : "ເພີ່ມໃສ່ກະຕ່າ" }}
+            <Check v-if="added" class="h-5 w-5" />
+            <ShoppingCart v-else class="h-5 w-5" />
+            {{ added ? "ເພີ່ມແລ້ວ" : "ເພີ່ມໃສ່ກະຕ່າ" }}
           </button>
           <NuxtLink
             to="/cart"
