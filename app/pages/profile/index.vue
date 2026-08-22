@@ -19,7 +19,10 @@ const address = ref(auth.user?.address ?? "");
 const saved = ref(false);
 
 function save() {
-  auth.updateProfile({ name: name.value.trim(), address: address.value.trim() });
+  auth.updateProfile({
+    name: name.value.trim(),
+    address: address.value.trim(),
+  });
   saved.value = true;
   setTimeout(() => (saved.value = false), 2000);
 }
@@ -32,7 +35,9 @@ async function logout() {
 
 <template>
   <div class="mx-auto max-w-2xl px-4 py-8">
-    <h1 class="text-2xl font-bold text-gray-800 sm:text-3xl">ໂປຣໄຟລຂອງຂ້ອຍ</h1>
+    <h1 class="text-2xl font-bold text-gray-800 sm:text-3xl">
+      {{ $t("profile.title") }}
+    </h1>
 
     <div class="mt-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-100">
       <div class="flex items-center gap-4">
@@ -52,9 +57,9 @@ async function logout() {
 
       <form class="mt-6 space-y-4" @submit.prevent="save">
         <div>
-          <label class="mb-1 block text-sm font-medium text-gray-700"
-            >ຊື່ ແລະ ນາມສະກຸນ</label
-          >
+          <label class="mb-1 block text-sm font-medium text-gray-700">{{
+            $t("profile.fullName")
+          }}</label>
           <input
             v-model="name"
             type="text"
@@ -63,15 +68,15 @@ async function logout() {
           />
         </div>
         <div>
-          <label class="mb-1 block text-sm font-medium text-gray-700"
-            >ທີ່ຢູ່ຈັດສົ່ງ</label
-          >
+          <label class="mb-1 block text-sm font-medium text-gray-700">{{
+            $t("profile.address")
+          }}</label>
           <div class="relative">
             <MapPin class="absolute top-3 left-3 h-4 w-4 text-gray-400" />
             <textarea
               v-model="address"
               rows="3"
-              placeholder="ບ້ານ, ເມືອງ, ແຂວງ"
+              :placeholder="$t('profile.addressPlaceholder')"
               class="w-full rounded-lg border border-gray-200 py-2.5 pr-3 pl-9 outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200"
             ></textarea>
           </div>
@@ -82,7 +87,7 @@ async function logout() {
         >
           <Check v-if="saved" class="h-4 w-4" />
           <Save v-else class="h-4 w-4" />
-          {{ saved ? "ບັນທຶກແລ້ວ" : "ບັນທຶກ" }}
+          {{ saved ? $t("profile.saved") : $t("profile.save") }}
         </button>
       </form>
     </div>
@@ -94,8 +99,10 @@ async function logout() {
       >
         <PackageSearch class="h-6 w-6 text-primary-600" />
         <div>
-          <p class="font-semibold text-gray-800">ປະຫວັດການສັ່ງຊື້</p>
-          <p class="text-xs text-gray-400">ເບິ່ງຄຳສັ່ງຊື້ທັງໝົດຂອງທ່ານ</p>
+          <p class="font-semibold text-gray-800">
+            {{ $t("profile.ordersTitle") }}
+          </p>
+          <p class="text-xs text-gray-400">{{ $t("profile.ordersSub") }}</p>
         </div>
       </NuxtLink>
       <button
@@ -104,8 +111,10 @@ async function logout() {
       >
         <LogOut class="h-6 w-6 text-rose-500" />
         <div>
-          <p class="font-semibold text-gray-800">ອອກຈາກລະບົບ</p>
-          <p class="text-xs text-gray-400">ອອກຈາກບັນຊີນີ້</p>
+          <p class="font-semibold text-gray-800">
+            {{ $t("profile.logoutTitle") }}
+          </p>
+          <p class="text-xs text-gray-400">{{ $t("profile.logoutSub") }}</p>
         </div>
       </button>
     </div>
