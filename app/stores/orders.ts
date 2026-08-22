@@ -8,8 +8,10 @@ export interface Order {
   phone: string;
   address: string;
   note?: string;
-  payment: string;
-  status: string;
+  /** Payment code, translated via checkout.{code} */
+  payment: "cod" | "transfer";
+  /** Status code, translated via orders.status.{code} */
+  status: "pending" | "shipping" | "delivered";
   items: CartItem[];
   total: number;
 }
@@ -38,7 +40,7 @@ export const useOrdersStore = defineStore("orders", () => {
       phone: string;
       address: string;
       note?: string;
-      payment: string;
+      payment: "cod" | "transfer";
     },
     items: CartItem[],
     total: number,
