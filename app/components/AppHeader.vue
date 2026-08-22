@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { ShoppingCart, Menu, X } from "lucide-vue-next";
+import { ShoppingCart, Menu, X, User, LogIn } from "lucide-vue-next";
+import { useAuthStore } from "~/stores/auth";
 import { useCartStore } from "~/stores/cart";
 
+const auth = useAuthStore();
 const cart = useCartStore();
 const menuOpen = ref(false);
 const route = useRoute();
@@ -9,8 +11,23 @@ const route = useRoute();
 const links = [
   { to: "/", label: "ໜ້າຫຼັກ" },
   { to: "/products", label: "ສິນຄ້າ" },
-  { to: "/cart", label: "ກະຕ່າສິນຄ້າ" },
+  { to: "/about", label: "ກ່ຽວກັບເຮົາ" },
+  { to: "/contact", label: "ຕິດຕໍ່" },
 ];
+
+const menuLinks = computed(() => [
+  ...links,
+  { to: "/cart", label: "ກະຕ່າສິນຄ້າ" },
+  ...(auth.isLoggedIn
+    ? [
+        { to: "/profile", label: "ໂປຣໄຟລຂອງຂ້ອຍ" },
+        { to: "/orders", label: "ປະຫວັດການສັ່ງຊື້" },
+      ]
+    : [
+        { to: "/login", label: "ເຂົ້າສູ່ລະບົບ" },
+        { to: "/register", label: "ລົງທະບຽນ" },
+      ]),
+]);
 
 watch(
   () => route.fullPath,
