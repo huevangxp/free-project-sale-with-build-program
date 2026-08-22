@@ -44,14 +44,14 @@ export const useAuthStore = defineStore("auth", () => {
     password: string,
   ): string | null {
     if (!name.trim() || !phone.trim() || !password) {
-      return "ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບຖ້ວນ";
+      return "fillAll";
     }
     if (password.length < 4) {
-      return "ລະຫັດຜ່ານຕ້ອງມີຢ່າງໜ້ອຍ 4 ຕົວອັກສອນ";
+      return "shortPassword";
     }
     const users = loadUsers();
     if (users.some((u) => u.phone === phone)) {
-      return "ເບີໂທນີ້ໄດ້ລົງທະບຽນແລ້ວ ກະລຸນາເຂົ້າສູ່ລະບົບ";
+      return "phoneExists";
     }
     users.push({ name: name.trim(), phone: phone.trim(), password, address: "" });
     saveUsers(users);
@@ -64,7 +64,7 @@ export const useAuthStore = defineStore("auth", () => {
       (u) => u.phone === phone.trim() && u.password === password,
     );
     if (!found) {
-      return "ເບີໂທ ຫຼື ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ";
+      return "invalid";
     }
     userCookie.value = {
       name: found.name,
