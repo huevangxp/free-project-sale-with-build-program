@@ -13,6 +13,7 @@ const { productName, sizeLabel } = useProducts();
       {{ $t("cart.title") }}
     </h1>
 
+    <ClientOnly>
     <div
       v-if="cart.items.length === 0"
       class="mt-6 rounded-xl bg-white p-8 text-center shadow-sm ring-1 ring-gray-100"
@@ -120,5 +121,12 @@ const { productName, sizeLabel } = useProducts();
         </NuxtLink>
       </div>
     </div>
+
+    <template #fallback>
+      <p class="mt-6 text-center text-sm text-gray-400">
+        {{ $t("orders.loading") }}
+      </p>
+    </template>
+    </ClientOnly>
   </div>
 </template>
