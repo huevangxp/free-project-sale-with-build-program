@@ -97,12 +97,14 @@ watch(
           :aria-label="$t('nav.cart')"
         >
           <ShoppingCart class="h-5 w-5" />
-          <span
-            v-if="cart.count > 0"
-            class="absolute -top-2 -right-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-rose-500 px-1 text-xs font-bold"
-          >
-            {{ cart.count }}
-          </span>
+          <ClientOnly>
+            <span
+              v-if="cart.count > 0"
+              class="absolute -top-2 -right-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-rose-500 px-1 text-xs font-bold"
+            >
+              {{ cart.count }}
+            </span>
+          </ClientOnly>
         </NuxtLink>
 
         <NuxtLink
