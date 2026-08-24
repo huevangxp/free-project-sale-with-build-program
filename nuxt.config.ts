@@ -3,11 +3,18 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "Hmong Dictionary",
+      title: "Hmong Clothing Shop",
+      titleTemplate: "%s · Hmong Clothing Shop",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "format-detection", content: "telephone=no" },
+        {
+          name: "description",
+          content:
+            "Authentic hand-embroidered Hmong clothing — traditional outfits, hats, silver belts and scarves, delivered nationwide. ຮ້ານເສື້ອຜ້າມົ້ງ.",
+        },
+        { name: "theme-color", content: "#0d9488" },
       ],
       link: [
         { rel: "icon", type: "image/x-icon", href: "/logo.png" },
