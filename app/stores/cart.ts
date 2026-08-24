@@ -12,8 +12,23 @@ export interface CartItem {
   image?: string;
 }
 
+const CART_KEY = "shop_cart";
+
 export const useCartStore = defineStore("cart", () => {
   const items = ref<CartItem[]>([]);
+
+  if (import.meta.client) {
+    try {
+      items.value = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+    } catch {
+      items.value = [];
+    }
+    watch(
+      items,
+      (value) => localStorage.setItem(CART_KEY, JSON.stringify(value)),
+      { deep: true },
+    );
+  }
 
   const count = computed(() =>
     items.value.reduce((sum, item) => sum + item.qty, 0),
