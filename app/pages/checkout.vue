@@ -52,6 +52,7 @@ async function submit() {
       {{ $t("checkout.title") }}
     </h1>
 
+    <ClientOnly>
     <div
       v-if="cart.items.length === 0"
       class="mt-6 rounded-xl bg-white p-8 text-center shadow-sm ring-1 ring-gray-100"
@@ -192,5 +193,12 @@ async function submit() {
         </button>
       </div>
     </form>
+
+    <template #fallback>
+      <p class="mt-6 text-center text-sm text-gray-400">
+        {{ $t("orders.loading") }}
+      </p>
+    </template>
+    </ClientOnly>
   </div>
 </template>
