@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { Heart, Scissors, Users, Award } from "lucide-vue-next";
+const { t } = useI18n();
+useHead(() => ({ title: t("nav.about") }));
 
 const values = [
   { icon: Scissors, title: "about.v1t", text: "about.v1x" },

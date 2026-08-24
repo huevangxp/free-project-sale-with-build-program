@@ -5,6 +5,8 @@ import { useCartStore } from "~/stores/cart";
 const cart = useCartStore();
 const { formatNumber } = useFormat();
 const { productName, sizeLabel } = useProducts();
+const { t } = useI18n();
+useHead(() => ({ title: t("cart.title") }));
 </script>
 
 <template>

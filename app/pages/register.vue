@@ -3,6 +3,8 @@ import { User, Phone, Lock, UserPlus } from "lucide-vue-next";
 import { useAuthStore } from "~/stores/auth";
 
 const auth = useAuthStore();
+const { t } = useI18n();
+useHead(() => ({ title: t("auth.registerTitle") }));
 
 if (auth.isLoggedIn) {
   await navigateTo("/profile", { replace: true });

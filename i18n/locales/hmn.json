@@ -218,5 +218,10 @@
       "name": "Cev Khaub Ncaws Me Ntxhais Hmoob",
       "desc": "Ib cev khaub ncaws me ntxhais Hmoob nrog kaus mom thiab khoom dai. Xim ci zoo nkauj heev — zoo rau noj peb caug Hmoob."
     }
+  },
+  "error": {
+    "notFound": "Thov txim, nrhiav tsis pom nplooj ntawv no",
+    "general": "Muaj teeb meem lawm",
+    "home": "Rov Qab Mus Tsev"
   }
 }

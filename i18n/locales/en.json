@@ -218,5 +218,10 @@
       "name": "Hmong Girl's Outfit",
       "desc": "A complete Hmong outfit for girls with hat and accessories. Bright, adorable colors — perfect for Hmong New Year celebrations."
     }
+  },
+  "error": {
+    "notFound": "Sorry, we couldn't find that page",
+    "general": "Something went wrong",
+    "home": "Back to Home"
   }
 }

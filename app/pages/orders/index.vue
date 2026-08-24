@@ -9,6 +9,8 @@ const auth = useAuthStore();
 const ordersStore = useOrdersStore();
 const route = useRoute();
 const { formatNumber, formatDate } = useFormat();
+const { t } = useI18n();
+useHead(() => ({ title: t("orders.title") }));
 const { productName, sizeLabel } = useProducts();
 
 const myOrders = computed(() =>

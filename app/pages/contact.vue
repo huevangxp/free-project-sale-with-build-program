@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { Phone, Facebook, MapPin, Clock, Send, Check } from "lucide-vue-next";
+const { t } = useI18n();
+useHead(() => ({ title: t("contact.title") }));
 
 const name = ref("");
 const phone = ref("");

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const { categories, byCategory } = useProducts();
+const { t } = useI18n();
+useHead(() => ({ title: t("nav.products") }));
 const route = useRoute();
 const router = useRouter();
 

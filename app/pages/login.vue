@@ -4,6 +4,8 @@ import { useAuthStore } from "~/stores/auth";
 
 const auth = useAuthStore();
 const route = useRoute();
+const { t } = useI18n();
+useHead(() => ({ title: t("auth.loginTitle") }));
 
 if (auth.isLoggedIn) {
   await navigateTo("/profile", { replace: true });

@@ -13,6 +13,8 @@ import { useAuthStore } from "~/stores/auth";
 definePageMeta({ middleware: "auth" });
 
 const auth = useAuthStore();
+const { t } = useI18n();
+useHead(() => ({ title: t("profile.title") }));
 
 const name = ref(auth.user?.name ?? "");
 const address = ref(auth.user?.address ?? "");

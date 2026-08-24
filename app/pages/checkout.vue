@@ -12,6 +12,7 @@ const ordersStore = useOrdersStore();
 const { formatNumber } = useFormat();
 const { productName } = useProducts();
 const { t } = useI18n();
+useHead(() => ({ title: t("checkout.title") }));
 
 const name = ref(auth.user?.name ?? "");
 const phone = ref(auth.user?.phone ?? "");

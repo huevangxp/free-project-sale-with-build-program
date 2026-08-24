@@ -25,6 +25,8 @@ const selectedSize = ref(product.sizes[0]!);
 const qty = ref(1);
 const added = ref(false);
 
+useHead(() => ({ title: productName(product!.id, product!.name) }));
+
 function addToCart() {
   cart.add(product!, selectedSize.value, qty.value);
   added.value = true;
