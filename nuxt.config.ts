@@ -63,28 +63,18 @@ export default defineNuxtConfig({
     // Set back to false when you want to enable the PWA again.
     selfDestroying: true,
     manifest: {
-      name: "Lis Foom Vaj",
-      short_name: "LFV",
+      name: "Hmong Clothing Shop",
+      short_name: "HmongShop",
       theme_color: "#0d9488",
-      description: "Lis Foom Vaj",
+      description: "Authentic hand-embroidered Hmong clothing",
       icons: [
         {
-          src: "icon.png",
-          sizes: "64x64",
-          type: "image/png",
-        },
-        {
-          src: "icon.png",
-          sizes: "144x144",
-          type: "image/png",
-        },
-        {
-          src: "icon.png",
+          src: "logo.png",
           sizes: "192x192",
           type: "image/png",
         },
         {
-          src: "icon.png",
+          src: "logo.png",
           sizes: "512x512",
           type: "image/png",
         },
