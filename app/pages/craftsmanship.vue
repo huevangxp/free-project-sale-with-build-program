@@ -75,13 +75,13 @@ onUnmounted(neutralize);
           >ມ</span
         >
         <div class="sc-wrap hero-inner">
-          <p class="sc-label" data-sc-cue="0 1 0 0.18">
+          <p class="sc-label" data-sc-cue="0 1 0 0">
             {{ $t("nav.craft") }}
           </p>
-          <h1 class="sc-display sc-display--xl" data-sc-cue="0 1 0 0.16">
+          <h1 class="sc-display sc-display--xl" data-sc-cue="0 1 0 0">
             {{ $t("craft.title") }}
           </h1>
-          <p class="sc-lede" data-sc-cue="0 1 0 0.14" data-sc-parallax="-0.1">
+          <p class="sc-lede" data-sc-cue="0 1 0 0" data-sc-parallax="-0.1">
             {{ $t("craft.subtitle") }}
           </p>
         </div>
