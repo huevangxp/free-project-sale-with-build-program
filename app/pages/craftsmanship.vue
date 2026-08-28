@@ -388,6 +388,82 @@ onUnmounted(neutralize);
   font-size: var(--sc-t-sm);
 }
 
+/* Showcase */
+.show-head .show-sub {
+  margin-top: var(--sc-3);
+}
+.show-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 4.5rem);
+  margin-top: var(--sc-8);
+  max-width: 58rem;
+}
+.show-card {
+  display: block;
+  text-decoration: none;
+}
+/* Offset the second column: the grid reads as composed, not templated.
+   Offsets are margins, never transform: the engine owns transform here. */
+.show-card:nth-child(even) {
+  margin-top: var(--sc-10);
+}
+.show-frame {
+  display: block;
+  aspect-ratio: 3 / 4;
+  overflow: clip;
+  border-radius: 45% 45% var(--sc-r-md) var(--sc-r-md) / 34% 34%
+    var(--sc-r-md) var(--sc-r-md);
+  border: 1px solid var(--sc-hairline);
+  box-shadow: var(--sc-e2);
+  transition: box-shadow var(--sc-d-slow) var(--sc-ease-out);
+}
+.show-frame > * {
+  height: 100%;
+  width: 100%;
+  transition: scale var(--sc-d-slow) var(--sc-ease-out);
+}
+.show-card:hover .show-frame {
+  box-shadow: var(--sc-e3);
+}
+.show-card:hover .show-frame > * {
+  scale: 1.04;
+}
+.show-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sc-4);
+  margin-top: var(--sc-4);
+  padding-inline: var(--sc-2);
+}
+.show-name {
+  font-family: var(--sc-font-display);
+  font-size: var(--sc-t-base);
+  letter-spacing: var(--sc-track-snug);
+  color: var(--sc-ink);
+}
+.show-price {
+  color: var(--sc-accent);
+  font-size: var(--sc-t-sm);
+  white-space: nowrap;
+}
+.show-more {
+  margin: var(--sc-8) 0 0;
+}
+.show-link {
+  color: var(--sc-ink);
+  font-family: var(--sc-font-display);
+  font-weight: 600;
+  text-decoration-color: var(--sc-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+  transition: color var(--sc-d-base) var(--sc-ease-out);
+}
+.show-link:hover {
+  color: var(--sc-accent);
+}
+
 /* Quote */
 .quote-stage {
   display: flex;
@@ -444,6 +520,16 @@ onUnmounted(neutralize);
   }
   .stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .show-grid {
+    gap: clamp(1rem, 4vw, 1.75rem);
+  }
+  .show-card:nth-child(even) {
+    margin-top: var(--sc-8);
+  }
+  .show-meta {
+    flex-direction: column;
+    gap: var(--sc-1);
   }
 }
 </style>
