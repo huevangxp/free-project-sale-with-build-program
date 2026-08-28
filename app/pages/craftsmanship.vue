@@ -23,11 +23,11 @@ const steps = [
 /* Copy windows as fractions of the whole 9.7vh track (leg boundaries fall at
    0 · .155 · .309 · .515 · .670 · .856 · 1), and which side each block sits. */
 const stepWins = [
-  "0.075 0.16",
-  "0.18 0.30",
-  "0.32 0.43",
-  "0.53 0.60",
-  "0.60 0.665",
+  "0.06 0.18 0.2 0.2",
+  "0.185 0.30 0.22 0.22",
+  "0.315 0.435 0.22 0.22",
+  "0.55 0.615 0.22 0.22",
+  "0.625 0.68 0.22 0.22",
 ];
 const stepSide = ["trail", "lead", "trail", "lead", "trail"];
 
@@ -136,7 +136,7 @@ onUnmounted(() => {
         <!-- The voice, deep inside the embroidery leg: the peak. -->
         <figure
           data-sc-copy
-          data-sc-window="0.45 0.53"
+          data-sc-window="0.45 0.54 0.25 0.25"
           class="wf-copy wf-copy--center wf-quote"
         >
           <blockquote class="sc-display sc-display--lg wf-quote__text">
@@ -150,7 +150,7 @@ onUnmounted(() => {
         <!-- The garments, floating among the alcoves. -->
         <div
           data-sc-copy
-          data-sc-window="0.69 0.855"
+          data-sc-window="0.69 0.86 0.2 0.25"
           class="wf-copy wf-copy--band wf-show"
         >
           <p class="sc-label wf-eyebrow">{{ $t("craft.showTitle") }}</p>
