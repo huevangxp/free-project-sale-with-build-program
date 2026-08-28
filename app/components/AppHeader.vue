@@ -12,6 +12,7 @@ const route = useRoute();
 const links = [
   { to: "/", key: "nav.home" },
   { to: "/products", key: "nav.products" },
+  { to: "/craftsmanship", key: "nav.craft" },
   { to: "/about", key: "nav.about" },
   { to: "/contact", key: "nav.contact" },
 ];

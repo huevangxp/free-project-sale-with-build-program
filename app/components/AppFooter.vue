@@ -56,6 +56,11 @@ import { Phone, Facebook, MapPin } from "lucide-vue-next";
             }}</NuxtLink>
           </li>
           <li>
+            <NuxtLink to="/craftsmanship" class="transition hover:text-white">{{
+              $t("nav.craft")
+            }}</NuxtLink>
+          </li>
+          <li>
             <NuxtLink to="/about" class="transition hover:text-white">{{
               $t("nav.about")
             }}</NuxtLink>
