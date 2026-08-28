@@ -1,6 +1,9 @@
 <script setup lang="ts">
-const { t, locale } = useI18n();
+const { t } = useI18n();
 useHead(() => ({ title: t("nav.craft") }));
+
+const { byId, productName } = useProducts();
+const { formatNumber } = useFormat();
 
 const stats = [
   { value: 30, label: "craft.s1" },
@@ -17,14 +20,27 @@ const steps = [
   { title: "craft.p5t", text: "craft.p5x" },
 ];
 
-const { byId, productName } = useProducts();
-const { formatNumber } = useFormat();
+/* Copy windows as fractions of the whole 9.7vh track (leg boundaries fall at
+   0 · .155 · .309 · .515 · .670 · .856 · 1), and which side each block sits. */
+const stepWins = [
+  "0.075 0.16",
+  "0.18 0.30",
+  "0.32 0.43",
+  "0.53 0.60",
+  "0.60 0.665",
+];
+const stepSide = ["trail", "lead", "trail", "lead", "trail"];
 
 /* One piece per craft: a dress, a hat, a silver belt, a scarf. */
 const showPieces = [1, 5, 6, 7]
   .map((id) => byId(id))
   .filter((p): p is NonNullable<typeof p> => !!p);
-const showRates = [-0.12, 0.1, -0.07, 0.13];
+
+const SEGMENTS = 6;
+const current = ref(0);
+function onWaypoint(e: Event) {
+  current.value = (e as CustomEvent).detail.index;
+}
 
 const pageEl = ref<HTMLElement | null>(null);
 
@@ -44,414 +60,399 @@ function neutralize() {
   api = null;
 }
 
-async function mountEngine() {
+onMounted(async () => {
   // @ts-ignore -- plain-JS engine, no type declarations
   await import("~/assets/js/scrollcraft-engine.js");
   if (!pageEl.value) return;
+  pageEl.value.addEventListener("sc:waypoint", onWaypoint);
   api = (window as any).ScrollCraft.mount(pageEl.value);
-}
-
-onMounted(mountEngine);
-
-/* Kinetic headlines are split into spans the engine owns, so a locale switch
-   must rebuild the DOM (:key below) and remount on the fresh elements. */
-watch(locale, async () => {
-  neutralize();
-  await nextTick();
-  mountEngine();
 });
 
-onUnmounted(neutralize);
+onUnmounted(() => {
+  pageEl.value?.removeEventListener("sc:waypoint", onWaypoint);
+  neutralize();
+});
 </script>
 
 <template>
-  <div ref="pageEl" :key="locale" class="sc-page -mb-16">
+  <div ref="pageEl" class="sc-page -mb-16">
     <div class="sc-grain" aria-hidden="true"></div>
 
-    <!-- Act 1 · Arrival. Pinned hero, copy present from the first pixel. -->
-    <section data-sc-act="pin" data-sc-span="1.7" data-sc-drift="#081512">
-      <div class="sc-stage hero-stage" data-sc-spotlight>
-        <span class="hero-ghost" data-sc-parallax="-0.4" aria-hidden="true"
-          >ມ</span
-        >
-        <div class="sc-wrap hero-inner">
-          <p class="sc-label" data-sc-cue="0 1 0 0">
-            {{ $t("nav.craft") }}
-          </p>
-          <h1 class="sc-display sc-display--xl" data-sc-cue="0 1 0 0">
-            {{ $t("craft.title") }}
-          </h1>
-          <p class="sc-lede" data-sc-cue="0 1 0 0" data-sc-parallax="-0.1">
-            {{ $t("craft.subtitle") }}
-          </p>
+    <!-- One unbroken world. The whole page is a single fixed stage: you land
+         on raw cloth, fly through the drawing, the embroidery and the sewing,
+         arrive among the finished garments and come to rest at the workbench.
+         No section boundaries anywhere. -->
+    <div data-sc-mode="worldflight" data-sc-seam="0.14">
+      <div data-sc-world>
+        <div data-sc-segment data-sc-w="1.5" data-sc-waypoint="cloth">
+          <div class="wf-scene wf-scene--cloth" data-sc-poster></div>
         </div>
-        <!-- Signature move: a running stitch sews itself across the page
-             under the reader's scroll, driven by the act's --sc-p. -->
+        <div data-sc-segment data-sc-w="1.5" data-sc-waypoint="drawing">
+          <div class="wf-scene wf-scene--draw" data-sc-poster></div>
+        </div>
         <div
-          class="stitch stitch--hero"
-          data-sc-reveal="left"
-          data-sc-reveal-at="0.06 0.65"
-          aria-hidden="true"
+          data-sc-segment
+          data-sc-w="2"
+          data-sc-linger="0.3"
+          data-sc-waypoint="embroidery"
         >
-          <svg viewBox="0 0 1200 48" preserveAspectRatio="none">
-            <path
-              class="stitch-path"
-              d="M0 30 C 100 14, 200 14, 300 30 S 500 46, 600 30 S 800 14, 900 30 S 1100 46, 1200 30"
-            />
-          </svg>
+          <div class="wf-scene wf-scene--stitch" data-sc-poster></div>
+        </div>
+        <div data-sc-segment data-sc-w="1.5" data-sc-waypoint="assembly">
+          <div class="wf-scene wf-scene--sew" data-sc-poster></div>
+        </div>
+        <div data-sc-segment data-sc-w="1.8" data-sc-waypoint="garments">
+          <div class="wf-scene wf-scene--wear" data-sc-poster></div>
+        </div>
+        <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="workbench">
+          <div class="wf-scene wf-scene--bench" data-sc-poster></div>
         </div>
       </div>
-    </section>
 
-    <!-- Act 2 · The peak. The five stages travel laterally on a pan rail
-         while the headline assembles word by word. Ground drifts to indigo,
-         the colour of Hmong batik dye. -->
-    <section data-sc-act="pan" data-sc-span="4.4" data-sc-drift="#0d1424">
-      <div class="sc-stage process-stage">
-        <header class="sc-wrap process-head">
-          <h2
-            class="sc-display sc-display--md"
-            data-sc-cue="0 1 0.08 0"
-            data-sc-kinetic="words"
-          >
-            {{ $t("craft.processTitle") }}
-          </h2>
-          <p class="sc-body process-sub" data-sc-cue="0 1 0.14 0">
-            {{ $t("craft.processSub") }}
-          </p>
-        </header>
-
-        <div class="process-rail" data-sc-pan="0.06">
-          <article v-for="(step, i) in steps" :key="step.title" class="step">
-            <span class="step-num" aria-hidden="true">{{
-              String(i + 1).padStart(2, "0")
-            }}</span>
-            <h3 class="step-title">{{ $t(step.title) }}</h3>
-            <p class="sc-body step-text">{{ $t(step.text) }}</p>
-          </article>
+      <div data-sc-world-copy>
+        <!-- Landing: present from the first pixel. -->
+        <div data-sc-copy data-sc-window="hero" class="wf-copy wf-copy--lead">
+          <p class="sc-label wf-eyebrow">{{ $t("nav.craft") }}</p>
+          <h1 class="sc-display sc-display--xl">{{ $t("craft.title") }}</h1>
+          <p class="sc-lede wf-lede">{{ $t("craft.subtitle") }}</p>
         </div>
 
+        <!-- The five stages of the craft, one per leg of the flight. -->
         <div
-          class="stitch stitch--process"
-          data-sc-reveal="left"
-          data-sc-reveal-at="0.05 0.95"
-          aria-hidden="true"
+          v-for="(step, i) in steps"
+          :key="step.title"
+          data-sc-copy
+          :data-sc-window="stepWins[i]"
+          class="wf-copy wf-step"
+          :class="`wf-copy--${stepSide[i]}`"
         >
-          <svg viewBox="0 0 1200 48" preserveAspectRatio="none">
-            <path
-              class="stitch-path"
-              d="M0 24 C 150 8, 250 40, 400 24 S 650 8, 800 24 S 1050 40, 1200 24"
-            />
-          </svg>
-        </div>
-      </div>
-    </section>
-
-    <!-- Act 3 · Trust. Numbers bloom as they arrive. -->
-    <section class="sc-section" data-sc-act="flow" data-sc-drift="#081512">
-      <div class="sc-wrap">
-        <p class="sc-label" data-sc-in>{{ $t("craft.statsTitle") }}</p>
-        <div class="stats-grid" data-sc-in data-sc-stagger="90">
-          <div
-            v-for="stat in stats"
-            :key="stat.label"
-            class="stat"
-            data-sc-tilt="5"
-          >
-            <p class="stat-value">
-              <span :data-sc-count="`0 ${stat.value}`">0</span
-              ><span class="stat-plus">+</span>
-            </p>
-            <p class="sc-body stat-label">{{ $t(stat.label) }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Act 4 · The cloth. Real pieces from the shop wipe in across an
-         offset editorial grid, each floating at its own parallax depth. -->
-    <section
-      class="sc-section showcase"
-      data-sc-act="flow"
-      data-sc-drift="#0a1a17"
-    >
-      <div class="sc-wrap">
-        <div class="show-head" data-sc-in>
-          <p class="sc-label">{{ $t("craft.showTitle") }}</p>
-          <p class="sc-body show-sub">{{ $t("craft.showSub") }}</p>
+          <span class="wf-step__num" aria-hidden="true">{{
+            String(i + 1).padStart(2, "0")
+          }}</span>
+          <h2 class="sc-display sc-display--md">{{ $t(step.title) }}</h2>
+          <p class="sc-body wf-step__text">{{ $t(step.text) }}</p>
         </div>
 
-        <div class="show-grid">
-          <NuxtLink
-            v-for="(p, i) in showPieces"
-            :key="p.id"
-            :to="`/products/${p.id}`"
-            class="show-card"
-            :data-sc-reveal="i % 2 ? 'right' : 'left'"
-            :data-sc-reveal-at="`${0.06 + i * 0.06} ${0.3 + i * 0.06}`"
-            :data-sc-parallax="showRates[i]"
-          >
-            <span class="show-frame">
-              <ProductImage
-                :colors="p.colors"
-                :kind="p.kind"
-                :seed="p.id"
-                :image="p.image"
-                :alt="productName(p.id, p.name)"
-              />
-            </span>
-            <span class="show-meta">
-              <span class="show-name">{{ productName(p.id, p.name) }}</span>
-              <span class="show-price sc-nums"
-                >{{ formatNumber(p.price) }} ₭</span
-              >
-            </span>
-          </NuxtLink>
-        </div>
-
-        <p class="show-more" data-sc-in>
-          <NuxtLink to="/products" class="show-link">{{
-            $t("craft.showAll")
-          }}</NuxtLink>
-        </p>
-      </div>
-    </section>
-
-    <!-- Act 5 · The voice. A pinned quote assembling word by word while the
-         ground warms to plum. Centre anchor, the only one on the page. -->
-    <section data-sc-act="pin" data-sc-span="2" data-sc-drift="#1a0e15">
-      <div class="sc-stage quote-stage">
-        <figure class="sc-wrap quote-inner">
-          <blockquote
-            class="sc-display sc-display--lg quote-text"
-            data-sc-cue="0.06 0.94 0.3 0.2"
-            data-sc-kinetic="words"
-          >
+        <!-- The voice, deep inside the embroidery leg: the peak. -->
+        <figure
+          data-sc-copy
+          data-sc-window="0.45 0.53"
+          class="wf-copy wf-copy--center wf-quote"
+        >
+          <blockquote class="sc-display sc-display--lg wf-quote__text">
             {{ $t("craft.quote") }}
           </blockquote>
-          <figcaption class="sc-label quote-by" data-sc-cue="0.3 0.94 0.3 0.2">
+          <figcaption class="sc-label wf-quote__by">
             {{ $t("craft.quoteBy") }}
           </figcaption>
         </figure>
-      </div>
-    </section>
 
-    <!-- Act 6 · Resolve. The close holds; it does not fade away. -->
-    <section class="sc-section close" data-sc-act="flow" data-sc-drift="#081512">
-      <div class="sc-wrap close-inner" data-sc-in data-sc-stagger="110">
-        <hr class="sc-rule" />
-        <h2 class="sc-display sc-display--md close-title">
-          {{ $t("craft.ctaTitle") }}
-        </h2>
-        <p class="sc-body">{{ $t("craft.ctaText") }}</p>
-        <NuxtLink to="/products" class="close-btn" data-sc-magnet="0.25">
-          {{ $t("craft.ctaBtn") }}
-        </NuxtLink>
+        <!-- The garments, floating among the alcoves. -->
+        <div
+          data-sc-copy
+          data-sc-window="0.69 0.855"
+          class="wf-copy wf-copy--band wf-show"
+        >
+          <p class="sc-label wf-eyebrow">{{ $t("craft.showTitle") }}</p>
+          <div class="wf-show__grid">
+            <NuxtLink
+              v-for="p in showPieces"
+              :key="p.id"
+              :to="`/products/${p.id}`"
+              class="wf-card"
+            >
+              <span class="wf-card__frame">
+                <ProductImage
+                  :colors="p.colors"
+                  :kind="p.kind"
+                  :seed="p.id"
+                  :image="p.image"
+                  :alt="productName(p.id, p.name)"
+                />
+              </span>
+              <span class="wf-card__name">{{
+                productName(p.id, p.name)
+              }}</span>
+              <span class="wf-card__price sc-nums"
+                >{{ formatNumber(p.price) }} ₭</span
+              >
+            </NuxtLink>
+          </div>
+          <p class="wf-show__more">
+            <NuxtLink to="/products" class="wf-link">{{
+              $t("craft.showAll")
+            }}</NuxtLink>
+          </p>
+        </div>
+
+        <!-- Rest: the close resolves and holds on the workbench. -->
+        <div
+          data-sc-copy
+          data-sc-window="finale"
+          class="wf-copy wf-copy--center wf-close"
+        >
+          <div class="wf-close__stats">
+            <span v-for="s in stats" :key="s.label" class="wf-stat">
+              <span class="wf-stat__value sc-nums"
+                >{{ s.value }}<span class="wf-stat__plus">+</span></span
+              >
+              <span class="wf-stat__label">{{ $t(s.label) }}</span>
+            </span>
+          </div>
+          <h2 class="sc-display sc-display--md">{{ $t("craft.ctaTitle") }}</h2>
+          <p class="sc-body wf-close__text">{{ $t("craft.ctaText") }}</p>
+          <NuxtLink to="/products" class="wf-btn" data-sc-magnet="0.25">
+            {{ $t("craft.ctaBtn") }}
+          </NuxtLink>
+        </div>
       </div>
-    </section>
+
+      <div data-sc-spacer aria-hidden="true"></div>
+
+      <!-- Signature move: the route is a stitch. A dashed seam down the right
+           edge sews itself leg by leg as you fly, drawn by the page from the
+           engine's published --sc-seg / --sc-segp. The engine draws none of it. -->
+      <div class="wf-rail" aria-hidden="true">
+        <span class="wf-rail__track"></span>
+        <span class="wf-rail__fill"></span>
+        <span
+          v-for="i in SEGMENTS"
+          :key="i"
+          class="wf-rail__dot"
+          :class="{ 'wf-rail__dot--on': current >= i - 1 }"
+        ></span>
+      </div>
+    </div>
   </div>
 </template>
 
 <style>
 @import "~/assets/css/scrollcraft.css";
 
-/* ---- page composition (our markup, not the engine's) ------------------- */
+/* The site footer scrolls up OVER the fixed world at the end of the flight. */
+footer {
+  position: relative;
+  z-index: 40;
+}
 
-/* Hero */
-.hero-stage {
-  display: flex;
-  align-items: center;
-}
-.hero-inner {
-  padding-top: 4rem; /* clearance for the site's sticky header */
-}
-.hero-inner .sc-label {
-  color: var(--sc-accent);
-  margin-bottom: var(--sc-5);
-}
-.hero-inner .sc-lede {
-  margin-top: var(--sc-6);
-  color: var(--sc-ink-soft);
-}
-.hero-ghost {
+/* ---- the world's six scenes -------------------------------------------- */
+.wf-scene {
   position: absolute;
-  right: -0.08em;
+  inset: 0;
+}
+
+/* 1 · raw cloth: a dark weave. */
+.wf-scene--cloth {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 21px,
+      color-mix(in oklab, var(--sc-ink) 4%, transparent) 21px 24px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 21px,
+      color-mix(in oklab, var(--sc-ink) 3%, transparent) 21px 24px
+    ),
+    radial-gradient(120% 100% at 50% 0%, #0b1b17 0%, #081512 70%);
+}
+
+/* 2 · the drawing: indigo, spiral motifs chalked on. */
+.wf-scene--draw {
+  background-color: #0d1424;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='84' height='84'><path d='M42 42 m0 -18 a18 18 0 1 1 -18 18 a13 13 0 1 0 13 -13 a8 8 0 1 1 -8 8' fill='none' stroke='%238ea0d0' stroke-opacity='0.13' stroke-width='2'/></svg>");
+  background-size: 84px 84px;
+}
+.wf-scene--draw::after {
+  content: "";
+  position: absolute;
+  right: -12vw;
   top: 50%;
   translate: 0 -50%;
-  font-family: var(--sc-font-display);
-  font-size: clamp(18rem, 42vw, 38rem);
-  line-height: 1;
-  font-weight: 600;
-  color: transparent;
-  -webkit-text-stroke: 1px color-mix(in oklab, var(--sc-ink) 14%, transparent);
-  user-select: none;
-  pointer-events: none;
+  width: 56vw;
+  height: 56vw;
+  border: 1.5px solid color-mix(in oklab, #8ea0d0 22%, transparent);
+  border-radius: 50%;
 }
 
-/* Signature stitch */
-.stitch {
+/* 3 · the embroidery: plum ground, diamond paj ntaub grid. */
+.wf-scene--stitch {
+  background-color: #1a0e15;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><rect x='14' y='14' width='20' height='20' transform='rotate(45 24 24)' fill='none' stroke='%23ff5d78' stroke-opacity='0.11' stroke-width='1.6'/></svg>");
+  background-size: 48px 48px;
+}
+.wf-scene--stitch::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46vmin;
+  height: 46vmin;
+  translate: -50% -50%;
+  rotate: 45deg;
+  border: 2px dashed color-mix(in oklab, var(--sc-accent) 34%, transparent);
+}
+
+/* 4 · the sewing: pleats. */
+.wf-scene--sew {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--sc-ink) 5%, transparent) 0 2px,
+      transparent 2px 64px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 32px,
+      color-mix(in oklab, #000 30%, transparent) 32px 64px
+    ),
+    linear-gradient(180deg, #12231f 0%, #0e1e1a 100%);
+}
+
+/* 5 · the garments: studio alcoves. */
+.wf-scene--wear {
+  background-color: #0f221e;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='150'><path d='M22 150 V82 A38 38 0 0 1 98 82 V150' fill='none' stroke='%23f0eae1' stroke-opacity='0.08' stroke-width='3'/></svg>");
+  background-size: 120px 150px;
+  background-position: bottom center;
+}
+
+/* 6 · the workbench: back where we started, with the seam sewn. */
+.wf-scene--bench {
+  background: radial-gradient(120% 100% at 50% 100%, #0b1b17 0%, #081512 70%);
+}
+.wf-scene--bench::after {
+  content: "";
   position: absolute;
   inset-inline: 0;
-  pointer-events: none;
-}
-.stitch svg {
-  width: 100%;
-  height: 48px;
-}
-.stitch-path {
-  fill: none;
-  stroke: var(--sc-accent);
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-dasharray: 16 13;
-  /* the dashes run along the seam as the act progresses */
-  stroke-dashoffset: calc(var(--sc-p, 0) * -180px);
-}
-.stitch--hero {
-  bottom: clamp(3rem, 10vh, 6rem);
-}
-.stitch--process {
-  bottom: clamp(2rem, 7vh, 4.5rem);
-  opacity: 0.85;
+  top: 30%;
+  height: 0;
+  border-top: 3px dashed color-mix(in oklab, var(--sc-accent) 55%, transparent);
 }
 
-/* Process rail */
-.process-stage {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: clamp(2rem, 5vh, 4rem);
-  padding-top: 4rem;
+/* ---- copy blocks over the flight --------------------------------------- */
+[data-sc-copy].wf-copy {
+  position: absolute;
+  max-width: min(44rem, 82vw);
 }
-.process-head .sc-body {
-  margin-top: var(--sc-4);
+.wf-copy--lead {
+  left: var(--sc-gutter);
+  bottom: clamp(3.5rem, 14vh, 9rem);
 }
-.process-rail {
-  gap: clamp(1.5rem, 3vw, 3rem);
-  padding-inline: var(--sc-gutter);
-  align-items: stretch;
+.wf-copy--trail {
+  right: var(--sc-gutter);
+  bottom: clamp(3.5rem, 14vh, 9rem);
+  text-align: right;
 }
-.step {
-  flex: 0 0 auto;
-  width: clamp(17rem, 34vw, 26rem);
-  padding: var(--sc-6);
-  background: var(--sc-surface);
-  border: 1px solid var(--sc-hairline);
-  border-radius: var(--sc-r-lg);
-  box-shadow: var(--sc-e2), var(--sc-edge);
+.wf-copy--center {
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  text-align: center;
 }
-.step-num {
+.wf-copy--band {
+  left: 50%;
+  bottom: clamp(2.5rem, 9vh, 6rem);
+  translate: -50% 0;
+  width: min(72rem, calc(100vw - 2 * var(--sc-gutter)));
+  max-width: none;
+  text-align: center;
+}
+
+.wf-eyebrow {
+  color: var(--sc-accent);
+  margin-bottom: var(--sc-4);
+}
+.wf-lede {
+  margin-top: var(--sc-5);
+  color: var(--sc-ink-soft);
+}
+
+/* steps */
+.wf-step__num {
   display: block;
   font-family: var(--sc-font-display);
-  font-size: var(--sc-t-3xl);
+  font-size: var(--sc-t-2xl);
   line-height: 1;
   font-weight: 600;
   color: transparent;
   -webkit-text-stroke: 1.5px
     color-mix(in oklab, var(--sc-accent) 75%, transparent);
+  margin-bottom: var(--sc-4);
 }
-.step-title {
-  font-family: var(--sc-font-display);
-  font-size: var(--sc-t-lg);
-  letter-spacing: var(--sc-track-snug);
-  line-height: var(--sc-leading-tight);
-  margin: var(--sc-5) 0 0;
+.wf-copy--trail .wf-step__num {
+  margin-left: auto;
 }
-.step-text {
-  margin-top: var(--sc-3);
-  font-size: var(--sc-t-sm);
+.wf-step__text {
+  margin-top: var(--sc-4);
+  max-width: 38ch;
+}
+.wf-copy--trail .wf-step__text {
+  margin-left: auto;
 }
 
-/* Stats */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(1rem, 2.5vw, 2rem);
-  margin-top: var(--sc-6);
-}
-.stat {
-  padding: var(--sc-6) var(--sc-5);
-  border-top: 1px solid var(--sc-hairline-strong);
-}
-.stat-value {
-  font-family: var(--sc-font-display);
-  font-size: var(--sc-t-2xl);
-  line-height: 1;
-  font-weight: 600;
+/* quote */
+.wf-quote {
   margin: 0;
 }
-.stat-plus {
-  color: var(--sc-accent);
+.wf-quote__text {
+  max-width: 24ch;
+  margin-inline: auto;
 }
-.stat-label {
-  margin-top: var(--sc-3);
-  font-size: var(--sc-t-sm);
+.wf-quote__by {
+  display: block;
+  margin-top: var(--sc-5);
 }
 
-/* Showcase */
-.show-head .show-sub {
-  margin-top: var(--sc-3);
-}
-.show-grid {
+/* showcase */
+.wf-show__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1.5rem, 4vw, 4.5rem);
-  margin-top: var(--sc-8);
-  max-width: 58rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 2.25rem);
 }
-.show-card {
+.wf-card {
   display: block;
   text-decoration: none;
 }
-/* Offset the second column: the grid reads as composed, not templated.
-   Offsets are margins, never transform: the engine owns transform here. */
-.show-card:nth-child(even) {
-  margin-top: var(--sc-10);
-}
-.show-frame {
+.wf-card__frame {
   display: block;
   aspect-ratio: 3 / 4;
   overflow: clip;
-  border-radius: 45% 45% var(--sc-r-md) var(--sc-r-md) / 34% 34%
+  border-radius: 45% 45% var(--sc-r-md) var(--sc-r-md) / 30% 30%
     var(--sc-r-md) var(--sc-r-md);
   border: 1px solid var(--sc-hairline);
   box-shadow: var(--sc-e2);
   transition: box-shadow var(--sc-d-slow) var(--sc-ease-out);
 }
-.show-frame > * {
+.wf-card__frame > * {
   height: 100%;
   width: 100%;
   transition: scale var(--sc-d-slow) var(--sc-ease-out);
 }
-.show-card:hover .show-frame {
+.wf-card:hover .wf-card__frame {
   box-shadow: var(--sc-e3);
 }
-.show-card:hover .show-frame > * {
+.wf-card:hover .wf-card__frame > * {
   scale: 1.04;
 }
-.show-meta {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--sc-4);
-  margin-top: var(--sc-4);
-  padding-inline: var(--sc-2);
-}
-.show-name {
+.wf-card__name {
+  display: block;
+  margin-top: var(--sc-3);
   font-family: var(--sc-font-display);
-  font-size: var(--sc-t-base);
+  font-size: var(--sc-t-sm);
   letter-spacing: var(--sc-track-snug);
   color: var(--sc-ink);
 }
-.show-price {
+.wf-card__price {
+  display: block;
+  margin-top: var(--sc-1);
   color: var(--sc-accent);
-  font-size: var(--sc-t-sm);
-  white-space: nowrap;
+  font-size: var(--sc-t-xs);
 }
-.show-more {
-  margin: var(--sc-8) 0 0;
+.wf-show__more {
+  margin: var(--sc-5) 0 0;
 }
-.show-link {
+.wf-link {
   color: var(--sc-ink);
   font-family: var(--sc-font-display);
   font-weight: 600;
@@ -460,40 +461,40 @@ onUnmounted(neutralize);
   text-underline-offset: 0.3em;
   transition: color var(--sc-d-base) var(--sc-ease-out);
 }
-.show-link:hover {
+.wf-link:hover {
   color: var(--sc-accent);
 }
 
-/* Quote */
-.quote-stage {
+/* close */
+.wf-close__stats {
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  padding-top: 4rem;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  margin-bottom: var(--sc-7);
 }
-.quote-inner {
-  margin: 0;
+.wf-stat {
+  display: grid;
+  gap: var(--sc-1);
 }
-.quote-text {
-  max-width: 24ch;
-  margin-inline: auto;
+.wf-stat__value {
+  font-family: var(--sc-font-display);
+  font-size: var(--sc-t-xl);
+  line-height: 1;
+  font-weight: 600;
 }
-.quote-by {
-  display: block;
-  margin-top: var(--sc-6);
+.wf-stat__plus {
+  color: var(--sc-accent);
 }
-
-/* Close */
-.close-inner > .sc-display {
-  margin-top: var(--sc-7);
+.wf-stat__label {
+  color: var(--sc-ink-soft);
+  font-size: var(--sc-t-xs);
 }
-.close-inner > .sc-body {
-  margin-top: var(--sc-4);
+.wf-close__text {
+  margin: var(--sc-4) auto 0;
 }
-.close-btn {
+.wf-btn {
   display: inline-block;
-  margin-top: var(--sc-7);
+  margin-top: var(--sc-6);
   padding: 0.9rem 2.4rem;
   background: var(--sc-accent);
   color: var(--sc-accent-ink);
@@ -504,32 +505,101 @@ onUnmounted(neutralize);
   box-shadow: var(--sc-e2);
   transition: box-shadow var(--sc-d-base) var(--sc-ease-out);
 }
-.close-btn:hover {
+.wf-btn:hover {
   box-shadow: var(--sc-e3);
+}
+
+/* ---- the stitched route rail ------------------------------------------- */
+.wf-rail {
+  position: fixed;
+  right: clamp(0.9rem, 2.5vw, 2.2rem);
+  top: 50%;
+  translate: 0 -50%;
+  height: 38vh;
+  width: 14px;
+  z-index: 30;
+  pointer-events: none;
+}
+.wf-rail__track,
+.wf-rail__fill {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 0;
+  translate: -50% 0;
+  border-left: 2px dashed;
+}
+.wf-rail__track {
+  height: 100%;
+  border-color: color-mix(in oklab, var(--sc-ink) 18%, transparent);
+}
+.wf-rail__fill {
+  border-color: var(--sc-accent);
+  height: calc((var(--sc-seg, 0) + var(--sc-segp, 0)) * 100% / 6);
+}
+.wf-rail__dot {
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  width: 7px;
+  height: 7px;
+  rotate: 45deg;
+  background: transparent;
+  border: 1.5px solid color-mix(in oklab, var(--sc-ink) 30%, transparent);
+  transition:
+    background var(--sc-d-base) var(--sc-ease-out),
+    border-color var(--sc-d-base) var(--sc-ease-out);
+}
+.wf-rail__dot--on {
+  background: var(--sc-accent);
+  border-color: var(--sc-accent);
+}
+.wf-rail__dot:nth-of-type(3) {
+  top: calc(0.5 * 100% / 6);
+}
+.wf-rail__dot:nth-of-type(4) {
+  top: calc(1.5 * 100% / 6);
+}
+.wf-rail__dot:nth-of-type(5) {
+  top: calc(2.5 * 100% / 6);
+}
+.wf-rail__dot:nth-of-type(6) {
+  top: calc(3.5 * 100% / 6);
+}
+.wf-rail__dot:nth-of-type(7) {
+  top: calc(4.5 * 100% / 6);
+}
+.wf-rail__dot:nth-of-type(8) {
+  top: calc(5.5 * 100% / 6);
 }
 
 /* ---- mobile ------------------------------------------------------------- */
 @media (max-width: 860px) {
-  .hero-ghost {
-    font-size: 16rem;
-    opacity: 0.7;
+  [data-sc-copy].wf-copy {
+    max-width: calc(100vw - 2 * var(--sc-gutter));
   }
-  .step {
-    width: min(78vw, 20rem);
-    padding: var(--sc-5);
+  .wf-copy--trail {
+    text-align: left;
+    right: auto;
+    left: var(--sc-gutter);
   }
-  .stats-grid {
+  .wf-copy--trail .wf-step__num,
+  .wf-copy--trail .wf-step__text {
+    margin-left: 0;
+  }
+  .wf-show__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .show-grid {
-    gap: clamp(1rem, 4vw, 1.75rem);
+  .wf-card__frame {
+    aspect-ratio: 4 / 5;
   }
-  .show-card:nth-child(even) {
-    margin-top: var(--sc-8);
+  .wf-close__stats {
+    flex-wrap: wrap;
+    gap: var(--sc-5) var(--sc-7);
   }
-  .show-meta {
-    flex-direction: column;
-    gap: var(--sc-1);
+  .wf-rail {
+    height: 30vh;
+    right: 0.5rem;
   }
 }
 </style>
