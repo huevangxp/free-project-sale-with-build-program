@@ -84,21 +84,21 @@ onUnmounted(() => {
          No section boundaries anywhere. -->
     <div data-sc-mode="worldflight" data-sc-seam="0.14">
       <div data-sc-world>
-        <div data-sc-segment data-sc-w="1.5" data-sc-waypoint="cloth">
+        <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="cloth">
           <div class="wf-scene wf-scene--cloth" data-sc-poster></div>
         </div>
-        <div data-sc-segment data-sc-w="1.5" data-sc-waypoint="drawing">
+        <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="drawing">
           <div class="wf-scene wf-scene--draw" data-sc-poster></div>
         </div>
         <div
           data-sc-segment
-          data-sc-w="2"
+          data-sc-w="2.6"
           data-sc-linger="0.3"
           data-sc-waypoint="embroidery"
         >
           <div class="wf-scene wf-scene--stitch" data-sc-poster></div>
         </div>
-        <div data-sc-segment data-sc-w="1.5" data-sc-waypoint="assembly">
+        <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="assembly">
           <div class="wf-scene wf-scene--sew" data-sc-poster></div>
         </div>
         <div data-sc-segment data-sc-w="1.8" data-sc-waypoint="garments">
