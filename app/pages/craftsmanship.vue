@@ -20,14 +20,14 @@ const steps = [
   { title: "craft.p5t", text: "craft.p5x" },
 ];
 
-/* Copy windows as fractions of the whole 9.7vh track (leg boundaries fall at
-   0 · .155 · .309 · .515 · .670 · .856 · 1), and which side each block sits. */
+/* Copy windows as fractions of the whole 10vh track (leg boundaries fall at
+   0 · .14 · .28 · .54 · .68 · .86 · 1), and which side each block sits. */
 const stepWins = [
-  "0.055 0.20 0.2 0.25",
-  "0.195 0.315 0.2 0.2",
-  "0.325 0.46 0.2 0.25",
-  "0.565 0.635 0.2 0.2",
-  "0.645 0.725 0.2 0.3",
+  "0.05 0.20 0.18 0.28",
+  "0.19 0.315 0.2 0.2",
+  "0.325 0.47 0.18 0.3",
+  "0.575 0.65 0.2 0.2",
+  "0.66 0.735 0.2 0.3",
 ];
 const stepSide = ["trail", "lead", "trail", "lead", "trail"];
 
@@ -136,7 +136,7 @@ onUnmounted(() => {
         <!-- The voice, deep inside the embroidery leg: the peak. -->
         <figure
           data-sc-copy
-          data-sc-window="0.465 0.55 0.22 0.22"
+          data-sc-window="0.475 0.555 0.25 0.25"
           class="wf-copy wf-copy--center wf-quote"
         >
           <blockquote class="sc-display sc-display--lg wf-quote__text">
@@ -150,7 +150,7 @@ onUnmounted(() => {
         <!-- The garments, floating among the alcoves. -->
         <div
           data-sc-copy
-          data-sc-window="0.715 0.905 0.18 0.25"
+          data-sc-window="0.725 0.91 0.18 0.25"
           class="wf-copy wf-copy--band wf-show"
         >
           <p class="sc-label wf-eyebrow">{{ $t("craft.showTitle") }}</p>
